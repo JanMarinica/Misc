@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gfx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Gfx-SE14.xsd">
+    <displaySettings displayType="onTop" cannotBeReplaced="false" position="specifyPositionInPixels" positionX="1" positionY="4" securityCode="*" backColor="#282D32" titleBar="true" titleBarText="Detail Segmentu" maximumTagUpdateRate="0.5" focusHighlightColor="#3F3F3F" disableFocusHighlight="false" size="specifySizeInPixels" width="199" height="441" allowMultipleRunningCopies="false" cacheAfterDisplaying="false" systemMenu="false" minimizeButton="false" sizeToMainWindow="false" showLastAcquiredValue="true" TrackScreenForNavigation="false" allowResizing="true" whenResized="scale" beepOnPress="false" highlightWhenCursorPassesOver="true" interactiveHighlightColor="#3F3F3F" displayOnScreenKeyboard="false" allowButtonActionOnError="true" fieldNotSelectedTextColor="black" fieldNotSelectedFillColor="white" fieldSelectedTextColor="black" fieldSelectedFillColor="white" fieldInErrorNotSelectedTextColor="black" fieldInErrorNotSelectedFillColor="red" fieldInErrorSelectedTextColor="white" fieldInErrorSelectedFillColor="red" startupCommand="" shutdownCommand="" useGradientStyle="false" endColor="teal" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+    <group name="Grp_Details" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <group name="Grp_SegmentContent" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel_Buffer" height="400" width="191" left="4" top="37" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="#F0F0F0" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromLeft"/>
+            <group name="Grp_PalletBufferRow17" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background14" height="22" width="180" left="10" top="43" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC14" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC14" height="22" width="144" left="46" top="42" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC20" height="20" width="130" left="53" top="43" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index14" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index14" height="22" width="34" left="10" top="42" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index14" height="19" width="29" left="14" top="44" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch14" height="20" width="181" left="10" top="42" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="0"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow18" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background15" height="22" width="180" left="10" top="66" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC15" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC15" height="22" width="144" left="46" top="65" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC21" height="20" width="130" left="53" top="66" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index15" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index15" height="22" width="34" left="10" top="65" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index15" height="19" width="29" left="14" top="67" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch15" height="20" width="181" left="10" top="65" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="1"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow19" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background16" height="22" width="180" left="10" top="89" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC16" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC16" height="22" width="144" left="46" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC22" height="20" width="130" left="53" top="89" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index16" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index16" height="22" width="34" left="10" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index16" height="19" width="29" left="14" top="90" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch16" height="20" width="181" left="10" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="2"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow20" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background18" height="22" width="180" left="10" top="112" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC18" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC18" height="22" width="144" left="46" top="111" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC25" height="20" width="130" left="53" top="112" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index18" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index18" height="22" width="34" left="10" top="111" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index18" height="19" width="29" left="14" top="113" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch18" height="20" width="181" left="10" top="111" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="3"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow21" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background19" height="22" width="180" left="10" top="181" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC19" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC19" height="22" width="144" left="46" top="180" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC26" height="20" width="130" left="53" top="181" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index19" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index19" height="22" width="34" left="10" top="180" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index19" height="19" width="29" left="14" top="182" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch19" height="20" width="181" left="10" top="180" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="6"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow22" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background20" height="22" width="180" left="10" top="204" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC20" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC20" height="22" width="144" left="46" top="203" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC28" height="20" width="130" left="53" top="204" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index20" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index20" height="22" width="34" left="10" top="203" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index20" height="19" width="29" left="14" top="205" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch20" height="20" width="181" left="10" top="203" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="7"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow23" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background22" height="22" width="180" left="10" top="158" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC21" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC22" height="22" width="144" left="46" top="157" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC29" height="20" width="130" left="53" top="158" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index22" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index22" height="22" width="34" left="10" top="157" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index22" height="19" width="29" left="14" top="159" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch22" height="20" width="181" left="10" top="157" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="5"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow24" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background23" height="22" width="180" left="10" top="135" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC22" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC23" height="22" width="144" left="46" top="134" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC30" height="20" width="130" left="53" top="135" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index23" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index23" height="22" width="34" left="10" top="134" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index23" height="19" width="29" left="14" top="136" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch23" height="20" width="181" left="10" top="134" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="4"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow25" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background24" height="22" width="180" left="10" top="388" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC23" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC24" height="22" width="144" left="46" top="387" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC31" height="20" width="130" left="53" top="388" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index24" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index24" height="22" width="34" left="10" top="387" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index24" height="19" width="29" left="14" top="389" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch24" height="20" width="181" left="10" top="387" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="15"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow26" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background25" height="22" width="180" left="10" top="365" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC24" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC25" height="22" width="144" left="46" top="364" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC32" height="20" width="130" left="53" top="365" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index25" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index25" height="22" width="34" left="10" top="364" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index25" height="19" width="29" left="14" top="366" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch25" height="20" width="181" left="10" top="364" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="14"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow27" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background28" height="22" width="180" left="10" top="342" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC28" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC28" height="22" width="144" left="46" top="341" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC33" height="20" width="130" left="53" top="342" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index28" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index28" height="22" width="34" left="10" top="341" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index28" height="19" width="29" left="14" top="343" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch28" height="20" width="181" left="10" top="341" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="13"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow28" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background29" height="22" width="180" left="10" top="319" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC29" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC29" height="22" width="144" left="46" top="318" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC34" height="20" width="130" left="53" top="319" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index29" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index29" height="22" width="34" left="10" top="318" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index29" height="19" width="29" left="14" top="320" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch29" height="20" width="181" left="10" top="318" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="12"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow29" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background30" height="22" width="180" left="10" top="296" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC30" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC30" height="22" width="144" left="46" top="295" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC35" height="20" width="130" left="53" top="296" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index30" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index30" height="22" width="34" left="10" top="295" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index30" height="19" width="29" left="14" top="297" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch30" height="20" width="181" left="10" top="295" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="11"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow30" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background31" height="22" width="180" left="10" top="273" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC31" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC31" height="22" width="144" left="46" top="272" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC36" height="20" width="130" left="53" top="273" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index31" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index31" height="22" width="34" left="10" top="272" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index31" height="19" width="29" left="14" top="274" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch31" height="20" width="181" left="10" top="272" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="10"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow31" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background32" height="22" width="180" left="10" top="250" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC32" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC32" height="22" width="144" left="46" top="249" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC37" height="20" width="130" left="53" top="250" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index32" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index32" height="22" width="34" left="10" top="249" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index32" height="19" width="29" left="14" top="251" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch32" height="20" width="181" left="10" top="249" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="9"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow32" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background33" height="22" width="180" left="10" top="227" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC33" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC33" height="22" width="144" left="46" top="226" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC38" height="20" width="130" left="53" top="227" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index33" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index33" height="22" width="34" left="10" top="226" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index33" height="19" width="29" left="14" top="228" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch33" height="20" width="181" left="10" top="226" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="8"/>
+                </parameters>
+            </group>
+            <group name="Grp_PalletBufferRow33" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_PalletBufferRow" linkToolTipText="true">
+                <rectangle name="Background34" height="22" width="180" left="10" top="411" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Background4" linkToolTipText="true" backStyle="solid" backColor="#ECECEC" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateColor expression="If (#103 %  2)=1  Then 1  Else 0" blinkRate="2">
+                            <color value="0" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="silver" backColor2="silver" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                            <color value="1" foreBehavior="solid" foreColor1="black" foreColor2="black" backBehavior="solid" backColor1="#E0E0E0" backColor2="#E0E0E0" fillColorMode="2" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight" fillEndColor="white" fillGradientStop="50" fillGradientDirection="gradientDirectionHorizontal" fillGradientShadingStyle="gradientHorizontalFromRight"/>
+                        </animateColor>
+                    </animations>
+                </rectangle>
+                <group name="Grp_SSCC34" visible="true" toolTipText="SSCC kód" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_SSCC2" linkToolTipText="true">
+                    <panel name="pan_SSCC34" height="22" width="144" left="46" top="410" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_SSCC4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="Txt_SSCC39" height="20" width="130" left="53" top="411" visible="true" toolTipText="/*N:8 /*S:18 {#500.Prod.Buff[#103].PerSegmentID}*/ NOFILL DP:0*/" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Txt_SSCC3" linkToolTipText="true" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="/*S:18 {#500.Prod.Buff[#103].SSCC}*/"/>
+                </group>
+                <group name="Grp_Index34" visible="true" toolTipText="Index v lokálním seznamu palet" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Grp_Index4" linkToolTipText="true">
+                    <panel name="pan_Index34" height="22" width="34" left="10" top="410" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.pan_Index4" linkToolTipText="true" backStyle="transparent" patternStyle="none" backColor="silver" patternColor="white" blink="false" description="" borderColor="#3D444B" borderStyle="line" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+                    <text name="txt_Index34" height="19" width="29" left="14" top="412" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.txt_Index4" linkToolTipText="true" backStyle="transparent" backColor="#ECECEC" foreColor="#3D444B" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="false" italic="false" underline="false" strikethrough="false" caption="/*N:3 {#500.Prod.Buff[#103].Indx} NOFILL DP:0*/"/>
+                </group>
+                <rectangle name="Pol_touch34" height="20" width="181" left="10" top="410" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="true" linkSize="true" linkConnections="true" linkAnimations="linkWithExpression" linkBaseObject="01_Conveyors.Pol_touch4" linkToolTipText="true" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="none" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                    <animations>
+                        <animateTouch TouchStyle="rectangular" pressAction="" repeatAction="" releaseAction="abort popup_Pallet_Detail;&#xA;Display popup_Pallet_Detail /T$#500.Prod.Buff[#103].Indx$ /Q1" repeatRate="0.25">
+                            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                                <imageSettings imageReference="noImage"/>
+                            </confirm>
+                        </animateTouch>
+                    </animations>
+                </rectangle>
+                <animations>
+                    <animateVisibility expression="{#500.Sts.PalletCnt} &gt; #103" expressionTrueState="visible"/>
+                </animations>
+                <parameters>
+                    <parameter name="#500" description="Segment Pointer HW_Nodes[]/HW_Transitions[]" value="[PLC]HW_Segments[#1]"/>
+                    <parameter name="#103" description="Buffer Index (0-15)" value="16"/>
+                </parameters>
+            </group>
+        </group>
+    </group>
+    <button name="btn_exit" height="28" width="28" left="166" top="5" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="1">
+        <command pressAction="" repeatAction="" releaseAction="Abort Me" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="20" bold="true" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="useImageReference" imageName="PG_Close" scaled="false"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <text name="lbl_Window" height="25" width="164" left="8" top="13" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#ECECEC" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="12" bold="true" italic="false" underline="false" strikethrough="false" caption="Buffer palet"/>
+    <vbaProject>
+        <vbaReferencesLink>
+            <!--All checked references on the references dialog box!-->
+            <vbaRefLink hash="ad542389a48a5aae612a313b3334f89f" TypeLib_Name="VBA" Description="Visual Basic For Applications">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBWAEIAQQAsACAARABlAHMAYwByAGkAcAB0AGkAbwBu
+AD0AVgBpAHMAdQBhAGwAIABCAGEAcwBpAGMAIABGAG8AcgAgAEEAcABwAGwAaQBjAGEAdABpAG8A
+bgBzACwAIABHAFUASQBEAD0AewAwADAAMAAyADAANABFAEYALQAwADAAMAAwAC0AMAAwADAAMAAt
+AEMAMAAwADAALQAwADAAMAAwADAAMAAwADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIA
+cwBpAG8AbgA9ADQALAAgAE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="9bf92fbe175229b5f0601c4bf4381b5f" TypeLib_Name="DisplayClient" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0ACwAIABE
+AGUAcwBjAHIAaQBwAHQAaQBvAG4APQBSAFMAVgBpAGUAdwAgAEQAaQBzAHAAbABhAHkAIABDAGwA
+aQBlAG4AdAAgAE8AYgBqAGUAYwB0ACAATQBvAGQAZQBsACwAIABHAFUASQBEAD0AewA4ADUANAA2
+ADkAMwA0ADAALQBGADEAOAA5AC0AMQAxAEQAMQAtADkAQwAxADcALQAwADAANgAwADkANwA3AEMA
+QQBBAEYAMQB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADEALAAgAE0AaQBuAG8AcgBW
+AGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="b0d387d1804d29964988314e5c534502" TypeLib_Name="stdole" Description="OLE Automation">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBzAHQAZABvAGwAZQAsACAARABlAHMAYwByAGkAcAB0
+AGkAbwBuAD0ATwBMAEUAIABBAHUAdABvAG0AYQB0AGkAbwBuACwAIABHAFUASQBEAD0AewAwADAA
+MAAyADAANAAzADAALQAwADAAMAAwAC0AMAAwADAAMAAtAEMAMAAwADAALQAwADAAMAAwADAAMAAw
+ADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADIALAAgAE0AaQBuAG8A
+cgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="4d04292f7c12576e749760ecf5ac2ea8" TypeLib_Name="DisplayClientEx" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0AEUAeAAs
+ACAARABlAHMAYwByAGkAcAB0AGkAbwBuAD0AUgBTAFYAaQBlAHcAIABEAGkAcwBwAGwAYQB5ACAA
+QwBsAGkAZQBuAHQAIABPAGIAagBlAGMAdAAgAE0AbwBkAGUAbAAsACAARwBVAEkARAA9AHsAOQBG
+ADcAMgA2ADcAQwAxAC0ANQA2ADcAQgAtADEAMQBEADMALQBBAEMAMwBCAC0AMAAwADYAMAA5ADcA
+RAA4AEMANwBFAEIAfQAsACAATQBhAGoAbwByAFYAZQByAHMAaQBvAG4APQAxACwAIABNAGkAbgBv
+AHIAVgBlAHIAcwBpAG8AbgA9ADAALAAgAA==]]>
+            </vbaRefLink>
+        </vbaReferencesLink>
+        <vbaItem>
+            <!--Item Name:ThisDisplay, Item Type:HostProjectItem-->
+            <encryptedData hash="8d11e2ea90dfed5a96a34bbe51e8b9ff">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[J05BTUU9VGhpc0Rpc3BsYXksVFlQRT0zDQpWRVJTSU9OIDEuMCBDTEFTUw0KQkVHSU4NCiAgTXVs
+dGlVc2UgPSAtMSAgJ1RydWUNCkVORA0KQXR0cmlidXRlIFZCX05hbWUgPSAiVGhpc0Rpc3BsYXki
+DQpBdHRyaWJ1dGUgVkJfR2xvYmFsTmFtZVNwYWNlID0gRmFsc2UNCkF0dHJpYnV0ZSBWQl9DcmVh
+dGFibGUgPSBGYWxzZQ0KQXR0cmlidXRlIFZCX1ByZWRlY2xhcmVkSWQgPSBUcnVlDQpBdHRyaWJ1
+dGUgVkJfRXhwb3NlZCA9IFRydWUNCg==]]>
+            </encryptedData>
+            <vbaCode>
+                <![CDATA['************************************
+'*COPYRIGHT (C) 2017 BY RA ALL RIGHTS RESERVED.
+'* Version 2.0
+'* 05/02/2017
+'* Michal Janku
+'* Version 1.0
+'* Maria Urbanova
+'************************************
+Option Explicit
+
+'----------------------------------
+'ANIMATION START
+'----------------------------------
+Private Sub Display_AnimationStart()
+    
+End Sub
+'----------------------------------
+'DISPLAY CLICK
+'----------------------------------
+Private Sub txt_Display_Click()
+    Dim i As Integer
+    Dim Message As String
+
+    On Error GoTo ErrHandler
+        Set MainD = Application.ActiveDisplay
+        Message = MainD.FullName
+        
+        If MainD.ParameterFileName <> "" Then
+            Message = Message & vbCrLf & "Parameter File: " & ThisDisplay.ParameterFileName
+        Else
+            If MainD.TagParameters.Count > 0 Then
+                For i = 1 To MainD.TagParameters.Count
+                    Message = Message & vbCrLf & "Parameter #" & i & ": " & MainD.TagParameters(i)
+                Next i
+            End If
+        End If
+            
+        MsgBox Message
+     Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+]]>
+            </vbaCode>
+        </vbaItem>
+    </vbaProject>
+</gfx>

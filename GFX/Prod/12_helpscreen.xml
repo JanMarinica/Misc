@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gfx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Gfx-SE14.xsd">
+    <displaySettings displayType="overlay" position="specifyPositionInPixels" positionX="30" positionY="30" securityCode="*" backColor="#ECECEC" titleBar="true" titleBarText="Nápověda" maximumTagUpdateRate="0.25" focusHighlightColor="#3F3F3F" disableFocusHighlight="false" size="specifySizeInPixels" width="627" height="568" keepAtBack="false" allowMultipleRunningCopies="false" cacheAfterDisplaying="false" systemMenu="false" minimizeButton="false" sizeToMainWindow="false" showLastAcquiredValue="true" TrackScreenForNavigation="true" TrackName="" allowResizing="false" whenResized="scale" beepOnPress="false" highlightWhenCursorPassesOver="true" interactiveHighlightColor="#3F3F3F" displayOnScreenKeyboard="false" allowButtonActionOnError="true" fieldNotSelectedTextColor="black" fieldNotSelectedFillColor="white" fieldSelectedTextColor="black" fieldSelectedFillColor="white" fieldInErrorNotSelectedTextColor="black" fieldInErrorNotSelectedFillColor="red" fieldInErrorSelectedTextColor="white" fieldInErrorSelectedFillColor="red" startupCommand="" shutdownCommand="" useGradientStyle="false" endColor="teal" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+    <group name="grp_segment" visible="false" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="panel_pallet2" height="531" width="627" left="0" top="38" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <group name="Group1" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc114" height="26" width="380" left="96" top="73" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Mimo provoz"/>
+            <text name="lbl_Desc115" height="26" width="380" left="96" top="135" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Segment  vypnut"/>
+            <text name="lbl_Desc116" height="26" width="380" left="96" top="166" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Segment připraven"/>
+            <text name="lbl_Desc117" height="26" width="380" left="96" top="104" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Segment v chybě"/>
+            <text name="lbl_Desc118" height="26" width="430" left="96" top="197" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Auto zastaven - Segment není v provozu "/>
+            <text name="lbl_Desc119" height="26" width="426" left="96" top="228" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Auto pozastaven - Segment v provozu a všechny motory zastaveny"/>
+            <text name="lbl_Desc120" height="26" width="429" left="96" top="290" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Manuál - aspoň jeden z motorů v Manuálu"/>
+            <text name="lbl_Desc121" height="26" width="428" left="96" top="259" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Auto běh - Segment v provozu  a aspoň jeden z motorů v běhu"/>
+            <panel name="Panel55" height="15" width="62" left="25" top="295" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="blue" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel56" height="15" width="62" left="25" top="202" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel57" height="15" width="62" left="25" top="264" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#40FF10" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel58" height="15" width="62" left="25" top="233" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#008C00" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel59" height="15" width="62" left="25" top="78" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="gray" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel6" height="15" width="62" left="25" top="109" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="red" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel60" height="15" width="62" left="25" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#FFC080" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel61" height="15" width="62" left="25" top="171" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#F0F000" patternColor="white" blink="false" description="" borderColor="gray" borderStyle="inset" borderWidth="1" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Group25" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc122" height="26" width="380" left="96" top="416" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Vstup volný - Vstup povolen"/>
+            <polygon name="Pol_INColorConvVFree4" height="22" width="59" left="23" top="425" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="gradient" backColor="white" foreColor="#4C4C4C" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="#4C4C4C" path="50 446 23 425 81 425 81 425 50 446 " endColor="white" gradientStop="70" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromLeft"/>
+            <polygon name="Pol_INColorConvVFree1" height="22" width="59" left="23" top="385" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="gradient" backColor="gray" foreColor="#4C4C4C" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="#4C4C4C" path="50 406 23 385 81 385 81 385 50 406 " endColor="white" gradientStop="70" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromLeft"/>
+            <text name="lbl_Desc123" height="26" width="380" left="96" top="378" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Vstup blokován"/>
+            <polygon name="Pol_INColorConvVFree2" height="22" width="59" left="23" top="465" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="gradient" backColor="yellow" foreColor="#4C4C4C" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="#4C4C4C" path="50 486 23 465 81 465 81 465 50 486 " endColor="white" gradientStop="70" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromLeft"/>
+            <text name="lbl_Desc124" height="26" width="380" left="96" top="456" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Vstup zaplněn -  Vstup zakázan"/>
+            <text name="lbl_Desc125" height="55" width="380" left="96" top="488" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Segment je rezervován -  Vstup povolen jenom ze segmentu který udělal rezervaci"/>
+            <polygon name="Pol_INColorConvVFree3" height="22" width="59" left="23" top="504" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="gradient" backColor="yellow" foreColor="#4C4C4C" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="#4C4C4C" path="50 525 23 504 81 504 81 504 50 525 " endColor="white" gradientStop="70" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromLeft"/>
+            <text name="lbl_Desc126" height="26" width="54" left="26" top="499" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="9" bold="true" italic="true" underline="false" strikethrough="false" caption="Blik"/>
+        </group>
+        <text name="lbl_Window61" height="25" width="287" left="22" top="345" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Segment - stav dopravy"/>
+        <text name="lbl_Window" height="25" width="295" left="24" top="48" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Segment - stav technologie"/>
+        <button name="btn1" height="19" width="124" left="434" top="53" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="6">
+            <command pressAction="" repeatAction="" releaseAction="Toggle [PLC]HMI_ShowIndexes" repeatRate="0.25"/>
+            <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="#F0F0F0" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                <caption fontFamily="Arial" fontSize="9" bold="true" italic="false" underline="false" strikethrough="false" caption="Ukaž / Skryj indexy"/>
+                <imageSettings imageReference="noImage"/>
+            </up>
+            <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+                <imageSettings imageReference="noImage"/>
+            </down>
+            <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="false" disabledImageType="useGrayscale"/>
+            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            </useVariable>
+        </button>
+    </group>
+    <group name="grp_section" visible="false" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="panel_pallet1" height="531" width="627" left="0" top="38" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <group name="Motor7" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon11" height="23" width="52" left="16" top="268" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="blue" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 281 67 272 64 269 42 269 42 270 39 270 39 268 36 268 35 269 18 269 18 272 16 272 16 281 18 281 18 283 18 288 17 288 17 290 34 290 34 288 32 288 32 283 35 283 36 285 39 285 39 283 42 283 42 284 64 284 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line66" height="10" width="1" left="18" top="272" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 272 18 281 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line67" height="14" width="1" left="42" top="270" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 270 42 283 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line68" height="16" width="1" left="64" top="269" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 269 64 284 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line69" height="18" width="1" left="36" top="268" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 268 36 285 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line70" height="1" width="15" left="18" top="283" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 283 18 283 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line71" height="14" width="1" left="39" top="270" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 270 39 283 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line72" height="15" width="1" left="35" top="269" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 269 35 283 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line73" height="1" width="16" left="44" top="272" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 272 59 272 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line74" height="15" width="1" left="61" top="269" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 269 61 283 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line75" height="1" width="16" left="44" top="275" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 275 59 275 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line76" height="1" width="16" left="44" top="278" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 278 59 278 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line77" height="1" width="16" left="44" top="281" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 281 59 281 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line78" height="1" width="15" left="18" top="288" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 288 32 288 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse11" height="2" width="2" left="30" top="271" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse12" height="2" width="2" left="30" top="280" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon12" height="14" width="4" left="29" top="270" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor1" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon422" height="23" width="52" left="16" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#FFC080" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 153 67 144 64 141 42 141 42 142 39 142 39 140 36 140 35 141 18 141 18 144 16 144 16 153 18 153 18 155 18 160 17 160 17 162 34 162 34 160 32 160 32 155 35 155 36 157 39 157 39 155 42 155 42 156 64 156 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line248" height="10" width="1" left="18" top="144" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 144 18 153 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line249" height="14" width="1" left="42" top="142" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 142 42 155 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line250" height="16" width="1" left="64" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 141 64 156 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line251" height="18" width="1" left="36" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 140 36 157 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line252" height="1" width="15" left="18" top="155" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 155 18 155 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line253" height="14" width="1" left="39" top="142" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 142 39 155 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line254" height="15" width="1" left="35" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 141 35 155 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line255" height="1" width="16" left="44" top="144" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 144 59 144 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line256" height="15" width="1" left="61" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 141 61 155 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line257" height="1" width="16" left="44" top="147" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 147 59 147 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line258" height="1" width="16" left="44" top="150" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 150 59 150 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line259" height="1" width="16" left="44" top="153" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 153 59 153 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line260" height="1" width="15" left="18" top="160" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 160 32 160 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse49" height="2" width="2" left="30" top="143" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse50" height="2" width="2" left="30" top="152" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon423" height="14" width="4" left="29" top="142" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor2" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon13" height="23" width="52" left="16" top="76" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="gray" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 89 67 80 64 77 42 77 42 78 39 78 39 76 36 76 35 77 18 77 18 80 16 80 16 89 18 89 18 91 18 96 17 96 17 98 34 98 34 96 32 96 32 91 35 91 36 93 39 93 39 91 42 91 42 92 64 92 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line1" height="10" width="1" left="18" top="80" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 80 18 89 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line2" height="14" width="1" left="42" top="78" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 78 42 91 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line3" height="16" width="1" left="64" top="77" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 77 64 92 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line4" height="18" width="1" left="36" top="76" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 76 36 93 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line5" height="1" width="15" left="18" top="91" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 91 18 91 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line6" height="14" width="1" left="39" top="78" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 78 39 91 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line7" height="15" width="1" left="35" top="77" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 77 35 91 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="#FFC080" foreColor="black"/>
+            <line name="Line8" height="1" width="16" left="44" top="80" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 80 59 80 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line9" height="15" width="1" left="61" top="77" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 77 61 91 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line10" height="1" width="16" left="44" top="83" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 83 59 83 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="#FFC080" foreColor="black"/>
+            <line name="Line11" height="1" width="16" left="44" top="86" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 86 59 86 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line12" height="1" width="16" left="44" top="89" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 89 59 89 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line13" height="1" width="15" left="18" top="96" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 96 32 96 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse1" height="2" width="2" left="30" top="79" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse2" height="2" width="2" left="30" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon2" height="14" width="4" left="29" top="78" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor3" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon3" height="23" width="52" left="16" top="172" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#F0F000" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 185 67 176 64 173 42 173 42 174 39 174 39 172 36 172 35 173 18 173 18 176 16 176 16 185 18 185 18 187 18 192 17 192 17 194 34 194 34 192 32 192 32 187 35 187 36 189 39 189 39 187 42 187 42 188 64 188 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line14" height="10" width="1" left="18" top="176" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 176 18 185 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line15" height="14" width="1" left="42" top="174" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 174 42 187 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line16" height="16" width="1" left="64" top="173" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 173 64 188 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line17" height="18" width="1" left="36" top="172" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 172 36 189 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line18" height="1" width="15" left="18" top="187" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 187 18 187 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line19" height="14" width="1" left="39" top="174" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 174 39 187 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line20" height="15" width="1" left="35" top="173" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 173 35 187 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line21" height="1" width="16" left="44" top="176" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 176 59 176 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line22" height="15" width="1" left="61" top="173" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 173 61 187 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line23" height="1" width="16" left="44" top="179" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 179 59 179 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line24" height="1" width="16" left="44" top="182" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 182 59 182 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line25" height="1" width="16" left="44" top="185" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 185 59 185 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line26" height="1" width="15" left="18" top="192" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 192 32 192 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse3" height="2" width="2" left="30" top="175" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse4" height="2" width="2" left="30" top="184" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon4" height="14" width="4" left="29" top="174" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor4" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon5" height="23" width="52" left="16" top="204" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#E0E0E0" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 217 67 208 64 205 42 205 42 206 39 206 39 204 36 204 35 205 18 205 18 208 16 208 16 217 18 217 18 219 18 224 17 224 17 226 34 226 34 224 32 224 32 219 35 219 36 221 39 221 39 219 42 219 42 220 64 220 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line27" height="10" width="1" left="18" top="208" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 208 18 217 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line28" height="14" width="1" left="42" top="206" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 206 42 219 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line29" height="16" width="1" left="64" top="205" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 205 64 220 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line30" height="18" width="1" left="36" top="204" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 204 36 221 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line31" height="1" width="15" left="18" top="219" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 219 18 219 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line32" height="14" width="1" left="39" top="206" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 206 39 219 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line33" height="15" width="1" left="35" top="205" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 205 35 219 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line34" height="1" width="16" left="44" top="208" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 208 59 208 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line35" height="15" width="1" left="61" top="205" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 205 61 219 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line36" height="1" width="16" left="44" top="211" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 211 59 211 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line37" height="1" width="16" left="44" top="214" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 214 59 214 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line38" height="1" width="16" left="44" top="217" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 217 59 217 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line39" height="1" width="15" left="18" top="224" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 224 32 224 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse5" height="2" width="2" left="30" top="207" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse6" height="2" width="2" left="30" top="216" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon6" height="14" width="4" left="29" top="206" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor5" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon7" height="23" width="52" left="16" top="108" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="red" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 121 67 112 64 109 42 109 42 110 39 110 39 108 36 108 35 109 18 109 18 112 16 112 16 121 18 121 18 123 18 128 17 128 17 130 34 130 34 128 32 128 32 123 35 123 36 125 39 125 39 123 42 123 42 124 64 124 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line40" height="10" width="1" left="18" top="112" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 112 18 121 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line41" height="14" width="1" left="42" top="110" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 110 42 123 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line42" height="16" width="1" left="64" top="109" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 109 64 124 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line43" height="18" width="1" left="36" top="108" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 108 36 125 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line44" height="1" width="15" left="18" top="123" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 123 18 123 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line45" height="14" width="1" left="39" top="110" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 110 39 123 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line46" height="15" width="1" left="35" top="109" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 109 35 123 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line47" height="1" width="16" left="44" top="112" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 112 59 112 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line48" height="15" width="1" left="61" top="109" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 109 61 123 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line49" height="1" width="16" left="44" top="115" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 115 59 115 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line50" height="1" width="16" left="44" top="118" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 118 59 118 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line51" height="1" width="16" left="44" top="121" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 121 59 121 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line52" height="1" width="15" left="18" top="128" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 128 32 128 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse7" height="2" width="2" left="30" top="111" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse8" height="2" width="2" left="30" top="120" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon8" height="14" width="4" left="29" top="110" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Motor6" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <polygon name="Polygon9" height="23" width="52" left="16" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#40FF10" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" path="67 249 67 240 64 237 42 237 42 238 39 238 39 236 36 236 35 237 18 237 18 240 16 240 16 249 18 249 18 251 18 256 17 256 17 258 34 258 34 256 32 256 32 251 35 251 36 253 39 253 39 251 42 251 42 252 64 252 " endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <line name="Line53" height="10" width="1" left="18" top="240" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 240 18 249 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line54" height="14" width="1" left="42" top="238" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="42 238 42 251 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line55" height="16" width="1" left="64" top="237" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="64 237 64 252 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line56" height="18" width="1" left="36" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="36 236 36 253 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line57" height="1" width="15" left="18" top="251" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="32 251 18 251 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line58" height="14" width="1" left="39" top="238" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="39 238 39 251 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line59" height="15" width="1" left="35" top="237" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="35 237 35 251 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line60" height="1" width="16" left="44" top="240" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 240 59 240 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line61" height="15" width="1" left="61" top="237" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="61 237 61 251 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line62" height="1" width="16" left="44" top="243" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 243 59 243 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line63" height="1" width="16" left="44" top="246" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 246 59 246 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line64" height="1" width="16" left="44" top="249" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="44 249 59 249 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <line name="Line65" height="1" width="15" left="18" top="256" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="18 256 32 256 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="teal" foreColor="black"/>
+            <ellipse name="Ellipse9" height="2" width="2" left="30" top="239" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <ellipse name="Ellipse10" height="2" width="2" left="30" top="248" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <rectangle name="Polygon10" height="14" width="4" left="29" top="238" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="teal" foreColor="black" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <text name="lbl_Desc75" height="26" width="190" left="83" top="73" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Žádna komunikace"/>
+        <text name="lbl_Desc76" height="26" width="190" left="83" top="137" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor vypnut"/>
+        <text name="lbl_Desc77" height="26" width="190" left="83" top="169" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor připraven"/>
+        <text name="lbl_Desc78" height="26" width="190" left="83" top="105" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor v chybě"/>
+        <text name="lbl_Desc79" height="26" width="190" left="83" top="201" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor  Auto - zastaven"/>
+        <text name="lbl_Desc80" height="26" width="190" left="83" top="233" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor  Auto - v běhu"/>
+        <text name="lbl_Desc81" height="26" width="190" left="83" top="265" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Motor v Manuálu"/>
+    </group>
+    <rectangle name="Polygon1" height="38" width="630" left="0" top="0" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#282D32" foreColor="#282D32" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+    <button name="btn_order" height="26" width="77" left="9" top="13" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="1">
+        <command pressAction="" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="btn_pallet" height="26" width="77" left="86" top="13" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="2">
+        <command pressAction="" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Paleta"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="btn_section" height="26" width="77" left="163" top="13" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="3">
+        <command pressAction="" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Sekce"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="btn_segment" height="26" width="77" left="240" top="13" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="4">
+        <command pressAction="" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Segment"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="btn_exit" height="32" width="28" left="597" top="3" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="noborder" captureCursor="false" highlightOnFocus="true" tabIndex="5">
+        <command pressAction="" repeatAction="" releaseAction="Abort Me" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="#282D32" backStyle="solid" foreColor="#ECECEC" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="18" bold="false" italic="false" underline="false" strikethrough="false" caption="X"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="true" patternColor="black" patternStyle="none" backColor="#D4D0C8" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption=""/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <group name="grp_order" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="panel_order" height="531" width="625" left="0" top="38" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <panel name="Panel1" height="22" width="117" left="3" top="49" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#FFE0C0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <panel name="Panel2" height="22" width="117" left="3" top="73" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="lime" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <panel name="Panel3" height="22" width="117" left="3" top="97" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#00C000" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <panel name="Panel4" height="22" width="117" left="3" top="147" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="white" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="lbl_Desc1" height="26" width="492" left="131" top="48" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka otevřená, žádná paleta nepřiřazena"/>
+        <text name="lbl_Desc2" height="26" width="492" left="131" top="96" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Požadavek na uzavření aktivní objednávky, ale aktivní palety v procesu"/>
+        <text name="lbl_Desc3" height="26" width="492" left="131" top="120" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka byla uzavřena operátorem"/>
+        <text name="lbl_Desc4" height="26" width="492" left="131" top="72" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka s aspoň jednou přiřazenou paletou"/>
+        <panel name="Panel5" height="22" width="117" left="3" top="122" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="lbl_Desc8" height="26" width="107" left="11" top="46" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Otevřena"/>
+        <text name="lbl_Desc9" height="26" width="107" left="11" top="73" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Aktivní"/>
+        <text name="lbl_Desc10" height="26" width="107" left="10" top="144" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Ukončena"/>
+        <text name="lbl_Desc11" height="26" width="107" left="11" top="120" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Uzavřena"/>
+        <text name="lbl_Desc33" height="26" width="107" left="11" top="96" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Uzavírána"/>
+        <text name="lbl_Desc5" height="26" width="492" left="131" top="145" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="#ECECEC" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka byla uzavřena automaticky"/>
+    </group>
+    <group name="grp_pallet" visible="false" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="panel_pallet" height="531" width="627" left="0" top="38" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <group name="Group6" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel19" height="22" width="109" left="49" top="70" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel20" height="22" width="109" left="49" top="94" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel21" height="22" width="109" left="49" top="118" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#FFC080" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel22" height="22" width="109" left="49" top="142" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#FFC080" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <text name="lbl_Desc34" height="26" width="460" left="169" top="69" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta čeká na SQL autorizaci"/>
+        <text name="lbl_Desc35" height="26" width="460" left="169" top="117" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="SQL zamítla paletu (neznámý SSCC aneb chybějící MFG aneb QTY) "/>
+        <text name="lbl_Desc36" height="26" width="460" left="169" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Objednávka pro daný MFG není otevřena"/>
+        <text name="lbl_Desc37" height="26" width="460" left="169" top="93" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla verifikována databází "/>
+        <group name="Group2" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc38" height="26" width="100" left="55" top="68" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Na vstupu"/>
+            <text name="lbl_Desc39" height="26" width="100" left="55" top="92" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Verifikována"/>
+            <text name="lbl_Desc40" height="26" width="100" left="55" top="115" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Zamítnuta"/>
+            <text name="lbl_Desc41" height="26" width="100" left="55" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Bez objedn."/>
+        </group>
+        <group name="Group5" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel7" height="22" width="109" left="50" top="205" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel8" height="22" width="109" left="50" top="253" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel9" height="22" width="109" left="50" top="229" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#FFC080" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel10" height="22" width="109" left="50" top="277" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Group4" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc12" height="26" width="100" left="58" top="203" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="green" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Expedice"/>
+            <text name="lbl_Desc13" height="26" width="100" left="58" top="226" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Přebytečná"/>
+            <text name="lbl_Desc14" height="26" width="100" left="58" top="251" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="blue" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Vyřazuji"/>
+            <text name="lbl_Desc15" height="26" width="100" left="58" top="275" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="yellow" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Ke kontrole"/>
+        </group>
+        <group name="Group10" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel11" height="22" width="109" left="52" top="341" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel12" height="22" width="109" left="52" top="389" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel13" height="22" width="109" left="52" top="365" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel14" height="22" width="109" left="52" top="413" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel15" height="22" width="109" left="52" top="437" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Group9" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc16" height="26" width="100" left="60" top="338" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Dodána"/>
+            <text name="lbl_Desc17" height="26" width="100" left="60" top="362" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Nadprodukce"/>
+            <text name="lbl_Desc18" height="26" width="100" left="60" top="385" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Vyřazena"/>
+            <text name="lbl_Desc19" height="26" width="100" left="60" top="409" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Kontrolována"/>
+            <text name="lbl_Desc21" height="26" width="100" left="60" top="435" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Přesměrována"/>
+        </group>
+        <group name="Group11" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel16" height="22" width="109" left="50" top="494" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel17" height="22" width="109" left="50" top="542" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <panel name="Panel18" height="22" width="109" left="50" top="518" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#E0E0E0" patternColor="white" blink="false" description="" borderColor="navy" borderStyle="inset" borderWidth="1" borderUsesBackColor="true" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        </group>
+        <group name="Group13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <text name="lbl_Desc20" height="26" width="100" left="57" top="492" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="M Dodána"/>
+            <text name="lbl_Desc22" height="26" width="100" left="57" top="516" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Odebrána"/>
+            <text name="lbl_Desc23" height="26" width="100" left="57" top="540" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Zrušena"/>
+        </group>
+        <text name="lbl_Window2" height="25" width="179" left="6" top="176" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Aktivní stavy"/>
+        <text name="lbl_Desc42" height="26" width="460" left="170" top="203" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta je transportována do cíle"/>
+        <text name="lbl_Desc6" height="26" width="460" left="170" top="227" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta bez objednávky je transportována do nadprodukce"/>
+        <text name="lbl_Desc7" height="26" width="460" left="170" top="251" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta se vyřazuje"/>
+        <text name="lbl_Desc24" height="26" width="460" left="170" top="275" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta je transportována k inspekci"/>
+        <text name="lbl_Window5" height="25" width="38" left="8" top="204" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window8" height="25" width="38" left="8" top="275" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window9" height="25" width="38" left="8" top="251" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window10" height="25" width="38" left="8" top="69" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window11" height="25" width="38" left="8" top="92" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window12" height="25" width="38" left="8" top="115" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window13" height="25" width="38" left="8" top="141" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window14" height="25" width="38" left="8" top="228" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window15" height="25" width="38" left="8" top="341" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window16" height="25" width="38" left="8" top="365" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A "/>
+        <text name="lbl_Window17" height="25" width="38" left="8" top="388" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window18" height="25" width="38" left="8" top="412" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window19" height="25" width="38" left="8" top="436" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window20" height="25" width="38" left="8" top="541" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window21" height="25" width="38" left="8" top="517" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Window22" height="25" width="38" left="8" top="494" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="gray" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="A  SA"/>
+        <text name="lbl_Desc25" height="26" width="460" left="170" top="338" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla dodána do cíle"/>
+        <text name="lbl_Desc26" height="26" width="460" left="170" top="362" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta bez objednávky byla dodána do nadprodukce"/>
+        <text name="lbl_Desc27" height="26" width="460" left="170" top="387" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla vyřazena"/>
+        <text name="lbl_Desc28" height="26" width="460" left="170" top="411" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla dodána k inspekci"/>
+        <text name="lbl_Desc29" height="26" width="460" left="170" top="435" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla přesměrována a dodána do nové lokace "/>
+        <text name="lbl_Desc30" height="26" width="460" left="170" top="490" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla dodána do cíle manuálně"/>
+        <text name="lbl_Desc31" height="26" width="460" left="170" top="514" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla odebrána ze vstupu dálnice"/>
+        <text name="lbl_Desc32" height="26" width="460" left="170" top="539" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="false" italic="true" underline="false" strikethrough="false" caption="Paleta byla odstraněna ze systému dálnice"/>
+        <text name="lbl_Window1" height="25" width="185" left="6" top="40" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Paleta na vstupu"/>
+        <text name="lbl_Window3" height="25" width="174" left="6" top="313" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Paleta na výstupu"/>
+        <text name="lbl_Window4" height="25" width="204" left="6" top="469" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="silver" foreColor="#282D32" wordWrap="false" sizeToFit="false" alignment="middleLeft" fontFamily="Arial" fontSize="10" bold="true" italic="false" underline="false" strikethrough="false" caption="Operátor"/>
+    </group>
+    <group name="grp_txt_section" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="btn_disabled1" height="25" width="77" left="163" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text1" height="25" width="77" left="163" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="#282D32" wordWrap="true" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Sekce"/>
+    </group>
+    <group name="grp_txt_segment" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="btn_disabled2" height="25" width="77" left="240" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text3" height="25" width="77" left="240" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="#282D32" wordWrap="true" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Segment"/>
+    </group>
+    <group name="grp_txt_pallet" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="btn_disabled3" height="25" width="77" left="86" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text4" height="25" width="77" left="86" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="#282D32" wordWrap="true" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Paleta"/>
+    </group>
+    <group name="grp_txt_order" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false">
+        <rectangle name="btn_disabled4" height="25" width="77" left="9" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="#ECECEC" foreColor="#ECECEC" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text5" height="25" width="77" left="9" top="13" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="#282D32" wordWrap="true" sizeToFit="false" alignment="middleCenter" fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Objednávka"/>
+    </group>
+    <vbaProject>
+        <vbaReferencesLink>
+            <!--All checked references on the references dialog box!-->
+            <vbaRefLink hash="ad542389a48a5aae612a313b3334f89f" TypeLib_Name="VBA" Description="Visual Basic For Applications">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBWAEIAQQAsACAARABlAHMAYwByAGkAcAB0AGkAbwBu
+AD0AVgBpAHMAdQBhAGwAIABCAGEAcwBpAGMAIABGAG8AcgAgAEEAcABwAGwAaQBjAGEAdABpAG8A
+bgBzACwAIABHAFUASQBEAD0AewAwADAAMAAyADAANABFAEYALQAwADAAMAAwAC0AMAAwADAAMAAt
+AEMAMAAwADAALQAwADAAMAAwADAAMAAwADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIA
+cwBpAG8AbgA9ADQALAAgAE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="9bf92fbe175229b5f0601c4bf4381b5f" TypeLib_Name="DisplayClient" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0ACwAIABE
+AGUAcwBjAHIAaQBwAHQAaQBvAG4APQBSAFMAVgBpAGUAdwAgAEQAaQBzAHAAbABhAHkAIABDAGwA
+aQBlAG4AdAAgAE8AYgBqAGUAYwB0ACAATQBvAGQAZQBsACwAIABHAFUASQBEAD0AewA4ADUANAA2
+ADkAMwA0ADAALQBGADEAOAA5AC0AMQAxAEQAMQAtADkAQwAxADcALQAwADAANgAwADkANwA3AEMA
+QQBBAEYAMQB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADEALAAgAE0AaQBuAG8AcgBW
+AGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="b0d387d1804d29964988314e5c534502" TypeLib_Name="stdole" Description="OLE Automation">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBzAHQAZABvAGwAZQAsACAARABlAHMAYwByAGkAcAB0
+AGkAbwBuAD0ATwBMAEUAIABBAHUAdABvAG0AYQB0AGkAbwBuACwAIABHAFUASQBEAD0AewAwADAA
+MAAyADAANAAzADAALQAwADAAMAAwAC0AMAAwADAAMAAtAEMAMAAwADAALQAwADAAMAAwADAAMAAw
+ADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADIALAAgAE0AaQBuAG8A
+cgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="4d04292f7c12576e749760ecf5ac2ea8" TypeLib_Name="DisplayClientEx" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0AEUAeAAs
+ACAARABlAHMAYwByAGkAcAB0AGkAbwBuAD0AUgBTAFYAaQBlAHcAIABEAGkAcwBwAGwAYQB5ACAA
+QwBsAGkAZQBuAHQAIABPAGIAagBlAGMAdAAgAE0AbwBkAGUAbAAsACAARwBVAEkARAA9AHsAOQBG
+ADcAMgA2ADcAQwAxAC0ANQA2ADcAQgAtADEAMQBEADMALQBBAEMAMwBCAC0AMAAwADYAMAA5ADcA
+RAA4AEMANwBFAEIAfQAsACAATQBhAGoAbwByAFYAZQByAHMAaQBvAG4APQAxACwAIABNAGkAbgBv
+AHIAVgBlAHIAcwBpAG8AbgA9ADAALAAgAA==]]>
+            </vbaRefLink>
+        </vbaReferencesLink>
+        <vbaItem>
+            <!--Item Name:ThisDisplay, Item Type:HostProjectItem-->
+            <encryptedData hash="8d11e2ea90dfed5a96a34bbe51e8b9ff">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[J05BTUU9VGhpc0Rpc3BsYXksVFlQRT0zDQpWRVJTSU9OIDEuMCBDTEFTUw0KQkVHSU4NCiAgTXVs
+dGlVc2UgPSAtMSAgJ1RydWUNCkVORA0KQXR0cmlidXRlIFZCX05hbWUgPSAiVGhpc0Rpc3BsYXki
+DQpBdHRyaWJ1dGUgVkJfR2xvYmFsTmFtZVNwYWNlID0gRmFsc2UNCkF0dHJpYnV0ZSBWQl9DcmVh
+dGFibGUgPSBGYWxzZQ0KQXR0cmlidXRlIFZCX1ByZWRlY2xhcmVkSWQgPSBUcnVlDQpBdHRyaWJ1
+dGUgVkJfRXhwb3NlZCA9IFRydWUNCg==]]>
+            </encryptedData>
+            <vbaCode>
+                <![CDATA['************************************
+'*COPYRIGHT (C) 2017 BY RA ALL RIGHTS RESERVED.
+'* Version 1.0
+'* 4/28/2017
+'* Michal Janku
+'************************************
+Option Explicit
+
+'----------------------------------
+'ANIMATION START
+'----------------------------------
+Private Sub Display_AnimationStart()
+    On Error GoTo ErrHandler
+        '----Screens visibility----
+        grp_order.Visible = True
+        
+        '----Buttons visibility----
+        btn_order.Visible = False
+        grp_txt_order.Visible = True
+        Btn_pallet.Visible = True
+        grp_txt_pallet.Visible = False
+        Btn_section.Visible = True
+        grp_txt_section.Visible = False
+        Btn_segment.Visible = True
+        grp_txt_segment.Visible = False
+Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+'----------------------------------
+'BUTTON ORDER
+'----------------------------------
+Private Sub btn_order_Released()
+    On Error GoTo ErrHandler
+        '----Screens visibility----
+        grp_order.Visible = True
+        grp_pallet.Visible = False
+        grp_section.Visible = False
+        grp_segment.Visible = False
+        
+        '----Buttons visibility----
+        btn_order.Visible = False
+        grp_txt_order.Visible = True
+        Btn_pallet.Visible = True
+        grp_txt_pallet.Visible = False
+        Btn_section.Visible = True
+        grp_txt_section.Visible = False
+        Btn_segment.Visible = True
+        grp_txt_segment.Visible = False
+Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+'----------------------------------
+'BUTTON PALLET
+'----------------------------------
+Private Sub btn_pallet_Released()
+    On Error GoTo ErrHandler
+        '----Screens visibility----
+        grp_order.Visible = False
+        grp_pallet.Visible = True
+        grp_section.Visible = False
+        grp_segment.Visible = False
+        
+        '----Buttons visibility----
+        btn_order.Visible = True
+        grp_txt_order.Visible = False
+        Btn_pallet.Visible = False
+        grp_txt_pallet.Visible = True
+        Btn_section.Visible = True
+        grp_txt_section.Visible = False
+        Btn_segment.Visible = True
+        grp_txt_segment.Visible = False
+Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+'----------------------------------
+'BUTTON SECTION
+'----------------------------------
+Private Sub btn_section_Released()
+    On Error GoTo ErrHandler
+        '----Screens visibility----
+        grp_order.Visible = False
+        grp_pallet.Visible = False
+        grp_section.Visible = True
+        grp_segment.Visible = False
+        
+        '----Buttons visibility----
+        btn_order.Visible = True
+        grp_txt_order.Visible = False
+        Btn_pallet.Visible = True
+        grp_txt_pallet.Visible = False
+        Btn_section.Visible = False
+        grp_txt_section.Visible = True
+        Btn_segment.Visible = True
+        grp_txt_segment.Visible = False
+Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+'----------------------------------
+'BUTTON SEGMENT
+'----------------------------------
+Private Sub btn_segment_Released()
+    On Error GoTo ErrHandler
+        '----Screens visibility----
+        grp_order.Visible = False
+        grp_pallet.Visible = False
+        grp_section.Visible = False
+        grp_segment.Visible = True
+        
+        '----Buttons visibility----
+        btn_order.Visible = True
+        grp_txt_order.Visible = False
+        Btn_pallet.Visible = True
+        grp_txt_pallet.Visible = False
+        Btn_section.Visible = True
+        grp_txt_section.Visible = False
+        Btn_segment.Visible = False
+        grp_txt_segment.Visible = True
+Exit Sub
+ErrHandler:
+    Application.LogDiagnosticsMessage "Error occurred in " & ThisDisplay.FullName & _
+        " Error # " & Err.Number & ": " & Err.Description, ftDiagSeverityError, ftDiagAudienceOperator
+End Sub
+]]>
+            </vbaCode>
+        </vbaItem>
+    </vbaProject>
+</gfx>
