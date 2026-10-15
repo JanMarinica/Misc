@@ -1,0 +1,3238 @@
+{
+ "EOL1L": {
+  "cycles": 236,
+  "spa1": 233,
+  "spa3": 3,
+  "nok": 4,
+  "main_time": {
+   "n": 229,
+   "med": 91.58,
+   "mean": 98.41,
+   "p10": 84.1,
+   "p90": 111.86,
+   "min": 51.68,
+   "max": 830.66
+  },
+  "finish_time": {
+   "n": 229,
+   "med": 4.46,
+   "mean": 19.35,
+   "p10": 1.99,
+   "p90": 16.87,
+   "min": 1.87,
+   "max": 1797.96
+  },
+  "load_time": {
+   "n": 229,
+   "med": 26.48,
+   "mean": 39.8,
+   "p10": 24.59,
+   "p90": 77.26,
+   "min": 20.71,
+   "max": 249.53
+  },
+  "stoppages": {
+   "count": 7,
+   "minutes": 79.4
+  },
+  "tact": {
+   "n": 220,
+   "med": 131.35,
+   "mean": 143.23,
+   "p10": 115.63,
+   "p90": 187.39,
+   "min": 86.89,
+   "max": 341.93
+  },
+  "window_h": 11.6,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 226,
+    "med": 1.27,
+    "mean": 1.29,
+    "p10": 1.17,
+    "p90": 1.4,
+    "min": 1.11,
+    "max": 3.25
+   },
+   "Check assembly position": {
+    "n": 226,
+    "med": 3.53,
+    "mean": 3.52,
+    "p10": 3.35,
+    "p90": 3.72,
+    "min": 1.8,
+    "max": 4.11
+   },
+   "Grounding & isolation check": {
+    "n": 226,
+    "med": 6.26,
+    "mean": 10.25,
+    "p10": 5.92,
+    "p90": 6.72,
+    "min": 5.69,
+    "max": 743.31
+   },
+   "Short to ground": {
+    "n": 226,
+    "med": 2.47,
+    "mean": 2.48,
+    "p10": 2.42,
+    "p90": 2.56,
+    "min": 2.39,
+    "max": 2.65
+   },
+   "Grounding release": {
+    "n": 226,
+    "med": 1.25,
+    "mean": 1.26,
+    "p10": 1.21,
+    "p90": 1.32,
+    "min": 1.17,
+    "max": 1.51
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 226,
+    "med": 8.28,
+    "mean": 8.39,
+    "p10": 7.91,
+    "p90": 8.76,
+    "min": 7.78,
+    "max": 15.06
+   },
+   "PSM reset & diag start": {
+    "n": 226,
+    "med": 2.91,
+    "mean": 3.03,
+    "p10": 2.05,
+    "p90": 3.38,
+    "min": 1.86,
+    "max": 48.11
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 226,
+    "med": 13.09,
+    "mean": 14.62,
+    "p10": 8.68,
+    "p90": 21.53,
+    "min": 7.57,
+    "max": 39.59
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 226,
+    "med": 0.0,
+    "mean": 2.5,
+    "p10": 0.0,
+    "p90": 12.92,
+    "min": 0.0,
+    "max": 31.79
+   },
+   "Movements": {
+    "n": 226,
+    "med": 46.97,
+    "mean": 46.53,
+    "p10": 43.83,
+    "p90": 49.08,
+    "min": 36.6,
+    "max": 60.31
+   },
+   "Expedition position & final CAN": {
+    "n": 226,
+    "med": 4.7,
+    "mean": 5.0,
+    "p10": 4.57,
+    "p90": 4.94,
+    "min": 4.51,
+    "max": 43.89
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 2.47,
+     "mean": 2.48,
+     "p10": 2.42,
+     "p90": 2.56,
+     "min": 2.38,
+     "max": 2.65
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 11.07,
+     "mean": 15.03,
+     "p10": 10.68,
+     "p90": 11.74,
+     "min": 9.19,
+     "max": 747.9
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 1.64,
+     "mean": 1.64,
+     "p10": 1.57,
+     "p90": 1.73,
+     "min": 1.5,
+     "max": 1.78
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 14.81,
+     "mean": 18.77,
+     "p10": 14.4,
+     "p90": 15.53,
+     "min": 12.92,
+     "max": 751.7
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 6.0,
+     "mean": 7.87,
+     "p10": 3.32,
+     "p90": 12.54,
+     "min": 2.16,
+     "max": 77.09
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 14.81,
+     "mean": 18.78,
+     "p10": 14.4,
+     "p90": 15.53,
+     "min": 12.92,
+     "max": 751.7
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 119,
+    "share": 51,
+    "fail": 1,
+    "dur": {
+     "n": 115,
+     "med": 0.63,
+     "mean": 0.64,
+     "p10": 0.62,
+     "p90": 0.65,
+     "min": 0.62,
+     "max": 0.71
+    },
+    "start_offset": {
+     "n": 115,
+     "med": 14.87,
+     "mean": 21.64,
+     "p10": 14.4,
+     "p90": 15.59,
+     "min": 13.13,
+     "max": 751.7
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 6.78,
+     "mean": 11.44,
+     "p10": 6.48,
+     "p90": 18.98,
+     "min": 6.26,
+     "max": 64.18
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 14.81,
+     "mean": 18.78,
+     "p10": 14.4,
+     "p90": 15.53,
+     "min": 12.92,
+     "max": 751.7
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 233,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 229,
+     "med": 3.91,
+     "mean": 4.0,
+     "p10": 3.71,
+     "p90": 4.18,
+     "min": 3.65,
+     "max": 6.66
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 14.81,
+     "mean": 18.78,
+     "p10": 14.4,
+     "p90": 15.53,
+     "min": 12.92,
+     "max": 751.7
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 229,
+    "share": 98,
+    "fail": 2,
+    "dur": {
+     "n": 225,
+     "med": 2.4,
+     "mean": 2.28,
+     "p10": 1.62,
+     "p90": 2.6,
+     "min": 1.5,
+     "max": 16.43
+    },
+    "start_offset": {
+     "n": 225,
+     "med": 23.13,
+     "mean": 27.15,
+     "p10": 22.6,
+     "p90": 24.1,
+     "min": 21.38,
+     "max": 759.88
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 89,
+    "share": 38,
+    "fail": 1,
+    "dur": {
+     "n": 87,
+     "med": 7.28,
+     "mean": 7.3,
+     "p10": 7.09,
+     "p90": 7.5,
+     "min": 7.02,
+     "max": 7.73
+    },
+    "start_offset": {
+     "n": 87,
+     "med": 25.65,
+     "mean": 26.43,
+     "p10": 24.64,
+     "p90": 26.54,
+     "min": 24.22,
+     "max": 69.71
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 10.18,
+     "mean": 11.63,
+     "p10": 8.45,
+     "p90": 16.75,
+     "min": 7.36,
+     "max": 32.35
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 27.03,
+     "mean": 33.11,
+     "p10": 25.62,
+     "p90": 33.63,
+     "min": 23.64,
+     "max": 763.11
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 41,
+    "share": 18,
+    "fail": 0,
+    "dur": {
+     "n": 40,
+     "med": 12.94,
+     "mean": 13.01,
+     "p10": 12.87,
+     "p90": 13.23,
+     "min": 12.86,
+     "max": 13.54
+    },
+    "start_offset": {
+     "n": 40,
+     "med": 44.85,
+     "mean": 46.33,
+     "p10": 41.31,
+     "p90": 51.12,
+     "min": 40.85,
+     "max": 65.2
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 233,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 229,
+     "med": 46.96,
+     "mean": 46.13,
+     "p10": 43.77,
+     "p90": 49.08,
+     "min": 11.78,
+     "max": 60.31
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 39.76,
+     "mean": 47.22,
+     "p10": 34.8,
+     "p90": 58.32,
+     "min": 32.66,
+     "max": 781.5
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 233,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 229,
+     "med": 1.43,
+     "mean": 1.8,
+     "p10": 1.36,
+     "p90": 1.65,
+     "min": 1.33,
+     "max": 40.57
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 86.94,
+     "mean": 93.4,
+     "p10": 79.44,
+     "p90": 107.04,
+     "min": 46.32,
+     "max": 826.0
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 226,
+    "med": 3.71,
+    "mean": 3.72,
+    "p10": 3.63,
+    "p90": 3.8,
+    "min": 3.52,
+    "max": 4.07,
+    "share": 99
+   },
+   "Height down": {
+    "n": 229,
+    "med": 12.35,
+    "mean": 12.34,
+    "p10": 12.1,
+    "p90": 12.63,
+    "min": 10.18,
+    "max": 12.92,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 226,
+    "med": 0.85,
+    "mean": 0.85,
+    "p10": 0.8,
+    "p90": 0.9,
+    "min": 0.78,
+    "max": 1.05,
+    "share": 99
+   },
+   "Length backward": {
+    "n": 226,
+    "med": 6.71,
+    "mean": 6.95,
+    "p10": 6.51,
+    "p90": 6.99,
+    "min": 5.84,
+    "max": 14.41,
+    "share": 99
+   },
+   "Cushion extension": {
+    "n": 155,
+    "med": 2.78,
+    "mean": 3.12,
+    "p10": 2.09,
+    "p90": 4.14,
+    "min": 1.9,
+    "max": 10.67,
+    "share": 68
+   },
+   "Tilt": {
+    "n": 226,
+    "med": 4.79,
+    "mean": 4.79,
+    "p10": 4.67,
+    "p90": 4.91,
+    "min": 3.44,
+    "max": 5.19,
+    "share": 99
+   },
+   "Backrest backward": {
+    "n": 226,
+    "med": 0.73,
+    "mean": 0.73,
+    "p10": 0.69,
+    "p90": 0.78,
+    "min": 0.64,
+    "max": 0.88,
+    "share": 99
+   },
+   "Backrest forward": {
+    "n": 226,
+    "med": 15.42,
+    "mean": 14.94,
+    "p10": 14.8,
+    "p90": 15.95,
+    "min": 7.69,
+    "max": 19.49,
+    "share": 99
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 119.0,
+    "ok": true,
+    "calibration": 55.7,
+    "can_movements": 4.2
+   },
+   {
+    "main": 108.6,
+    "ok": true,
+    "calibration": 55.2,
+    "can_movements": 4.3
+   },
+   {
+    "main": 126.2,
+    "ok": true,
+    "calibration": 54.9,
+    "can_movements": 18.7
+   }
+  ],
+  "nok_by_component": {
+   "Movements": 1,
+   "Heating": 1,
+   "Ventilation": 1,
+   "STPS": 1,
+   "Mood light": 1
+  }
+ },
+ "EOL1R": {
+  "cycles": 265,
+  "spa1": 263,
+  "spa3": 2,
+  "nok": 0,
+  "main_time": {
+   "n": 263,
+   "med": 87.38,
+   "mean": 94.75,
+   "p10": 79.34,
+   "p90": 106.99,
+   "min": 76.44,
+   "max": 788.58
+  },
+  "finish_time": {
+   "n": 263,
+   "med": 4.71,
+   "mean": 13.4,
+   "p10": 2.1,
+   "p90": 14.44,
+   "min": 1.66,
+   "max": 1367.43
+  },
+  "load_time": {
+   "n": 260,
+   "med": 26.5,
+   "mean": 36.18,
+   "p10": 23.63,
+   "p90": 57.19,
+   "min": 22.38,
+   "max": 295.33
+  },
+  "stoppages": {
+   "count": 5,
+   "minutes": 53.0
+  },
+  "tact": {
+   "n": 255,
+   "med": 127.0,
+   "mean": 134.94,
+   "p10": 111.5,
+   "p90": 166.15,
+   "min": 105.08,
+   "max": 392.27
+  },
+  "window_h": 11.46,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 263,
+    "med": 1.25,
+    "mean": 1.24,
+    "p10": 1.1,
+    "p90": 1.36,
+    "min": 1.01,
+    "max": 3.28
+   },
+   "Check assembly position": {
+    "n": 263,
+    "med": 3.33,
+    "mean": 3.41,
+    "p10": 3.26,
+    "p90": 3.76,
+    "min": 1.9,
+    "max": 4.46
+   },
+   "Grounding & isolation check": {
+    "n": 263,
+    "med": 6.24,
+    "mean": 11.82,
+    "p10": 5.93,
+    "p90": 13.89,
+    "min": 5.74,
+    "max": 695.49
+   },
+   "Short to ground": {
+    "n": 263,
+    "med": 2.48,
+    "mean": 2.49,
+    "p10": 2.42,
+    "p90": 2.58,
+    "min": 2.38,
+    "max": 2.77
+   },
+   "Grounding release": {
+    "n": 263,
+    "med": 1.25,
+    "mean": 1.26,
+    "p10": 1.21,
+    "p90": 1.33,
+    "min": 1.17,
+    "max": 1.45
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 263,
+    "med": 8.12,
+    "mean": 8.2,
+    "p10": 7.86,
+    "p90": 8.5,
+    "min": 7.75,
+    "max": 14.19
+   },
+   "PSM reset & diag start": {
+    "n": 263,
+    "med": 2.89,
+    "mean": 2.89,
+    "p10": 2.0,
+    "p90": 3.3,
+    "min": 1.8,
+    "max": 21.62
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 263,
+    "med": 12.99,
+    "mean": 14.79,
+    "p10": 8.38,
+    "p90": 22.53,
+    "min": 7.52,
+    "max": 66.32
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 263,
+    "med": 0.0,
+    "mean": 2.49,
+    "p10": 0.0,
+    "p90": 12.91,
+    "min": 0.0,
+    "max": 13.54
+   },
+   "Movements": {
+    "n": 263,
+    "med": 39.58,
+    "mean": 41.36,
+    "p10": 38.33,
+    "p90": 45.13,
+    "min": 37.33,
+    "max": 52.61
+   },
+   "Expedition position & final CAN": {
+    "n": 263,
+    "med": 4.7,
+    "mean": 4.8,
+    "p10": 4.56,
+    "p90": 4.92,
+    "min": 4.42,
+    "max": 14.18
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 2.48,
+     "mean": 2.49,
+     "p10": 2.42,
+     "p90": 2.58,
+     "min": 2.38,
+     "max": 2.77
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 10.91,
+     "mean": 16.47,
+     "p10": 10.49,
+     "p90": 18.27,
+     "min": 8.95,
+     "max": 700.05
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 1.64,
+     "mean": 1.64,
+     "p10": 1.56,
+     "p90": 1.73,
+     "min": 1.5,
+     "max": 1.78
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 14.66,
+     "mean": 20.22,
+     "p10": 14.21,
+     "p90": 22.14,
+     "min": 12.61,
+     "max": 703.91
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 6.37,
+     "mean": 8.36,
+     "p10": 3.34,
+     "p90": 14.82,
+     "min": 2.73,
+     "max": 40.01
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 14.67,
+     "mean": 20.22,
+     "p10": 14.22,
+     "p90": 22.14,
+     "min": 12.61,
+     "max": 703.91
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 140,
+    "share": 53,
+    "fail": 0,
+    "dur": {
+     "n": 140,
+     "med": 0.64,
+     "mean": 0.64,
+     "p10": 0.62,
+     "p90": 0.68,
+     "min": 0.61,
+     "max": 0.7
+    },
+    "start_offset": {
+     "n": 140,
+     "med": 14.69,
+     "mean": 18.35,
+     "p10": 14.17,
+     "p90": 26.16,
+     "min": 12.61,
+     "max": 141.53
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 123,
+    "share": 47,
+    "fail": 0,
+    "dur": {
+     "n": 123,
+     "med": 7.07,
+     "mean": 11.06,
+     "p10": 6.87,
+     "p90": 18.86,
+     "min": 6.54,
+     "max": 19.43
+    },
+    "start_offset": {
+     "n": 123,
+     "med": 14.66,
+     "mean": 22.35,
+     "p10": 14.25,
+     "p90": 15.87,
+     "min": 13.23,
+     "max": 703.92
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 3.82,
+     "mean": 3.85,
+     "p10": 3.68,
+     "p90": 4.07,
+     "min": 3.63,
+     "max": 5.39
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 14.67,
+     "mean": 20.22,
+     "p10": 14.22,
+     "p90": 22.14,
+     "min": 12.61,
+     "max": 703.92
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 261,
+    "share": 99,
+    "fail": 3,
+    "dur": {
+     "n": 261,
+     "med": 2.35,
+     "mean": 2.22,
+     "p10": 1.6,
+     "p90": 2.55,
+     "min": 1.43,
+     "max": 16.44
+    },
+    "start_offset": {
+     "n": 261,
+     "med": 22.87,
+     "mean": 28.42,
+     "p10": 22.28,
+     "p90": 30.28,
+     "min": 20.5,
+     "max": 712.18
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 102,
+    "share": 39,
+    "fail": 0,
+    "dur": {
+     "n": 102,
+     "med": 7.23,
+     "mean": 7.71,
+     "p10": 7.09,
+     "p90": 7.4,
+     "min": 7.02,
+     "max": 55.06
+    },
+    "start_offset": {
+     "n": 102,
+     "med": 25.55,
+     "mean": 27.81,
+     "p10": 24.43,
+     "p90": 34.52,
+     "min": 24.1,
+     "max": 85.54
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 10.18,
+     "mean": 11.65,
+     "p10": 8.35,
+     "p90": 16.33,
+     "min": 7.52,
+     "max": 39.8
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 27.24,
+     "mean": 34.45,
+     "p10": 25.14,
+     "p90": 36.06,
+     "min": 23.01,
+     "max": 733.8
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 50,
+    "share": 19,
+    "fail": 0,
+    "dur": {
+     "n": 50,
+     "med": 12.91,
+     "mean": 12.93,
+     "p10": 12.86,
+     "p90": 13.01,
+     "min": 12.82,
+     "max": 13.54
+    },
+    "start_offset": {
+     "n": 50,
+     "med": 43.4,
+     "mean": 47.68,
+     "p10": 41.59,
+     "p90": 55.86,
+     "min": 40.67,
+     "max": 107.84
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 39.58,
+     "mean": 41.36,
+     "p10": 38.33,
+     "p90": 45.13,
+     "min": 37.33,
+     "max": 52.61
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 41.92,
+     "mean": 48.59,
+     "p10": 34.47,
+     "p90": 58.55,
+     "min": 31.81,
+     "max": 744.03
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 263,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 263,
+     "med": 1.44,
+     "mean": 1.55,
+     "p10": 1.37,
+     "p90": 1.58,
+     "min": 1.3,
+     "max": 10.98
+    },
+    "start_offset": {
+     "n": 263,
+     "med": 82.75,
+     "mean": 90.0,
+     "p10": 74.45,
+     "p90": 101.48,
+     "min": 71.73,
+     "max": 783.96
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 263,
+    "med": 3.82,
+    "mean": 4.31,
+    "p10": 3.71,
+    "p90": 5.46,
+    "min": 3.63,
+    "max": 5.68,
+    "share": 100
+   },
+   "Height down": {
+    "n": 263,
+    "med": 12.55,
+    "mean": 13.32,
+    "p10": 12.27,
+    "p90": 15.29,
+    "min": 12.05,
+    "max": 15.51,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 263,
+    "med": 0.84,
+    "mean": 0.84,
+    "p10": 0.8,
+    "p90": 0.89,
+    "min": 0.77,
+    "max": 0.94,
+    "share": 100
+   },
+   "Length backward": {
+    "n": 263,
+    "med": 6.42,
+    "mean": 6.45,
+    "p10": 6.21,
+    "p90": 6.65,
+    "min": 5.93,
+    "max": 11.69,
+    "share": 100
+   },
+   "Cushion extension": {
+    "n": 181,
+    "med": 2.74,
+    "mean": 3.38,
+    "p10": 2.1,
+    "p90": 5.0,
+    "min": 1.92,
+    "max": 12.48,
+    "share": 69
+   },
+   "Tilt": {
+    "n": 263,
+    "med": 4.75,
+    "mean": 5.94,
+    "p10": 4.61,
+    "p90": 8.71,
+    "min": 4.39,
+    "max": 9.01,
+    "share": 100
+   },
+   "Backrest backward": {
+    "n": 263,
+    "med": 0.72,
+    "mean": 0.72,
+    "p10": 0.69,
+    "p90": 0.76,
+    "min": 0.64,
+    "max": 0.85,
+    "share": 100
+   },
+   "Backrest forward": {
+    "n": 263,
+    "med": 7.22,
+    "mean": 7.4,
+    "p10": 7.01,
+    "p90": 7.54,
+    "min": 6.75,
+    "max": 15.04,
+    "share": 100
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 103.8,
+    "ok": true,
+    "calibration": 55.2,
+    "can_movements": 4.1
+   },
+   {
+    "main": 128.1,
+    "ok": true,
+    "calibration": 56.6,
+    "can_movements": 18.8
+   }
+  ],
+  "nok_by_component": {}
+ },
+ "EOL5L": {
+  "cycles": 224,
+  "spa1": 222,
+  "spa3": 2,
+  "nok": 7,
+  "main_time": {
+   "n": 215,
+   "med": 85.8,
+   "mean": 95.69,
+   "p10": 76.0,
+   "p90": 103.73,
+   "min": 70.78,
+   "max": 1104.84
+  },
+  "finish_time": {
+   "n": 215,
+   "med": 4.58,
+   "mean": 16.81,
+   "p10": 1.71,
+   "p90": 15.36,
+   "min": 1.23,
+   "max": 919.51
+  },
+  "load_time": {
+   "n": 218,
+   "med": 40.13,
+   "mean": 54.51,
+   "p10": 30.68,
+   "p90": 93.09,
+   "min": 29.51,
+   "max": 246.41
+  },
+  "stoppages": {
+   "count": 5,
+   "minutes": 89.5
+  },
+  "tact": {
+   "n": 207,
+   "med": 136.53,
+   "mean": 147.96,
+   "p10": 115.53,
+   "p90": 201.61,
+   "min": 105.91,
+   "max": 293.93
+  },
+  "window_h": 11.78,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 214,
+    "med": 1.23,
+    "mean": 1.25,
+    "p10": 1.14,
+    "p90": 1.35,
+    "min": 1.03,
+    "max": 3.16
+   },
+   "Check assembly position": {
+    "n": 214,
+    "med": 3.39,
+    "mean": 3.41,
+    "p10": 3.34,
+    "p90": 3.51,
+    "min": 3.25,
+    "max": 3.86
+   },
+   "Grounding & isolation check": {
+    "n": 214,
+    "med": 6.03,
+    "mean": 14.36,
+    "p10": 5.77,
+    "p90": 6.54,
+    "min": 5.4,
+    "max": 1033.28
+   },
+   "Short to ground": {
+    "n": 214,
+    "med": 2.48,
+    "mean": 2.49,
+    "p10": 2.41,
+    "p90": 2.58,
+    "min": 2.36,
+    "max": 2.7
+   },
+   "Grounding release": {
+    "n": 214,
+    "med": 1.24,
+    "mean": 1.26,
+    "p10": 1.21,
+    "p90": 1.37,
+    "min": 1.17,
+    "max": 1.6
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 214,
+    "med": 8.03,
+    "mean": 8.1,
+    "p10": 7.8,
+    "p90": 8.38,
+    "min": 7.64,
+    "max": 14.46
+   },
+   "PSM reset & diag start": {
+    "n": 214,
+    "med": 2.42,
+    "mean": 2.59,
+    "p10": 2.0,
+    "p90": 3.28,
+    "min": 1.82,
+    "max": 3.61
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 214,
+    "med": 15.02,
+    "mean": 15.24,
+    "p10": 8.2,
+    "p90": 24.01,
+    "min": 7.4,
+    "max": 34.84
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 214,
+    "med": 0.0,
+    "mean": 3.06,
+    "p10": 0.0,
+    "p90": 13.18,
+    "min": 0.0,
+    "max": 26.53
+   },
+   "Movements": {
+    "n": 214,
+    "med": 39.48,
+    "mean": 39.38,
+    "p10": 36.98,
+    "p90": 41.85,
+    "min": 36.25,
+    "max": 48.37
+   },
+   "Expedition position & final CAN": {
+    "n": 214,
+    "med": 4.63,
+    "mean": 4.66,
+    "p10": 4.52,
+    "p90": 4.82,
+    "min": 4.43,
+    "max": 5.04
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 2.48,
+     "mean": 2.49,
+     "p10": 2.41,
+     "p90": 2.58,
+     "min": 2.36,
+     "max": 2.7
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 10.69,
+     "mean": 18.99,
+     "p10": 10.41,
+     "p90": 11.23,
+     "min": 10.02,
+     "max": 1037.85
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 219,
+    "share": 99,
+    "fail": 0,
+    "dur": {
+     "n": 214,
+     "med": 1.64,
+     "mean": 1.69,
+     "p10": 1.56,
+     "p90": 1.73,
+     "min": 1.51,
+     "max": 7.89
+    },
+    "start_offset": {
+     "n": 214,
+     "med": 14.4,
+     "mean": 22.77,
+     "p10": 14.12,
+     "p90": 15.06,
+     "min": 13.71,
+     "max": 1041.6
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 6.35,
+     "mean": 8.08,
+     "p10": 3.34,
+     "p90": 12.79,
+     "min": 2.52,
+     "max": 54.28
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 14.4,
+     "mean": 22.74,
+     "p10": 14.12,
+     "p90": 15.06,
+     "min": 13.71,
+     "max": 1041.6
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 137,
+    "share": 62,
+    "fail": 3,
+    "dur": {
+     "n": 131,
+     "med": 0.64,
+     "mean": 0.65,
+     "p10": 0.62,
+     "p90": 0.69,
+     "min": 0.61,
+     "max": 0.71
+    },
+    "start_offset": {
+     "n": 131,
+     "med": 14.38,
+     "mean": 22.89,
+     "p10": 14.12,
+     "p90": 14.97,
+     "min": 13.71,
+     "max": 1041.61
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 6.64,
+     "mean": 11.18,
+     "p10": 6.37,
+     "p90": 19.16,
+     "min": 6.31,
+     "max": 20.89
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 14.41,
+     "mean": 22.74,
+     "p10": 14.12,
+     "p90": 15.06,
+     "min": 13.71,
+     "max": 1041.61
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 3.8,
+     "mean": 3.82,
+     "p10": 3.65,
+     "p90": 4.0,
+     "min": 3.58,
+     "max": 5.3
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 14.41,
+     "mean": 22.74,
+     "p10": 14.13,
+     "p90": 15.06,
+     "min": 13.71,
+     "max": 1041.61
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 220,
+    "share": 99,
+    "fail": 1,
+    "dur": {
+     "n": 213,
+     "med": 1.73,
+     "mean": 2.0,
+     "p10": 1.59,
+     "p90": 2.57,
+     "min": 1.47,
+     "max": 2.73
+    },
+    "start_offset": {
+     "n": 213,
+     "med": 22.5,
+     "mean": 30.89,
+     "p10": 22.08,
+     "p90": 23.34,
+     "min": 21.71,
+     "max": 1049.57
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 86,
+    "share": 39,
+    "fail": 1,
+    "dur": {
+     "n": 83,
+     "med": 7.7,
+     "mean": 7.71,
+     "p10": 7.49,
+     "p90": 7.95,
+     "min": 7.39,
+     "max": 8.24
+    },
+    "start_offset": {
+     "n": 83,
+     "med": 24.57,
+     "mean": 25.03,
+     "p10": 24.06,
+     "p90": 25.76,
+     "min": 23.79,
+     "max": 36.4
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 222,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 215,
+     "med": 10.61,
+     "mean": 12.11,
+     "p10": 8.14,
+     "p90": 18.76,
+     "min": 7.05,
+     "max": 31.23
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 26.15,
+     "mean": 36.54,
+     "p10": 24.63,
+     "p90": 33.4,
+     "min": 24.06,
+     "max": 1051.93
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 48,
+    "share": 22,
+    "fail": 0,
+    "dur": {
+     "n": 47,
+     "med": 13.01,
+     "mean": 13.14,
+     "p10": 12.81,
+     "p90": 13.57,
+     "min": 12.77,
+     "max": 13.72
+    },
+    "start_offset": {
+     "n": 47,
+     "med": 43.76,
+     "mean": 45.47,
+     "p10": 41.13,
+     "p90": 52.45,
+     "min": 40.59,
+     "max": 59.26
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 39.47,
+     "mean": 39.3,
+     "p10": 36.95,
+     "p90": 41.85,
+     "min": 22.67,
+     "max": 48.37
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 41.22,
+     "mean": 51.69,
+     "p10": 33.71,
+     "p90": 58.86,
+     "min": 31.56,
+     "max": 1063.19
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 222,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 215,
+     "med": 1.37,
+     "mean": 1.44,
+     "p10": 1.29,
+     "p90": 1.51,
+     "min": 1.24,
+     "max": 11.93
+    },
+    "start_offset": {
+     "n": 215,
+     "med": 81.12,
+     "mean": 91.05,
+     "p10": 71.43,
+     "p90": 99.12,
+     "min": 58.08,
+     "max": 1100.43
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 214,
+    "med": 3.74,
+    "mean": 3.75,
+    "p10": 3.66,
+    "p90": 3.85,
+    "min": 3.54,
+    "max": 4.04,
+    "share": 100
+   },
+   "Height down": {
+    "n": 215,
+    "med": 12.45,
+    "mean": 12.45,
+    "p10": 12.19,
+    "p90": 12.73,
+    "min": 10.23,
+    "max": 13.07,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 214,
+    "med": 0.83,
+    "mean": 0.84,
+    "p10": 0.79,
+    "p90": 0.88,
+    "min": 0.75,
+    "max": 0.95,
+    "share": 100
+   },
+   "Length backward": {
+    "n": 214,
+    "med": 7.0,
+    "mean": 7.03,
+    "p10": 6.71,
+    "p90": 7.26,
+    "min": 6.39,
+    "max": 13.68,
+    "share": 100
+   },
+   "Cushion extension": {
+    "n": 128,
+    "med": 2.65,
+    "mean": 2.98,
+    "p10": 2.04,
+    "p90": 4.13,
+    "min": 1.81,
+    "max": 11.75,
+    "share": 60
+   },
+   "Tilt": {
+    "n": 214,
+    "med": 4.77,
+    "mean": 4.78,
+    "p10": 4.63,
+    "p90": 4.94,
+    "min": 4.45,
+    "max": 5.13,
+    "share": 100
+   },
+   "Backrest backward": {
+    "n": 214,
+    "med": 0.71,
+    "mean": 0.72,
+    "p10": 0.68,
+    "p90": 0.77,
+    "min": 0.64,
+    "max": 0.9,
+    "share": 100
+   },
+   "Backrest forward": {
+    "n": 214,
+    "med": 7.63,
+    "mean": 7.98,
+    "p10": 7.39,
+    "p90": 8.2,
+    "min": 7.15,
+    "max": 15.55,
+    "share": 100
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 130.0,
+    "ok": true,
+    "calibration": 71.7,
+    "can_movements": 4.1
+   },
+   {
+    "main": 133.4,
+    "ok": true,
+    "calibration": 54.9,
+    "can_movements": 18.5
+   }
+  ],
+  "nok_by_component": {
+   "Airbags (SAB/FSAB)": 2,
+   "Lumbar": 1,
+   "STPS": 3,
+   "Heating": 1,
+   "Ventilation": 1
+  }
+ },
+ "EOL5R": {
+  "cycles": 240,
+  "spa1": 238,
+  "spa3": 2,
+  "nok": 4,
+  "main_time": {
+   "n": 234,
+   "med": 94.89,
+   "mean": 98.5,
+   "p10": 83.59,
+   "p90": 116.39,
+   "min": 76.6,
+   "max": 185.15
+  },
+  "finish_time": {
+   "n": 234,
+   "med": 4.19,
+   "mean": 13.4,
+   "p10": 1.95,
+   "p90": 11.76,
+   "min": 1.72,
+   "max": 1384.89
+  },
+  "load_time": {
+   "n": 234,
+   "med": 29.44,
+   "mean": 43.91,
+   "p10": 27.67,
+   "p90": 73.47,
+   "min": 26.5,
+   "max": 287.75
+  },
+  "stoppages": {
+   "count": 6,
+   "minutes": 79.9
+  },
+  "tact": {
+   "n": 224,
+   "med": 134.03,
+   "mean": 145.61,
+   "p10": 118.61,
+   "p90": 185.58,
+   "min": 107.33,
+   "max": 317.12
+  },
+  "window_h": 11.65,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 234,
+    "med": 1.21,
+    "mean": 1.21,
+    "p10": 1.07,
+    "p90": 1.34,
+    "min": 0.98,
+    "max": 3.17
+   },
+   "Check assembly position": {
+    "n": 234,
+    "med": 3.08,
+    "mean": 3.07,
+    "p10": 3.03,
+    "p90": 3.2,
+    "min": 1.81,
+    "max": 3.51
+   },
+   "Grounding & isolation check": {
+    "n": 234,
+    "med": 6.11,
+    "mean": 9.35,
+    "p10": 5.77,
+    "p90": 16.43,
+    "min": 5.63,
+    "max": 77.17
+   },
+   "Short to ground": {
+    "n": 234,
+    "med": 2.49,
+    "mean": 2.49,
+    "p10": 2.42,
+    "p90": 2.58,
+    "min": 2.38,
+    "max": 2.69
+   },
+   "Grounding release": {
+    "n": 234,
+    "med": 1.24,
+    "mean": 1.25,
+    "p10": 1.2,
+    "p90": 1.32,
+    "min": 1.18,
+    "max": 1.47
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 234,
+    "med": 7.99,
+    "mean": 8.09,
+    "p10": 7.74,
+    "p90": 8.33,
+    "min": 7.66,
+    "max": 13.89
+   },
+   "PSM reset & diag start": {
+    "n": 234,
+    "med": 2.62,
+    "mean": 2.93,
+    "p10": 1.96,
+    "p90": 3.26,
+    "min": 1.81,
+    "max": 29.77
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 234,
+    "med": 13.7,
+    "mean": 15.25,
+    "p10": 8.45,
+    "p90": 22.41,
+    "min": 7.5,
+    "max": 78.64
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 234,
+    "med": 0.0,
+    "mean": 2.51,
+    "p10": 0.0,
+    "p90": 12.87,
+    "min": 0.0,
+    "max": 13.52
+   },
+   "Movements": {
+    "n": 234,
+    "med": 47.09,
+    "mean": 47.62,
+    "p10": 42.51,
+    "p90": 55.35,
+    "min": 38.06,
+    "max": 69.95
+   },
+   "Expedition position & final CAN": {
+    "n": 234,
+    "med": 4.6,
+    "mean": 4.73,
+    "p10": 4.48,
+    "p90": 4.81,
+    "min": 4.4,
+    "max": 9.35
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 238,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 234,
+     "med": 2.48,
+     "mean": 2.49,
+     "p10": 2.42,
+     "p90": 2.58,
+     "min": 2.37,
+     "max": 2.69
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 10.43,
+     "mean": 13.64,
+     "p10": 10.04,
+     "p90": 20.83,
+     "min": 8.82,
+     "max": 81.6
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 238,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 234,
+     "med": 1.64,
+     "mean": 1.64,
+     "p10": 1.57,
+     "p90": 1.72,
+     "min": 1.5,
+     "max": 1.79
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 14.16,
+     "mean": 17.38,
+     "p10": 13.78,
+     "p90": 24.53,
+     "min": 12.49,
+     "max": 85.29
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 238,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 234,
+     "med": 5.86,
+     "mean": 6.93,
+     "p10": 3.5,
+     "p90": 10.44,
+     "min": 2.44,
+     "max": 95.26
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 14.16,
+     "mean": 17.38,
+     "p10": 13.78,
+     "p90": 24.53,
+     "min": 12.49,
+     "max": 85.29
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 124,
+    "share": 52,
+    "fail": 0,
+    "dur": {
+     "n": 121,
+     "med": 0.63,
+     "mean": 0.64,
+     "p10": 0.62,
+     "p90": 0.68,
+     "min": 0.62,
+     "max": 0.71
+    },
+    "start_offset": {
+     "n": 121,
+     "med": 14.3,
+     "mean": 19.93,
+     "p10": 13.7,
+     "p90": 30.26,
+     "min": 12.49,
+     "max": 85.29
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 114,
+    "share": 48,
+    "fail": 1,
+    "dur": {
+     "n": 113,
+     "med": 9.15,
+     "mean": 14.33,
+     "p10": 8.66,
+     "p90": 20.84,
+     "min": 7.07,
+     "max": 47.77
+    },
+    "start_offset": {
+     "n": 113,
+     "med": 14.14,
+     "mean": 14.66,
+     "p10": 13.85,
+     "p90": 14.58,
+     "min": 13.66,
+     "max": 38.56
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 238,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 234,
+     "med": 3.71,
+     "mean": 3.76,
+     "p10": 3.62,
+     "p90": 3.93,
+     "min": 3.55,
+     "max": 4.29
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 14.16,
+     "mean": 17.38,
+     "p10": 13.78,
+     "p90": 24.53,
+     "min": 12.49,
+     "max": 85.29
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 235,
+    "share": 99,
+    "fail": 6,
+    "dur": {
+     "n": 231,
+     "med": 2.17,
+     "mean": 2.28,
+     "p10": 1.57,
+     "p90": 2.54,
+     "min": 1.46,
+     "max": 16.53
+    },
+    "start_offset": {
+     "n": 231,
+     "med": 22.26,
+     "mean": 25.43,
+     "p10": 21.71,
+     "p90": 32.38,
+     "min": 20.35,
+     "max": 93.06
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 99,
+    "share": 42,
+    "fail": 1,
+    "dur": {
+     "n": 98,
+     "med": 9.33,
+     "mean": 9.31,
+     "p10": 8.97,
+     "p90": 9.6,
+     "min": 8.73,
+     "max": 10.14
+    },
+    "start_offset": {
+     "n": 98,
+     "med": 24.79,
+     "mean": 28.1,
+     "p10": 23.86,
+     "p90": 35.56,
+     "min": 22.38,
+     "max": 95.13
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 237,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 234,
+     "med": 10.22,
+     "mean": 11.21,
+     "p10": 8.41,
+     "p90": 14.29,
+     "min": 7.5,
+     "max": 68.95
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 33.02,
+     "mean": 32.44,
+     "p10": 24.66,
+     "p90": 41.84,
+     "min": 22.75,
+     "max": 104.68
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 45,
+    "share": 19,
+    "fail": 0,
+    "dur": {
+     "n": 45,
+     "med": 12.86,
+     "mean": 12.92,
+     "p10": 12.81,
+     "p90": 13.02,
+     "min": 12.79,
+     "max": 13.52
+    },
+    "start_offset": {
+     "n": 45,
+     "med": 46.09,
+     "mean": 49.6,
+     "p10": 42.85,
+     "p90": 57.95,
+     "min": 42.41,
+     "max": 114.89
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 238,
+    "share": 100,
+    "fail": 2,
+    "dur": {
+     "n": 234,
+     "med": 47.09,
+     "mean": 47.62,
+     "p10": 42.51,
+     "p90": 55.35,
+     "min": 38.06,
+     "max": 69.95
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 43.26,
+     "mean": 46.15,
+     "p10": 33.75,
+     "p90": 62.12,
+     "min": 32.03,
+     "max": 133.82
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 237,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 234,
+     "med": 1.36,
+     "mean": 1.48,
+     "p10": 1.29,
+     "p90": 1.52,
+     "min": 1.22,
+     "max": 6.11
+    },
+    "start_offset": {
+     "n": 234,
+     "med": 90.3,
+     "mean": 93.82,
+     "p10": 79.08,
+     "p90": 110.82,
+     "min": 72.05,
+     "max": 180.5
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 234,
+    "med": 3.84,
+    "mean": 4.31,
+    "p10": 3.72,
+    "p90": 5.48,
+    "min": 1.75,
+    "max": 5.75,
+    "share": 100
+   },
+   "Height down": {
+    "n": 234,
+    "med": 12.6,
+    "mean": 13.32,
+    "p10": 12.25,
+    "p90": 15.2,
+    "min": 11.74,
+    "max": 15.48,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 234,
+    "med": 0.82,
+    "mean": 0.83,
+    "p10": 0.78,
+    "p90": 0.87,
+    "min": 0.74,
+    "max": 0.97,
+    "share": 100
+   },
+   "Length backward": {
+    "n": 234,
+    "med": 11.81,
+    "mean": 10.36,
+    "p10": 6.22,
+    "p90": 12.33,
+    "min": 5.93,
+    "max": 23.13,
+    "share": 100
+   },
+   "Cushion extension": {
+    "n": 160,
+    "med": 2.55,
+    "mean": 3.18,
+    "p10": 1.9,
+    "p90": 5.06,
+    "min": 1.69,
+    "max": 11.76,
+    "share": 68
+   },
+   "Tilt": {
+    "n": 234,
+    "med": 4.76,
+    "mean": 5.92,
+    "p10": 4.6,
+    "p90": 8.61,
+    "min": 4.44,
+    "max": 8.94,
+    "share": 100
+   },
+   "Backrest backward": {
+    "n": 234,
+    "med": 0.7,
+    "mean": 0.7,
+    "p10": 0.66,
+    "p90": 0.75,
+    "min": 0.64,
+    "max": 0.81,
+    "share": 100
+   },
+   "Backrest forward": {
+    "n": 234,
+    "med": 7.73,
+    "mean": 9.96,
+    "p10": 7.27,
+    "p90": 13.47,
+    "min": 6.95,
+    "max": 13.99,
+    "share": 100
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 115.3,
+    "ok": true,
+    "calibration": 56.1,
+    "can_movements": 4.2
+   },
+   {
+    "main": 106.2,
+    "ok": true,
+    "calibration": 56.2,
+    "can_movements": 4.1
+   }
+  ],
+  "nok_by_component": {
+   "Mood light": 1,
+   "Heating": 2,
+   "Movements": 2,
+   "SBR (occupant sensor)": 1,
+   "Ventilation": 1,
+   "other / aborted": 1
+  }
+ },
+ "EOL20": {
+  "cycles": 306,
+  "spa1": 305,
+  "spa3": 1,
+  "nok": 3,
+  "main_time": {
+   "n": 302,
+   "med": 71.49,
+   "mean": 80.23,
+   "p10": 60.81,
+   "p90": 86.51,
+   "min": 43.74,
+   "max": 1156.49
+  },
+  "finish_time": {
+   "n": 302,
+   "med": 5.73,
+   "mean": 13.74,
+   "p10": 1.94,
+   "p90": 20.13,
+   "min": 1.01,
+   "max": 734.34
+  },
+  "load_time": {
+   "n": 300,
+   "med": 24.32,
+   "mean": 32.93,
+   "p10": 22.55,
+   "p90": 46.24,
+   "min": 22.14,
+   "max": 248.68
+  },
+  "stoppages": {
+   "count": 5,
+   "minutes": 40.0
+  },
+  "tact": {
+   "n": 292,
+   "med": 109.7,
+   "mean": 115.4,
+   "p10": 91.81,
+   "p90": 141.74,
+   "min": 72.76,
+   "max": 317.75
+  },
+  "window_h": 11.43,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 296,
+    "med": 0.58,
+    "mean": 0.6,
+    "p10": 0.5,
+    "p90": 0.69,
+    "min": 0.44,
+    "max": 2.49
+   },
+   "Check assembly position": {
+    "n": 296,
+    "med": 0.19,
+    "mean": 0.19,
+    "p10": 0.13,
+    "p90": 0.2,
+    "min": 0.12,
+    "max": 0.49
+   },
+   "Grounding & isolation check": {
+    "n": 296,
+    "med": 2.19,
+    "mean": 11.11,
+    "p10": 2.07,
+    "p90": 8.51,
+    "min": 1.94,
+    "max": 1059.96
+   },
+   "Short to ground": {
+    "n": 296,
+    "med": 2.54,
+    "mean": 2.56,
+    "p10": 2.43,
+    "p90": 2.69,
+    "min": 2.33,
+    "max": 3.73
+   },
+   "Grounding release": {
+    "n": 296,
+    "med": 0.42,
+    "mean": 0.43,
+    "p10": 0.37,
+    "p90": 0.52,
+    "min": 0.28,
+    "max": 0.72
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 296,
+    "med": 2.95,
+    "mean": 2.99,
+    "p10": 2.87,
+    "p90": 3.04,
+    "min": 2.77,
+    "max": 14.61
+   },
+   "PSM reset & diag start": {
+    "n": 296,
+    "med": 5.37,
+    "mean": 4.21,
+    "p10": 1.59,
+    "p90": 6.71,
+    "min": 1.52,
+    "max": 10.77
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 296,
+    "med": 14.26,
+    "mean": 15.44,
+    "p10": 7.06,
+    "p90": 23.46,
+    "min": 5.97,
+    "max": 70.59
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 296,
+    "med": 0.0,
+    "mean": 2.07,
+    "p10": 0.0,
+    "p90": 10.21,
+    "min": 0.0,
+    "max": 74.26
+   },
+   "Movements": {
+    "n": 296,
+    "med": 36.46,
+    "mean": 36.94,
+    "p10": 33.85,
+    "p90": 40.95,
+    "min": 33.34,
+    "max": 53.36
+   },
+   "Expedition position & final CAN": {
+    "n": 296,
+    "med": 4.0,
+    "mean": 4.07,
+    "p10": 3.88,
+    "p90": 4.3,
+    "min": 3.8,
+    "max": 6.93
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 2.54,
+     "mean": 2.55,
+     "p10": 2.43,
+     "p90": 2.69,
+     "min": 2.33,
+     "max": 3.73
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 2.98,
+     "mean": 11.74,
+     "p10": 2.8,
+     "p90": 9.26,
+     "min": 2.61,
+     "max": 1060.77
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 303,
+    "share": 99,
+    "fail": 0,
+    "dur": {
+     "n": 300,
+     "med": 1.73,
+     "mean": 1.75,
+     "p10": 1.68,
+     "p90": 1.85,
+     "min": 1.63,
+     "max": 2.27
+    },
+    "start_offset": {
+     "n": 300,
+     "med": 6.0,
+     "mean": 14.79,
+     "p10": 5.73,
+     "p90": 12.01,
+     "min": 5.57,
+     "max": 1063.76
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 7.67,
+     "mean": 11.22,
+     "p10": 4.41,
+     "p90": 22.38,
+     "min": 2.54,
+     "max": 99.82
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 6.0,
+     "mean": 14.73,
+     "p10": 5.73,
+     "p90": 12.01,
+     "min": 5.57,
+     "max": 1063.76
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 148,
+    "share": 49,
+    "fail": 0,
+    "dur": {
+     "n": 147,
+     "med": 0.87,
+     "mean": 0.85,
+     "p10": 0.81,
+     "p90": 0.89,
+     "min": 0.68,
+     "max": 0.94
+    },
+    "start_offset": {
+     "n": 147,
+     "med": 6.01,
+     "mean": 22.46,
+     "p10": 5.73,
+     "p90": 14.37,
+     "min": 5.61,
+     "max": 1063.76
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 10.53,
+     "mean": 12.06,
+     "p10": 9.01,
+     "p90": 15.65,
+     "min": 8.36,
+     "max": 63.22
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 6.0,
+     "mean": 14.73,
+     "p10": 5.73,
+     "p90": 12.01,
+     "min": 5.57,
+     "max": 1063.76
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 305,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 302,
+     "med": 2.28,
+     "mean": 2.28,
+     "p10": 2.22,
+     "p90": 2.34,
+     "min": 2.19,
+     "max": 3.1
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 6.0,
+     "mean": 14.74,
+     "p10": 5.74,
+     "p90": 12.02,
+     "min": 5.61,
+     "max": 1063.76
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 297,
+    "share": 97,
+    "fail": 2,
+    "dur": {
+     "n": 294,
+     "med": 1.23,
+     "mean": 1.24,
+     "p10": 1.18,
+     "p90": 1.28,
+     "min": 1.15,
+     "max": 2.32
+    },
+    "start_offset": {
+     "n": 294,
+     "med": 8.98,
+     "mean": 17.94,
+     "p10": 8.65,
+     "p90": 15.4,
+     "min": 8.41,
+     "max": 1066.88
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 125,
+    "share": 41,
+    "fail": 3,
+    "dur": {
+     "n": 122,
+     "med": 9.51,
+     "mean": 10.3,
+     "p10": 9.12,
+     "p90": 11.7,
+     "min": 8.09,
+     "max": 57.87
+    },
+    "start_offset": {
+     "n": 122,
+     "med": 10.8,
+     "mean": 12.04,
+     "p10": 10.36,
+     "p90": 15.94,
+     "min": 10.0,
+     "max": 25.39
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 8.77,
+     "mean": 10.39,
+     "p10": 6.47,
+     "p90": 15.53,
+     "min": 5.08,
+     "max": 65.78
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 18.47,
+     "mean": 26.83,
+     "p10": 14.24,
+     "p90": 26.4,
+     "min": 13.46,
+     "max": 1072.39
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 48,
+    "share": 16,
+    "fail": 0,
+    "dur": {
+     "n": 47,
+     "med": 10.21,
+     "mean": 10.21,
+     "p10": 10.16,
+     "p90": 10.25,
+     "min": 10.15,
+     "max": 10.27
+    },
+    "start_offset": {
+     "n": 47,
+     "med": 30.95,
+     "mean": 33.08,
+     "p10": 28.73,
+     "p90": 38.12,
+     "min": 27.19,
+     "max": 54.19
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 36.42,
+     "mean": 36.51,
+     "p10": 33.8,
+     "p90": 40.95,
+     "min": 5.2,
+     "max": 53.36
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 29.8,
+     "mean": 39.39,
+     "p10": 21.79,
+     "p90": 44.57,
+     "min": 19.48,
+     "max": 1118.95
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 305,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 302,
+     "med": 0.7,
+     "mean": 1.09,
+     "p10": 0.68,
+     "p90": 1.06,
+     "min": 0.64,
+     "max": 27.86
+    },
+    "start_offset": {
+     "n": 302,
+     "med": 67.38,
+     "mean": 75.94,
+     "p10": 56.79,
+     "p90": 82.4,
+     "min": 24.72,
+     "max": 1152.72
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 297,
+    "med": 3.69,
+    "mean": 3.72,
+    "p10": 3.62,
+    "p90": 3.8,
+    "min": 3.53,
+    "max": 9.72,
+    "share": 98
+   },
+   "Height down": {
+    "n": 302,
+    "med": 10.31,
+    "mean": 10.28,
+    "p10": 10.07,
+    "p90": 10.59,
+    "min": 3.72,
+    "max": 11.2,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 297,
+    "med": 0.83,
+    "mean": 0.84,
+    "p10": 0.79,
+    "p90": 0.9,
+    "min": 0.73,
+    "max": 1.02,
+    "share": 98
+   },
+   "Length backward": {
+    "n": 297,
+    "med": 6.69,
+    "mean": 7.24,
+    "p10": 6.44,
+    "p90": 7.15,
+    "min": 6.18,
+    "max": 22.14,
+    "share": 98
+   },
+   "Cushion extension": {
+    "n": 210,
+    "med": 2.45,
+    "mean": 2.84,
+    "p10": 1.97,
+    "p90": 3.95,
+    "min": 1.73,
+    "max": 11.26,
+    "share": 70
+   },
+   "Tilt": {
+    "n": 297,
+    "med": 4.76,
+    "mean": 4.77,
+    "p10": 4.62,
+    "p90": 4.96,
+    "min": 4.13,
+    "max": 5.22,
+    "share": 98
+   },
+   "Backrest backward": {
+    "n": 297,
+    "med": 0.69,
+    "mean": 0.7,
+    "p10": 0.65,
+    "p90": 0.75,
+    "min": 0.57,
+    "max": 0.89,
+    "share": 98
+   },
+   "Backrest forward": {
+    "n": 297,
+    "med": 6.94,
+    "mean": 7.3,
+    "p10": 6.71,
+    "p90": 8.63,
+    "min": 6.48,
+    "max": 12.44,
+    "share": 98
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 122.6,
+    "ok": true,
+    "calibration": 71.6,
+    "can_movements": 4.1
+   }
+  ],
+  "nok_by_component": {
+   "Ventilation": 3,
+   "Heating": 1
+  }
+ },
+ "EOL21": {
+  "cycles": 238,
+  "spa1": 236,
+  "spa3": 2,
+  "nok": 1,
+  "main_time": {
+   "n": 235,
+   "med": 75.89,
+   "mean": 81.32,
+   "p10": 66.76,
+   "p90": 97.95,
+   "min": 53.88,
+   "max": 476.68
+  },
+  "finish_time": {
+   "n": 235,
+   "med": 4.21,
+   "mean": 9.05,
+   "p10": 1.73,
+   "p90": 12.37,
+   "min": 0.97,
+   "max": 661.18
+  },
+  "load_time": {
+   "n": 229,
+   "med": 47.61,
+   "mean": 58.94,
+   "p10": 37.26,
+   "p90": 88.62,
+   "min": 36.59,
+   "max": 290.64
+  },
+  "stoppages": {
+   "count": 8,
+   "minutes": 113.8
+  },
+  "tact": {
+   "n": 226,
+   "med": 133.45,
+   "mean": 145.39,
+   "p10": 113.0,
+   "p90": 187.84,
+   "min": 98.06,
+   "max": 381.72
+  },
+  "window_h": 11.66,
+  "phases": {
+   "Init & parameter calc": {
+    "n": 228,
+    "med": 0.55,
+    "mean": 0.56,
+    "p10": 0.46,
+    "p90": 0.64,
+    "min": 0.4,
+    "max": 0.91
+   },
+   "Check assembly position": {
+    "n": 228,
+    "med": 0.19,
+    "mean": 0.19,
+    "p10": 0.14,
+    "p90": 0.2,
+    "min": 0.12,
+    "max": 0.25
+   },
+   "Grounding & isolation check": {
+    "n": 228,
+    "med": 2.64,
+    "mean": 6.96,
+    "p10": 2.52,
+    "p90": 14.31,
+    "min": 2.4,
+    "max": 348.3
+   },
+   "Short to ground": {
+    "n": 228,
+    "med": 2.53,
+    "mean": 2.55,
+    "p10": 2.45,
+    "p90": 2.66,
+    "min": 2.32,
+    "max": 3.03
+   },
+   "Grounding release": {
+    "n": 228,
+    "med": 0.81,
+    "mean": 0.82,
+    "p10": 0.75,
+    "p90": 0.9,
+    "min": 0.73,
+    "max": 1.01
+   },
+   "Start parallel tests + PSM power-up": {
+    "n": 228,
+    "med": 2.93,
+    "mean": 2.99,
+    "p10": 2.86,
+    "p90": 3.01,
+    "min": 2.75,
+    "max": 15.02
+   },
+   "PSM reset & diag start": {
+    "n": 228,
+    "med": 3.15,
+    "mean": 3.06,
+    "p10": 1.71,
+    "p90": 4.33,
+    "min": 1.62,
+    "max": 33.97
+   },
+   "Ventilation, SBR unload, Lumbar": {
+    "n": 228,
+    "med": 12.03,
+    "mean": 13.43,
+    "p10": 6.95,
+    "p90": 20.42,
+    "min": 5.74,
+    "max": 45.23
+   },
+   "Massage (option) + wait for parallel tests": {
+    "n": 228,
+    "med": 0.0,
+    "mean": 1.9,
+    "p10": 0.0,
+    "p90": 10.2,
+    "min": 0.0,
+    "max": 20.27
+   },
+   "Movements": {
+    "n": 228,
+    "med": 41.02,
+    "mean": 42.11,
+    "p10": 37.08,
+    "p90": 46.8,
+    "min": 35.02,
+    "max": 58.58
+   },
+   "Expedition position & final CAN": {
+    "n": 228,
+    "med": 3.99,
+    "mean": 6.37,
+    "p10": 3.85,
+    "p90": 12.34,
+    "min": 3.74,
+    "max": 61.43
+   }
+  },
+  "components": {
+   "Short to ground": {
+    "executed": 236,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 235,
+     "med": 2.53,
+     "mean": 2.54,
+     "p10": 2.44,
+     "p90": 2.66,
+     "min": 2.32,
+     "max": 3.03
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 3.41,
+     "mean": 7.66,
+     "p10": 3.23,
+     "p90": 14.97,
+     "min": 2.98,
+     "max": 349.03
+    },
+    "parallel": false
+   },
+   "Airbags (SAB/FSAB)": {
+    "executed": 236,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 235,
+     "med": 1.75,
+     "mean": 1.77,
+     "p10": 1.66,
+     "p90": 1.85,
+     "min": 1.62,
+     "max": 4.79
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 6.81,
+     "mean": 11.03,
+     "p10": 6.55,
+     "p90": 18.62,
+     "min": 6.25,
+     "max": 352.53
+    },
+    "parallel": true
+   },
+   "Belt buckle": {
+    "executed": 236,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 235,
+     "med": 6.7,
+     "mean": 8.95,
+     "p10": 3.6,
+     "p90": 17.14,
+     "min": 2.57,
+     "max": 55.28
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 6.81,
+     "mean": 11.03,
+     "p10": 6.55,
+     "p90": 18.62,
+     "min": 6.25,
+     "max": 352.53
+    },
+    "parallel": true
+   },
+   "STPS": {
+    "executed": 125,
+    "share": 53,
+    "fail": 0,
+    "dur": {
+     "n": 125,
+     "med": 0.83,
+     "mean": 0.84,
+     "p10": 0.81,
+     "p90": 0.88,
+     "min": 0.7,
+     "max": 0.9
+    },
+    "start_offset": {
+     "n": 125,
+     "med": 6.96,
+     "mean": 11.63,
+     "p10": 6.53,
+     "p90": 22.37,
+     "min": 6.38,
+     "max": 64.79
+    },
+    "parallel": true
+   },
+   "SBR (occupant sensor)": {
+    "executed": 111,
+    "share": 47,
+    "fail": 5,
+    "dur": {
+     "n": 110,
+     "med": 8.08,
+     "mean": 10.28,
+     "p10": 7.78,
+     "p90": 13.93,
+     "min": 7.49,
+     "max": 44.22
+    },
+    "start_offset": {
+     "n": 110,
+     "med": 6.74,
+     "mean": 10.34,
+     "p10": 6.58,
+     "p90": 7.5,
+     "min": 6.25,
+     "max": 352.53
+    },
+    "parallel": true
+   },
+   "Mood light": {
+    "executed": 236,
+    "share": 100,
+    "fail": 2,
+    "dur": {
+     "n": 235,
+     "med": 2.27,
+     "mean": 2.27,
+     "p10": 2.22,
+     "p90": 2.33,
+     "min": 2.18,
+     "max": 3.08
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 6.82,
+     "mean": 11.03,
+     "p10": 6.55,
+     "p90": 18.62,
+     "min": 6.38,
+     "max": 352.53
+    },
+    "parallel": true
+   },
+   "Heating": {
+    "executed": 230,
+    "share": 97,
+    "fail": 3,
+    "dur": {
+     "n": 229,
+     "med": 1.23,
+     "mean": 1.24,
+     "p10": 1.19,
+     "p90": 1.28,
+     "min": 1.14,
+     "max": 2.24
+    },
+    "start_offset": {
+     "n": 229,
+     "med": 9.74,
+     "mean": 14.07,
+     "p10": 9.47,
+     "p90": 21.69,
+     "min": 9.25,
+     "max": 355.53
+    },
+    "parallel": true
+   },
+   "Ventilation": {
+    "executed": 87,
+    "share": 37,
+    "fail": 0,
+    "dur": {
+     "n": 87,
+     "med": 8.69,
+     "mean": 8.02,
+     "p10": 6.67,
+     "p90": 8.93,
+     "min": 6.57,
+     "max": 9.86
+    },
+    "start_offset": {
+     "n": 87,
+     "med": 11.57,
+     "mean": 19.28,
+     "p10": 11.3,
+     "p90": 25.66,
+     "min": 11.16,
+     "max": 357.3
+    },
+    "parallel": false
+   },
+   "Lumbar": {
+    "executed": 235,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 235,
+     "med": 8.34,
+     "mean": 9.82,
+     "p10": 6.39,
+     "p90": 15.33,
+     "min": 5.74,
+     "max": 45.23
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 14.9,
+     "mean": 20.57,
+     "p10": 12.7,
+     "p90": 28.14,
+     "min": 11.71,
+     "max": 365.73
+    },
+    "parallel": false
+   },
+   "Massage": {
+    "executed": 40,
+    "share": 17,
+    "fail": 0,
+    "dur": {
+     "n": 40,
+     "med": 10.2,
+     "mean": 10.21,
+     "p10": 10.17,
+     "p90": 10.25,
+     "min": 10.14,
+     "max": 10.26
+    },
+    "start_offset": {
+     "n": 40,
+     "med": 29.96,
+     "mean": 32.14,
+     "p10": 26.82,
+     "p90": 39.16,
+     "min": 25.51,
+     "max": 54.29
+    },
+    "parallel": false
+   },
+   "Movements": {
+    "executed": 236,
+    "share": 100,
+    "fail": 1,
+    "dur": {
+     "n": 235,
+     "med": 40.87,
+     "mean": 41.26,
+     "p10": 36.16,
+     "p90": 46.8,
+     "min": 11.1,
+     "max": 58.58
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 27.3,
+     "mean": 32.65,
+     "p10": 20.61,
+     "p90": 45.97,
+     "min": 18.54,
+     "max": 375.28
+    },
+    "parallel": false
+   },
+   "Expedition position": {
+    "executed": 235,
+    "share": 100,
+    "fail": 0,
+    "dur": {
+     "n": 235,
+     "med": 0.72,
+     "mean": 4.24,
+     "p10": 0.68,
+     "p90": 11.88,
+     "min": 0.64,
+     "max": 144.09
+    },
+    "start_offset": {
+     "n": 235,
+     "med": 69.5,
+     "mean": 73.94,
+     "p10": 61.04,
+     "p90": 88.21,
+     "min": 38.12,
+     "max": 415.28
+    },
+    "parallel": false
+   }
+  },
+  "axes": {
+   "Height up": {
+    "n": 228,
+    "med": 3.79,
+    "mean": 4.35,
+    "p10": 3.67,
+    "p90": 5.51,
+    "min": 3.6,
+    "max": 5.67,
+    "share": 97
+   },
+   "Height down": {
+    "n": 235,
+    "med": 10.38,
+    "mean": 11.21,
+    "p10": 10.05,
+    "p90": 13.23,
+    "min": 3.82,
+    "max": 13.41,
+    "share": 100
+   },
+   "Length forward": {
+    "n": 228,
+    "med": 0.83,
+    "mean": 0.83,
+    "p10": 0.77,
+    "p90": 0.88,
+    "min": 0.72,
+    "max": 0.93,
+    "share": 97
+   },
+   "Length backward": {
+    "n": 228,
+    "med": 6.09,
+    "mean": 6.5,
+    "p10": 5.84,
+    "p90": 6.35,
+    "min": 5.69,
+    "max": 17.84,
+    "share": 97
+   },
+   "Cushion extension": {
+    "n": 147,
+    "med": 2.7,
+    "mean": 3.32,
+    "p10": 1.98,
+    "p90": 4.44,
+    "min": 1.81,
+    "max": 12.08,
+    "share": 63
+   },
+   "Tilt": {
+    "n": 228,
+    "med": 4.79,
+    "mean": 6.1,
+    "p10": 4.59,
+    "p90": 8.71,
+    "min": 4.44,
+    "max": 8.95,
+    "share": 97
+   },
+   "Backrest backward": {
+    "n": 228,
+    "med": 0.7,
+    "mean": 0.7,
+    "p10": 0.65,
+    "p90": 0.76,
+    "min": 0.6,
+    "max": 0.8,
+    "share": 97
+   },
+   "Backrest forward": {
+    "n": 228,
+    "med": 10.82,
+    "mean": 10.18,
+    "p10": 7.19,
+    "p90": 11.6,
+    "min": 6.76,
+    "max": 12.71,
+    "share": 97
+   }
+  },
+  "spa3_detail": [
+   {
+    "main": 101.1,
+    "ok": true,
+    "calibration": 56.1,
+    "can_movements": 4.4
+   },
+   {
+    "main": 121.3,
+    "ok": true,
+    "calibration": 59.2,
+    "can_movements": 13.0
+   }
+  ],
+  "nok_by_component": {
+   "Mood light": 1,
+   "Heating": 1,
+   "Movements": 1
+  }
+ }
+}

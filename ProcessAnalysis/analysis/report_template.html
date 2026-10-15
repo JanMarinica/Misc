@@ -1,0 +1,188 @@
+<title>Torslanda EOL Test Timing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (max 1080px), findings first, then charts, then reference tables that scroll sideways on phones. */
+:root {
+  --bg: #f7f8f9; --panel: #ffffff; --fg: #15191d; --fg2: #4d5560; --muted: #78818c; --line: #dde1e6;
+  --accent: #1c5cab; --hi: #fff1d6; --hi-fg: #7a4a00;
+  --s1: #a9b2bc; --s2: #2a78d6; --s3: #eb6834; --s4: #1baf7a; --s5: #6250d6; --s6: #e87ba4;
+  --gs: #a9b2bc; --gc: #2a78d6; --gp: #eb6834;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121417; --panel: #1a1d21; --fg: #eceef0; --fg2: #b7bec6; --muted: #8b939c; --line: #2c3137;
+  --accent: #86b6ef; --hi: #3a2c10; --hi-fg: #ffd58a;
+  --s1: #5b636c; --s2: #3987e5; --s3: #d95926; --s4: #199e70; --s5: #9085e9; --s6: #d55181;
+  --gs: #5b636c; --gc: #3987e5; --gp: #d95926; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121417; --panel: #1a1d21; --fg: #eceef0; --fg2: #b7bec6; --muted: #8b939c; --line: #2c3137;
+  --accent: #86b6ef; --hi: #3a2c10; --hi-fg: #ffd58a;
+  --s1: #5b636c; --s2: #3987e5; --s3: #d95926; --s4: #199e70; --s5: #9085e9; --s6: #d55181;
+  --gs: #5b636c; --gc: #3987e5; --gp: #d95926; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body); }
+main { max-width: 1080px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: 2.1rem; } h2 { font-size: 1.45rem; } h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 72ch; } .lede { color: var(--fg2); }
+.eyebrow { font: 500 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+section { display: grid; gap: 14px; min-width: 0; }
+header { display: grid; gap: 10px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font: .8rem var(--mono); color: var(--muted); }
+ol.findings { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; max-width: 80ch; }
+ol.findings b { font-weight: 600; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; min-width: 0; }
+.scroll { overflow-x: auto; }
+svg { width: 100%; min-width: 620px; height: auto; display: block; font-family: var(--body); }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .axt { fill: var(--muted); font: 11px var(--mono); }
+svg .axl { fill: var(--fg); font: 600 13px var(--mono); }
+svg .axv { fill: var(--fg2); font: 12px var(--mono); }
+svg .seglbl { fill: #fff; font: 600 11px var(--mono); }
+svg .gl { fill: var(--fg2); font-size: 12px; } svg .gv { fill: var(--muted); font: 11px var(--mono); }
+svg .gh { fill: var(--fg); font: 600 12px var(--body); }
+.s1 { fill: var(--s1); } .s2 { fill: var(--s2); } .s3 { fill: var(--s3); } .s4 { fill: var(--s4); } .s5 { fill: var(--s5); } .s6 { fill: var(--s6); }
+.gs { fill: var(--gs); } .gc { fill: var(--gc); } .gp { fill: var(--gp); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .82rem; color: var(--fg2); }
+.lg { display: inline-flex; align-items: center; gap: 6px; }
+.lg i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.lg i.s1 { background: var(--s1); } .lg i.s2 { background: var(--s2); } .lg i.s3 { background: var(--s3); }
+.lg i.s4 { background: var(--s4); } .lg i.s5 { background: var(--s5); } .lg i.s6 { background: var(--s6); }
+.lg i.gs { background: var(--gs); } .lg i.gc { background: var(--gc); } .lg i.gp { background: var(--gp); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tab { font: 500 .85rem var(--mono); padding: 6px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: var(--fg2); cursor: pointer; }
+.tab[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+figure { margin: 0; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: .86rem; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+thead th { font: 600 .8rem var(--mono); color: var(--fg); border-bottom: 2px solid var(--fg2); }
+th small, td small { display: block; font: .7rem var(--mono); color: var(--muted); font-weight: 400; }
+tbody th { text-align: left; font-weight: 500; color: var(--fg); }
+td { font-family: var(--mono); }
+td.hi { background: var(--hi); color: var(--hi-fg); }
+.pill { font: 500 .66rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 9px; margin-left: 4px; white-space: nowrap; }
+.pill.par { background: color-mix(in srgb, var(--gp) 20%, transparent); color: var(--fg2); }
+.pill.seq { background: color-mix(in srgb, var(--gc) 20%, transparent); color: var(--fg2); }
+.note { font-size: .82rem; color: var(--muted); max-width: 90ch; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.two > * { min-width: 0; }
+pre.mermaid { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; overflow-x: auto; margin: 0; }
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">Adient Torslanda · front seat EOL testers · log date 2026-10-14</span>
+  <h1>EOL test sequence and timing, by station</h1>
+  <p class="lede">Built from <code>ActiveConfiguration.xml</code> (config 3403 “Right robots startup”) and the 14 Oct logs of the four EOL stations: EOL1 and EOL5 (each with a left and right tester, PLC I/O) and EOL20 / EOL21 (IO1978 I/O). Times are medians over good SPA-1 seats unless stated. All supporting steps are counted inside the test or phase they belong to.</p>
+  <div class="meta"><span>1 509 seats parsed</span><span>06:00–17:50</span><span>robot mode off all day (oRobotAut = False)</span></div>
+</header>
+
+<section>
+  <h2>What the logs show</h2>
+  <ol class="findings">
+    <li><b>The test itself is 71–95 s; the seat-to-seat tact is 110–137 s.</b> EOL20 and EOL21 (IO1978) test a seat in 71–76 s, the PLC testers of EOL1 and EOL5 need 86–95 s. Between seats there is another 24–48 s of handling and waiting, which is longest on EOL21 (48 s) and EOL5L (40 s).</li>
+    <li><b>The PLC stations spend 10–12 s more on setup before the component tests.</b> Lumbar starts 26–27 s into the test on EOL1/EOL5 and 15–18 s on EOL20/EOL21. Check assembly position takes 3.1–3.5 s against 0.2 s, grounding and isolation 6.0–6.3 s against 2.2–2.6 s, and PSM power-up 4.2 s against 2.9 s. On top of that, the PLC tree waits for Mood light (“Mood Light WTF” sits in the first background block), which holds the line for 3.7–3.9 s. On the IO1978 stations the same wait is placed after PSM power-up and costs nothing.</li>
+    <li><b>Movements are the largest block, 36–47 s, about half of the test.</b> Two stations stand out because of the laser “Check &amp; Fix” correction: EOL1L backrest forward takes 15.4 s (others 7–8 s) and EOL5R length backward takes 11.8 s (others 6–7 s). EOL21 backrest forward is also high at 10.8 s. Height down takes 12.4 s on PLC stations against 10.3 s on IO1978.</li>
+    <li><b>Background tests are fully hidden.</b> Airbags, belt buckle, STPS, SBR, mood light and heating start together after short-to-ground and are all finished before Lumbar ends. The “wait until finished” before Movements is 0 s in the median on every station.</li>
+    <li><b>Grounding sometimes repeats.</b> The grounding and isolation phase takes more than 10 s in 21 % of seats on EOL5R, 13 % on EOL21, 11 % on EOL1R, and 5–8 % elsewhere (p90 up to 16 s).</li>
+    <li><b>SPA-3 seats are rare and slow.</b> 1–3 per station; 101–133 s of test time, of which the CAN calibration routine alone takes 55–72 s.</li>
+    <li><b>Quality:</b> 19 NOK seats out of 1 509. EOL1R had none; EOL5L had the most (7, mostly STPS and airbags).</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Where the cycle time goes</h2>
+  <p class="note">Sum of median phase durations per seat, good SPA-1 seats only. “Handling &amp; waiting” is the gap between the end of one test and the start of the next (gaps over 5 min are counted as stops and left out).</p>
+  <div class="legend">{{LEGEND}}</div>
+  <div class="panel scroll">{{BAR}}</div>
+</section>
+
+<section>
+  <h2>Sequence and interlocks</h2>
+  <p>The main tree runs one step after another. Background tests are started by a “Start” manager and collected by a “WTF” (wait to finish) manager; semaphores lock steps that must not overlap. The flow below is the SPA-1 tree, which covers 99 % of the seats.</p>
+  <pre class="mermaid">
+flowchart TD
+  A["Operator loads seat, scans barcode<br/>(variant decides which tests run)"] --> B["Init, parameter calc,<br/>check assembly position"]
+  B --> C["Adapter plugged, connect ground<br/>(isolation protection waits on Semaphore 3)"]
+  C --> D["Short to ground"]
+  D --> E["Grounding released"]
+  E --> F{{"Start background tests"}}
+  F -.-> P1["Airbags SAB / FSAB"]
+  F -.-> P2["Belt buckle (operator plugs buckle)"]
+  F -.-> P3["STPS"]
+  F -.-> P4["SBR load / unload"]
+  F -.-> P5["Mood light"]
+  E --> G["PSM power-up, CAN/LIN on"]
+  G -.->|starts| P6["Heating"]
+  G --> H["PSM reset, start diagnostics<br/>(waits for Heating)"]
+  H --> I["Ventilation (option)<br/>SBR load sync via Semaphore 1/2"]
+  I --> J["Lumbar"]
+  J --> K["Massage (option)"]
+  K --> W{{"WTF: wait for all background tests"}}
+  P1 & P2 & P3 & P4 --> W
+  P5 -->|PLC: waited before power-up<br/>IO1978: after power-up| G
+  W --> M["Movements: height, length,<br/>extension, tilt, backrest + laser Check &amp; Fix"]
+  M --> X["Expedition position"]
+  X --> Y["CAN final check, clear DTCs, PSM reset"]
+  Y --> Z["Finish: IO reset, unplug adapter, SFCS result"]
+  </pre>
+  <p class="note">Station-dependent branches in the config: “gP” steps run on EOL1/EOL5 (PLC), “g7” steps on EOL20/EOL21 (IO1978). Robot steps (adapter connect, buckle, buttons, disconnect) only run with RobotAut on; on 14 Oct every cycle ran in manual mode, so they were bypassed.</p>
+</section>
+
+<section>
+  <h2>Timeline of one seat</h2>
+  <p class="note">Median start and duration from the start of the main test. Blue: component tests in the main line. Grey: supporting steps. Orange: tests running in the background. Hover a bar for exact values.</p>
+  <div class="tabs" role="group" aria-label="Station">{{TABS}}</div>
+  <div class="legend"><span class="lg"><i class="gc"></i>Component test (in line)</span><span class="lg"><i class="gs"></i>Supporting step</span><span class="lg"><i class="gp"></i>Component test (background)</span></div>
+  <div class="panel scroll">{{GANTTS}}</div>
+</section>
+
+<section>
+  <h2>Station summary</h2>
+  <div class="scroll"><table><thead>{{HDR}}</thead><tbody>{{KPI}}</tbody></table></div>
+</section>
+
+<section>
+  <h2>Component tests</h2>
+  <p class="note">Median duration in seconds, including every supporting step inside the test group. Small print: share of SPA-1 seats where the test ran (it depends on seat options), median start after the main test begins, and first-run failures (some were passed on repeat). Highlighted: the slowest station where the spread exceeds 1.5 s.</p>
+  <div class="scroll"><table><thead>{{HDR}}</thead><tbody>{{COMP}}</tbody></table></div>
+</section>
+
+<section>
+  <h2>Movements by axis</h2>
+  <p class="note">Median seconds per axis and share of seats where it ran. Highlighted: more than 2 s above the fastest station.</p>
+  <div class="scroll"><table><thead>{{HDR}}</thead><tbody>{{AXES}}</tbody></table></div>
+</section>
+
+<section>
+  <h2>Main-line phases</h2>
+  <p class="note">Median and 90th percentile, seconds. These are the steps the seat waits for one after another.</p>
+  <div class="scroll"><table><thead>{{HDR}}</thead><tbody>{{PHASES}}</tbody></table></div>
+</section>
+
+<section class="two">
+  <div class="panel scroll" style="display:grid;gap:10px"><h3>SPA-3 seats</h3>
+    <table style="min-width:420px"><thead><tr><th>Station</th><th>Seats</th><th>Test time, s</th><th>CAN calibration, s</th></tr></thead><tbody>{{SPA3}}</tbody></table></div>
+  <div class="panel scroll" style="display:grid;gap:10px"><h3>NOK seats</h3>
+    <table style="min-width:420px"><thead><tr><th>Station</th><th>NOK</th><th>Failed test group</th></tr></thead><tbody>{{NOK}}</tbody></table></div>
+</section>
+
+<section>
+  <h2>Method</h2>
+  <p class="note">A cycle runs from “Starting test” of MainGroupOfTests to onTestsFinished. Component tests are the test groups the tester reports to SFCS (Short to ground, Airbags, Belt buckle, STPS, SBR, Mood light, Heating, Ventilation, Lumbar, Massage, Movements, Expedition position), matched by test Id, with PLC and IO1978 variants merged. Variant is read from the broadcast barcode (V = SPA-1, G = SPA-3). Scripts: <code>ProcessAnalysis/analysis/parse_logs.py</code>, <code>analyze.py</code>, <code>build_report.py</code>.</p>
+</section>
+</main>
+
+<script>
+document.querySelectorAll('.tab').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.tab').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    document.querySelectorAll('.gantt').forEach(function (g) { g.hidden = g.id !== 'g-' + b.dataset.s; });
+  });
+});
+</script>
