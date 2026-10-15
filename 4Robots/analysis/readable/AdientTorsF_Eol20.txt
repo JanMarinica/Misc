@@ -1,0 +1,1376 @@
+InitVariablesNode 
+  init Abort = False
+  init AdapterReady = False
+  init CMD_Heartbt_i1 = 0
+  init CMD_Program_i1 = 0
+  init CMD_Reserve_i1 = 0
+  init CMD_Timeout_i1 = 0
+  init CamCorrectnOK = 0
+  init DEBUG = False
+  init D_rel = p[0,0,0,0,0,0]
+  init EvtBeep = False
+  init EvtDock = 0
+  init Mute = False
+  init P_ini = get_actual_tcp_pose()
+  init Parking = 0
+  init ProgExe = 0
+  init PusherPosFt = 0
+  init PusherReturn = True
+  init STS_Heartbeat = False
+  init STS_Progress = 0
+  init STS_Reservation = 0
+  init SetCameraProg = 0
+  init T_KeepReservtn = 0
+  init Tilt_PV = 0
+SpecialSequence type=BeforeStart
+  //SUPPRESSED DEBUG := True
+  # SW version, to be used to track changes and keep sync of all stations
+  SW_Ver := 1.0
+  Folder "Scripts"
+    # Function to test occurence of a number in given list
+    script File:
+      | def In(Val,Lst):
+      | i = 0
+      | cnt = get_list_length(Lst)
+      | res = False
+      | 	while i < cnt:
+      | 		if  Lst[i]==Val:
+      | 			res = True
+      | 		end
+      | 	i=i+1
+      | 	end
+      | return res
+      | end
+    script File:
+      | def InRange(Val,Min,Max):
+      | return ((Val>=Min) and (Val<=Max))
+      | end
+    # Mirroring the number for right line
+    //SUPPRESSED script File:
+    //SUPPRESSED   | def Line(Value):
+    //SUPPRESSED   | if ivLine == 1:
+    //SUPPRESSED   | res = Value
+    //SUPPRESSED   | end
+    //SUPPRESSED   | 
+    //SUPPRESSED   | if ivLine == 2:
+    //SUPPRESSED   | res = -1 * Value
+    //SUPPRESSED   | end
+    //SUPPRESSED   | 
+    //SUPPRESSED   | return res
+    //SUPPRESSED   | end
+    # Mirroring the number for station 2
+    //SUPPRESSED script File:
+    //SUPPRESSED   | def Station(Value):
+    //SUPPRESSED   | if STS_Reservation == 1:
+    //SUPPRESSED   | res = Value
+    //SUPPRESSED   | end
+    //SUPPRESSED   | 
+    //SUPPRESSED   | if STS_Reservation == 2:
+    //SUPPRESSED   | res = -1 * Value
+    //SUPPRESSED   | end
+    //SUPPRESSED   | 
+    //SUPPRESSED   | return res
+    //SUPPRESSED   | end
+    script File:
+      | def Report(Value):
+      |   STS_Progress = ProgExe*100 + Value
+      |   if ProgExe==0:
+      |    STS_Progress = 0
+      |   end
+      | end
+      | 
+      | def Progress_run():
+      | sts = STS_Progress - floor(STS_Progress/100)*100
+      | return ((sts > 0) and (sts < 50))
+      | end
+      | 
+      | def Progress_finished():
+      | sts = STS_Progress - floor(STS_Progress/100)*100
+      | return sts >= 50
+      | end
+    script File:
+      | def reg2bool (a):
+      |   return (a>0)
+      | end
+      | 
+      | def bool2reg (a):
+      |   if a:
+      |     return 1
+      |   else:
+      |     return 0
+      |   end
+      | end
+    script File:
+      | def Calibrate(inp,rawmin,rawmax,engmin,engmax):
+      | return (inp-rawmin)/(rawmax-rawmin)*(engmax-engmin)+engmin
+      | end
+  Folder "Avoid guidance screen"
+    Wp := get_actual_tcp_pose()
+    Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+      WP Variable type=Variable
+  call GripperOpen
+  GoToHome := True
+  script: socket_open("127.0.0.1",30001)
+MainProgram runOnlyOnce=false InitVariablesNode=true
+  Folder "Execute Program"
+    Folder "Init"
+      wait until EvtDock≤0
+      Folder "Verify Adapter ready"
+        if digital_in[0] or analog_in[3]<(ivGripSensOpen+0.3)
+          AdapterReady := False
+      Folder "Go to home pos automatically"
+        if GoToHome and not AdapterReady
+          wait 1.0s
+          if InRange(P_Flange[0],-1,-0.2) and InRange(P_Flange[1],-0.5,0.5) and InRange(P_Flange[2],0.3,1)
+            if AdapterDocked or DEBUG or (analog_in[3]<(ivGripSensOpen+0.3))
+              Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            else
+              popup type=Error haltProgram=false message=Adapter must be docked inputType=Text
+              halt
+            wait until timer_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
+          elif AtParkPos
+            Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+              WP WpPark type=Fixed q=[92.42, -70.93, -90.97, -108.15, 90.41, 181.16] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+          else
+            popup type=Error haltProgram=false message=Illegal position. Adjust arm to open space in front of the backrest, or [Move]->[Home] inputType=Text
+            halt
+        GoToHome := False
+      if DEBUG
+        # Popup window with program selection
+        ProgExe := <Operator>
+      if ProgExe>0
+        Folder "Init"
+          Mute := False
+          wait until not GoToHome
+          //SUPPRESSED call WaitForNormalMode
+          if not In(ProgExe,[11,12,13,14])
+            AdapterReady := False
+    Folder "Programs"
+      if InRange(ProgExe,1,99)
+        Folder "Undock"
+          if In(ProgExe,[11])
+            script: Report(1)
+            if not AdapterReady
+              Folder "AtHome?"
+                timer Reset T_Timeout
+                timer Start T_Timeout
+                wait until AtHomePos or T_Timeout>5
+                if not AtHomePos
+                  script: Report(90)
+              if Progress_run() and not AdapterDocked
+                script: Report(94)
+              if Progress_run()
+                Folder "Undock"
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                    call GripperOpen
+                    Wp := pose_trans(WpDock, p[0,0.175,-0.1,0,0,0])
+                    WP Variable type=Variable blendRadius=0.05
+                    Wp := pose_trans(WpDock, p[0,0.075,0.01,0,0,0])
+                    WP Variable type=Variable blendRadius=0.01
+                    Wp := pose_trans(WpDock, p[0,0.055,0,0,0,0])
+                    WP Variable type=Variable blendRadius=0.01
+                    WP WpDock type=Fixed q=[172.39, -110.84, -101.12, -92.86, 86.05, -6.10] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperClose
+                    Wp := pose_trans(WpDock, p[0,0.25,0,0,0,0])
+                    WP Variable type=Variable
+                  AdapterReady := True
+                  script: Report(50)
+            else
+              script: Report(50)
+        Folder "Connect"
+          if In(ProgExe,[12,13,14])
+            script: Report(1)
+            PusherPosDev := 0
+            MeasHeight := 0
+            if not AdapterReady
+              Folder "AtHome?"
+                timer Reset T_Timeout
+                timer Start T_Timeout
+                wait until AtHomePos or T_Timeout>5
+                if not AtHomePos
+                  script: Report(90)
+              if Progress_run() and not AdapterDocked
+                script: Report(94)
+            if Progress_run()
+              Folder "Length measure with pusher (mechanical seat)"
+                if In(ProgExe,[13])
+                  set DigitalOutput Do_PusherReturn = 0
+                  set DigitalOutput Do_PusherWork = 1
+                else
+                  PusherReturn := True
+              Folder "Undock"
+                if not AdapterReady
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                    call GripperOpen
+                    Wp := pose_trans(WpDock, p[0,0.175,-0.1,0,0,0])
+                    WP Variable type=Variable blendRadius=0.05
+                    Wp := pose_trans(WpDock, p[0,0.075,0.01,0,0,0])
+                    WP Variable type=Variable blendRadius=0.01
+                    Wp := pose_trans(WpDock, p[0,0.055,0,0,0,0])
+                    WP Variable type=Variable blendRadius=0.01
+                    WP WpDock type=Fixed q=[172.39, -110.84, -101.12, -92.86, 86.05, -6.10] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperClose
+                    Wp := pose_trans(WpDock, p[0,0.25,0,0,0,0])
+                    WP Variable type=Variable
+                AdapterReady := False
+                script: Report(2)
+              CamCorrection := p[0,0,0,0,0,0]
+              //SUPPRESSED Folder "Camera"
+              //SUPPRESSED   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+              //SUPPRESSED     if In(ProgExe,[12,13])
+              //SUPPRESSED       SetCameraProg := 12
+              //SUPPRESSED       WP WpCamCon0 type=Fixed blendRadius=0.05 q=[160.70, -71.24, -141.10, -58.68, 93.13, -18.99] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              //SUPPRESSED       WP WpCamConSpa1 type=Fixed q=[146.58, -82.41, -133.04, -56.24, 92.78, -33.10] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              //SUPPRESSED     if In(ProgExe,[14])
+              //SUPPRESSED       SetCameraProg := ProgExe
+              //SUPPRESSED       WP WpCamCon0 type=Fixed blendRadius=0.05 q=[160.70, -71.24, -141.10, -58.68, 93.13, -18.99] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              //SUPPRESSED       WP WpCamConSpa3 type=Fixed q=[153.02, -81.29, -132.37, -56.39, 90.28, -26.62] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              //SUPPRESSED   call CamAcquire
+              //SUPPRESSED   CamCorrection := p[CamData[0],CamData[1]*-0.5,CamData[1],0,0,0]
+            CamCorrectnOK := ProgExe
+            if In(ProgExe,[13])
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until (PusherPosStable and InRange(PusherPos-ivPusherSeatRef,-15,15)) or T_Timeout>10
+              PusherPosDev := PusherPos-ivPusherSeatRef
+              if PusherPosStable and InRange(PusherPosDev,-15,15)
+                # continue
+              else
+                CamCorrectnOK := 0
+                # CamCorrectionOK is also used as pusher measurement result
+            if Progress_run() and CamCorrectnOK≠ProgExe
+              EvtDock := 1
+              wait until EvtDock≤0
+              script: Report(91)
+            if Progress_run() and ProgExe≟13
+              # Wait handle catch done
+              script: Report(3)
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until Flags[12] or T_Timeout>10 or DEBUG
+              if Flags[12] or DEBUG
+                # ok
+              else
+                script: Report(98)
+            if Progress_run() and not Di_LiftDown
+              EvtDock := 1
+              wait until EvtDock≤0
+              AdapterReady := False
+              script: Report(92)
+            Folder "Connect"
+              if Progress_run()
+                script: Report(4)
+                set NoAction  =  tcp=t2_Gripper
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                  WP WpConnect0 type=Fixed blendRadius=0.01 q=[153.82, -77.66, -139.71, -52.67, 90.27, -25.81] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                  WP WpConnect1 type=Fixed q=[167.75, -81.61, -135.90, -52.54, 90.26, 78.12] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                  if False
+                    WP WpConnSpa1EL type=Fixed q=[152.50, -78.36, -135.11, -57.55, 90.84, 64.11] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpConnSpa1MecTh type=Fixed q=[145.82, -81.50, -129.41, -62.02, 94.59, 56.04] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpConnSpa1Mec type=Fixed q=[151.19, -74.92, -130.24, -67.36, 94.87, 61.39] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpConnSpa3 type=Fixed q=[151.15, -79.99, -126.67, -68.11, 98.89, 61.08] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                  if In(ProgExe,[12])
+                    Wp := WpConnSpa1EL
+                  if In(ProgExe,[13])
+                    # adjust angle mechanical
+                    Wp0 := pose_add(WpConnSpa1MecTh,p[0,PusherPosDev/1000,-0.025,0,0,0])
+                    WP Variable type=Variable
+                    Force Frame feat=Joint_6_name sel=0, 0, 1, 0, 0, 0 wrench=0.0, 0.0, -30.0, -0.5, 0.0, 0.0 limF=0.15, 0.15, 0.1, 0.08726646259971647, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                      wait 0.5s
+                    Force Frame feat=Joint_6_name sel=0, 0, 1, 0, 0, 0 wrench=0.0, 0.0, -10.0, -0.5, 0.0, 0.0 limF=0.15, 0.15, 0.002, 0.08726646259971647, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                      wait 0.5s
+                    Wp := get_actual_tcp_pose()
+                    MeasHeight := (Wp[2]-WpConnSpa1MecTh[2])*1000
+                    MoveDirectionNode  expr=[0.0,1.0,0.2] feature=Joint_6_name
+                      until type=DISTANCE allowActions=false deceleration=3.0 distanceNodeType=STOP 0.07
+                    Wp := pose_add(WpConnSpa1Mec,p[0,PusherPosDev/1000,0,0,0,0])
+                    CorrMechSeat := p[0,0,0,0,0,0]
+                    if MeasHeight>0
+                      script: CorrMechSeat[1]=Calibrate(MeasHeight,0,17,0,-7)/1000
+                      script: CorrMechSeat[2]=Calibrate(MeasHeight,0,17,0,26)/1000
+                      script: CorrMechSeat[3]=Calibrate(MeasHeight,0,17,0,-0.129)
+                    else
+                      script: CorrMechSeat[1]=Calibrate(MeasHeight,-13,0,7,0)/1000
+                      script: CorrMechSeat[2]=Calibrate(MeasHeight,-13,0,-19,0)/1000
+                      script: CorrMechSeat[3]=Calibrate(MeasHeight,-13,0,0.053,0)
+                    Wp := pose_add(Wp,CorrMechSeat)
+                  if In(ProgExe,[14])
+                    Wp := WpConnSpa3
+                  WP Variable type=Variable
+                Force Frame feat=Joint_6_name sel=0, 0, 1, 0, 0, 0 wrench=0.0, 0.0, -30.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.1, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 1.0s
+                Force Frame feat=Joint_6_name sel=1, 0, 1, 0, 0, 0 wrench=0.0, 0.0, -30.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 0.5s
+                # position ok, not checked for mechanical seat
+                if InRange(Wp[2]+0.03-P_act[2],-0.015,0.015) or ProgExe≟13
+                  # ok
+                else
+                  EvtDock := 2
+                  wait until EvtDock≤0
+                  script: Report(96)
+              if Progress_run()
+                Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -60.0, -10.0, 0.0, 0.0, 0.0 limF=0.15, 0.05, 0.01, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 1.0s
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+                  Wp := pose_trans(P_act, p[0,0.005,0,0,0,0])
+                  WP Variable type=Variable
+                call GripperOpen
+                Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -60.0, -10.0, 0.0, 0.0, 0.0 limF=0.15, 0.1, 0.01, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 1.0s
+                  script: Report(5)
+                  Move motionType=MoveL speed=0.5 acceleration=2.0 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+                    Wp0 := get_actual_tcp_pose()
+                    Wp := pose_trans(Wp0, p[0,0,0,0,0,0.07])
+                    WP Variable type=Variable
+                    Wp := pose_trans(Wp0, p[0,0,0,0,0,-0.07])
+                    WP Variable type=Variable
+                    WP Variable type=Variable
+                    Wp := pose_trans(Wp0, p[0,0,0.01,0,0,0])
+                    WP Variable type=Variable
+                    WP Variable type=Variable
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+                  Wp0 := get_actual_tcp_pose()
+                  Wp := pose_trans(Wp0, p[0,0.015,0,0,0,0])
+                  WP Variable type=Variable
+                Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -60.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.5, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 0.5s
+                script: Report(6)
+                timer Reset T_Timeout
+                timer Reset T_Timeout
+                Folder "Test switch pin, retreat on fail"
+                  wait until Flags[0] or T_Timeout>10 or DEBUG
+                  if not Flags[0] and not DEBUG
+                    EvtDock := 2
+                    wait until EvtDock≤0
+                    script: Report(95)
+            if Progress_run()
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                set NoAction  =  tcp=t0_Flange
+                P_act := get_actual_tcp_pose()
+                Wp := pose_trans(P_act, p[0,0.1,0,0,0,0])
+                WP Variable type=Variable blendRadius=0.05
+                Wp := pose_trans(Wp, p[-0.15,0.1,-0.2,0,0.5,0])
+                WP Variable type=Variable blendRadius=0.05
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(50)
+        Folder "Buckle"
+          if In(ProgExe,[15,16])
+            script: Report(1)
+            Folder "AtHome?"
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until AtHomePos or T_Timeout>5
+              if not AtHomePos
+                script: Report(90)
+            if Progress_run() and not Di_SBR_X_Wp
+              script: Report(92)
+            if Progress_run()
+              call GripperClose
+              Folder "Camera"
+                SetCameraProg := ProgExe
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpBklCam type=Fixed q=[133.22, -113.86, -67.46, 3.14, 139.23, 51.99] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                call CamAcquire
+                call CamCalculateCorectnPlane
+                if CamCorrectnOK≟ProgExe and InRange(CamCorrection[1],-0.05,0.05) and InRange(CamCorrection[2],-0.03,0.03)
+                  # empty
+                else
+                  CamCorrectnOK := 0
+              if Progress_run() and CamCorrectnOK≟ProgExe
+                Folder "Insert"
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t3_Blade feat=Joint_0_name
+                    if False
+                      # must be set with blade ca one half into buckle slot
+                      WP WpBuckleSpa1 type=Fixed q=[140.75, -127.12, -55.01, -71.57, 71.19, 48.27] tcp=[0.13, -0.06, 0.12, 0.00, 0.00, 0.00]
+                      WP WpBuckleSpa3 type=Fixed q=[140.40, -134.44, -48.45, -74.76, 61.02, 49.27] tcp=[0.13, -0.06, 0.12, 0.00, 0.00, 0.00]
+                    if ProgExe≟15
+                      Wp := WpBuckleSpa1
+                    if ProgExe≟16
+                      Wp := WpBuckleSpa3
+                    Wp0 := pose_trans(Wp,p[0,0,-0.02,0,0,0])
+                    Wp0 := pose_add(Wp0,?)
+                    WP Variable type=Variable
+                  script: Report(5)
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  wait until Flags[8] or Abort or DEBUG or T_Timeout>25
+                  if Flags[8] or DEBUG
+                    set NoAction  =  tcp=t3_Blade
+                    Force Frame feat=Joint_6_name sel=0, 0, 1, 0, 0, 0 wrench=0.0, 0.0, 15.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                      wait 1.0s
+                    if not Flags[9] and not Abort
+                      Move motionType=MoveL speed=0.05 acceleration=0.5 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t3_Blade feat=Joint_0_name
+                        WP Variable type=Variable
+                      Force Frame feat=Joint_6_name sel=1, 1, 1, 0, 0, 0 wrench=0.0, 0.0, 50.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.25, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        wait 1.5s
+                    if not Flags[9] and not Abort
+                      Move motionType=MoveL speed=0.05 acceleration=0.5 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t3_Blade feat=Joint_0_name
+                        WP Variable type=Variable
+                      Force Frame feat=Joint_6_name sel=1, 1, 1, 0, 0, 0 wrench=0.0, 0.0, 50.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.25, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        wait 1.5s
+                    if not Flags[9] and not Abort
+                      Move motionType=MoveL speed=0.05 acceleration=0.5 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t3_Blade feat=Joint_0_name
+                        WP Variable type=Variable
+                      Force Frame feat=Joint_6_name sel=1, 1, 1, 0, 0, 0 wrench=0.0, 0.0, 50.0, 0.0, 0.0, 0.0 limF=0.15, 0.15, 0.25, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        wait 1.5s
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t3_Blade feat=Joint_0_name
+                      if ProgExe≟15
+                        WP Variable type=Variable
+                      if ProgExe≟16
+                        WP WpBuckleSpa3 type=Fixed q=[140.40, -134.44, -48.45, -74.76, 61.02, 49.27] tcp=[0.13, -0.06, 0.12, 0.00, 0.00, 0.00]
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBklMidp1 type=Fixed blendRadius=0.05 q=[167.64, -91.71, -78.92, -99.42, 90.39, 77.75] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  elif T_Timeout>25
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBklMidp1 type=Fixed blendRadius=0.05 q=[167.64, -91.71, -78.92, -99.42, 90.39, 77.75] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(91)
+                  script: Report(50)
+              else
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpBklMidp1 type=Fixed blendRadius=0.05 q=[167.64, -91.71, -78.92, -99.42, 90.39, 77.75] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                script: Report(91)
+        Folder "Disconnect"
+          if In(ProgExe,[21,22,23])
+            script: Report(1)
+            Folder "AtHome?"
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until AtHomePos or T_Timeout>5
+              if not AtHomePos
+                script: Report(90)
+            if Progress_run()
+              if In(ProgExe,[21])
+                SetCameraProg := ProgExe
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpCamUnpgSpa1_0 type=Fixed blendRadius=0.05 q=[162.07, -77.17, -136.37, -58.43, 96.36, -17.69] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  WP WpCamUnplgSpa1 type=Fixed q=[146.53, -83.26, -132.86, -57.42, 95.60, -33.29] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              if In(ProgExe,[22])
+                SetCameraProg := ProgExe
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpCamUnplgSpa1M type=Fixed q=[156.07, -73.68, -136.62, -62.31, 96.14, -23.74] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              if In(ProgExe,[23])
+                SetCameraProg := ProgExe
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpCamUnpgSpa3_0 type=Fixed blendRadius=0.05 q=[157.17, -73.07, -127.05, -72.39, 96.23, -22.69] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  WP WpCamUnpgSpa3 type=Fixed q=[151.26, -82.06, -129.10, -64.02, 99.68, -28.85] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              call CamAcquire
+              call CamCalculateCorectnPlane
+            if Progress_run() and CamCorrectnOK≠ProgExe
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(91)
+            if Progress_run()
+              call GripperOpen
+              Folder "Disconnect"
+                if In(ProgExe,[21])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed blendRadius=0.05 q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_15 type=Fixed blendRadius=0.05 q=[145.85, -75.95, -117.78, -91.98, 112.19, 52.95] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_2 type=Fixed blendRadius=0.05 q=[139.43, -84.88, -117.16, -86.00, 110.31, 46.42] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_3 type=Fixed q=[140.09, -87.91, -124.30, -60.85, 93.91, 50.35] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                if In(ProgExe,[22])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed blendRadius=0.05 q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1_1M type=Fixed blendRadius=0.05 q=[150.71, -71.65, -121.17, -90.96, 113.43, 58.03] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_2M type=Fixed blendRadius=0.05 q=[143.38, -80.62, -121.11, -84.90, 111.48, 50.44] tcp=[-0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg1_3M type=Fixed q=[147.07, -78.31, -127.24, -69.90, 98.67, 56.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    //SUPPRESSED WP Waypoint_1 type=Fixed q=[148.74, -77.93, -130.04, -64.51, 94.35, 58.99] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                if In(ProgExe,[23])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed blendRadius=0.05 q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_2 type=Fixed blendRadius=0.05 q=[152.04, -77.93, -123.36, -73.97, 100.15, 61.84] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_3 type=Fixed blendRadius=0.013999999999999999 q=[151.32, -81.62, -127.66, -66.09, 100.05, 61.16] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_4 type=Fixed blendRadius=0.023 q=[143.24, -88.59, -120.80, -67.31, 99.20, 53.01] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_5 type=Fixed q=[142.21, -88.24, -118.63, -69.99, 99.09, 51.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                script: Report(20)
+                wait until Flags[7] or DEBUG
+              EvtDock := 2
+              wait until EvtDock≤0
+              if EvtDock<0
+                if In(ProgExe,[21])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnplug1_3 type=Fixed q=[140.09, -87.91, -124.30, -60.85, 93.91, 50.35] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_2 type=Fixed q=[139.43, -84.88, -117.16, -86.00, 110.31, 46.42] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_15 type=Fixed q=[145.85, -75.95, -117.78, -91.98, 112.19, 52.95] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    //SUPPRESSED WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                if In(ProgExe,[22])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnplg1_3M type=Fixed q=[147.07, -78.31, -127.24, -69.90, 98.67, 56.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug1_2M type=Fixed q=[143.38, -80.62, -121.11, -84.90, 111.48, 50.44] tcp=[-0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1_1M type=Fixed q=[150.71, -71.65, -121.17, -90.96, 113.43, 58.03] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    //SUPPRESSED WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                if In(ProgExe,[23])
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
+                    WP WpUnplg3_5 type=Fixed q=[142.21, -88.24, -118.63, -69.99, 99.09, 51.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_4 type=Fixed q=[143.24, -88.59, -120.80, -67.31, 99.20, 53.01] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_3 type=Fixed q=[151.32, -81.62, -127.66, -66.09, 100.05, 61.16] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplg3_2 type=Fixed blendRadius=0.05 q=[152.04, -77.93, -123.36, -73.97, 100.15, 61.84] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpUnplug_1 type=Fixed blendRadius=0.05 q=[166.97, -73.55, -126.18, -70.32, 90.35, 77.25] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    //SUPPRESSED WP WpUnlplug_0 type=Fixed blendRadius=0.05 q=[173.15, -74.84, -122.09, -73.12, 90.36, -6.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                script: Report(97)
+            if Progress_run()
+              script: Report(50)
+        Folder "Buttons"
+          if In(ProgExe,[31,32,34])
+            script: Report(1)
+            Folder "AtHome?"
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until AtHomePos or T_Timeout>5
+              if not AtHomePos
+                script: Report(90)
+            Folder "Camera"
+              if Progress_run()
+                if In(ProgExe,[31,32])
+                  SetCameraProg := 32
+                  MeasHeight := 0
+                if In(ProgExe,[34])
+                  SetCameraProg := 34
+                Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                  WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                  if In(ProgExe,[34])
+                    if False
+                      WP WpCamLmbMan type=Fixed q=[89.52, -91.51, -115.09, -64.29, 86.33, 191.97] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    Wp := pose_add(WpCamLmbMan,p[0,0,MeasHeight/1000,0,0,0])
+                    WP Variable type=Variable
+                  else
+                    WP WpCamLmbEL type=Fixed q=[89.56, -90.94, -116.19, -63.76, 86.33, 192.02] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                call CamAcquire
+                script: CamData[1]=CamData[1]-MeasHeight/1000
+                call CamCalculateCorectnPlane
+            if Progress_run() and CamCorrectnOK≠ProgExe
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(91)
+            Folder "Lumbar"
+              if Progress_run()
+                if In(ProgExe,[31,32])
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(12)
+                  wait until Flags[2] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[2] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      Folder "Press FW"
+                        if False
+                          WP WpLmbFwEL type=Fixed q=[93.20, -94.30, -108.85, -66.89, 90.32, 195.61] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        Wp := pose_trans(WpLmbFwEL, CamCorrection)
+                        WP Variable type=Variable
+                        Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=20.0, 10.0, -20.0, 0.0, 0.0, 0.0 limF=0.05, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait 0.7s
+                        ButtonPos := get_actual_tcp_pose()
+                        WP Variable type=Variable
+                    script: Report(3)
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            Folder "Multiring"
+              if Progress_run()
+                if In(ProgExe,[32])
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(11)
+                  wait until Flags[1] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[1] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      if False
+                        WP WpMultiringHi type=Fixed q=[95.21, -92.42, -109.70, -67.93, 90.32, 197.62] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        WP WpMutiringLo type=Fixed q=[95.18, -93.12, -111.10, -65.82, 90.56, 197.60] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                      Folder "Press up"
+                        Wp0 := pose_add(WpMutiringLo,?)
+                        Wp0 := pose_trans(Wp0, p[-0.02,0,0,0,0,0])
+                        Wp := Wp0
+                        script: Wp[0]=ButtonPos[0]-0.01
+                        WP Variable type=Variable
+                        WP Variable type=Variable
+                        set NoAction  =  tcp=t4_Finger
+                        Force Frame feat=Joint_6_name sel=0, 1, 1, 0, 0, 0 wrench=10.0, 20.0, -20.0, 0.0, 0.0, 0.0 limF=0.01, 0.01, 0.025, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait 1.0s
+                        WP Variable type=Variable
+                      Folder "Press down"
+                        Wp0 := pose_add(WpMultiringHi,?)
+                        Wp0 := pose_trans(Wp0, p[-0.02,0,0,0,0,0])
+                        Wp := Wp0
+                        script: Wp[0]=ButtonPos[0]
+                        script: Wp[0]=ButtonPos[0]-0.01
+                        WP Variable type=Variable
+                        WP Variable type=Variable
+                        set NoAction  =  tcp=t4_Finger
+                        Force Frame feat=Joint_6_name sel=0, 1, 1, 0, 0, 0 wrench=10.0, 20.0, 20.0, 0.0, 0.0, 0.0 limF=0.01, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait 1.0s
+                        WP Variable type=Variable
+                    script: Report(2)
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            Folder "2W LMB FW"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  SetCameraProg := 35
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(13)
+                  wait until Flags[3] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[3] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      Folder "Press FW"
+                        if False
+                          WP WpLmbFwMec type=Fixed q=[94.03, -94.24, -107.03, -69.93, 86.42, 196.47] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        Wp := pose_add(WpLmbFwMec,?)
+                        WP Variable type=Variable
+                        timer Reset T_Timeout
+                        timer Start T_Timeout
+                        Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=20.0, 10.0, -20.0, 0.0, 0.0, 0.0 limF=0.05, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait until Flags[10] or T_Timeout>10 or (DEBUG and T_Timeout>2)
+                        WP Variable type=Variable
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            Folder "2W LMB RW"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(14)
+                  wait until Flags[4] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[4] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      Folder "Press RW"
+                        if False
+                          WP WpLmbRwMec type=Fixed q=[93.46, -95.71, -105.51, -69.94, 86.41, 195.89] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        Wp := pose_add(WpLmbRwMec,?)
+                        WP Variable type=Variable
+                        timer Reset T_Timeout
+                        timer Start T_Timeout
+                        Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=20.0, 10.0, -20.0, 0.0, 0.0, 0.0 limF=0.05, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait 0.5s
+                        Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=20.0, 10.0, -20.0, 0.0, 0.0, 0.0 limF=0.01, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait until Flags[10] or T_Timeout>10 or (DEBUG and T_Timeout>2)
+                        ButtonPos := get_actual_tcp_pose()
+                        WP Variable type=Variable
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            Folder "Camera2"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  //SUPPRESSED SetCameraProg := 35
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                    if False
+                      WP WpCamHeightUp type=Fixed q=[89.00, -99.18, -110.20, -60.66, 90.28, 191.45] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    Wp := pose_add(WpCamHeightUp,p[0,0,MeasHeight/1000,0,0,0])
+                    //SUPPRESSED Wp := WpCamHeightUp
+                    WP Variable type=Variable
+                  call CamAcquire
+                  script: CamData[1]=CamData[1]-MeasHeight/1000
+                  call CamCalculateCorectnPlane
+            if Progress_run() and CamCorrectnOK≠ProgExe
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(91)
+            Folder "Height up"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  SetCameraProg := 36
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(15)
+                  wait until Flags[5] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[5] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      Folder "Press height up"
+                        if False
+                          WP WpHeiUp type=Fixed q=[92.87, -103.59, -100.98, -65.43, 90.30, 195.29] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        Wp := pose_add(WpHeiUp,?)
+                        //SUPPRESSED Wp := pose_trans(Wp, p[-0.02,0,0.003,0,0,0])
+                        script: Wp[0]=ButtonPos[0]+0.008
+                        WP Variable type=Variable
+                        set NoAction  =  tcp=t4_Finger
+                        //SUPPRESSED Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=10.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.1, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        //SUPPRESSED   wait 0.5s
+                        //SUPPRESSED Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=20.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.01, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        //SUPPRESSED   wait 0.5s
+                        //SUPPRESSED Wp := pose_trans(P_act, p[-0.002,0,0,0,0,0])
+                        //SUPPRESSED WP Variable type=Variable
+                        timer Reset T_Timeout
+                        timer Start T_Timeout
+                        Force Frame feat=Joint_0_name sel=0, 1, 1, 0, 0, 0 wrench=0.0, 0.0, 10.0, 0.0, 0.0, 0.0 limF=0.02, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait until Flags[10] or T_Timeout>10 or (DEBUG and T_Timeout>2)
+                        Wp0 := get_actual_tcp_pose()
+                        Wp := pose_trans(Wp0, p[-0.02,0,0.02,0,0,0])
+                        WP Variable type=Variable
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            Folder "Camera3"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  //SUPPRESSED SetCameraProg := 36
+                  Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                    if False
+                      WP WpCamHeightDown type=Fixed q=[88.99, -98.47, -110.66, -60.92, 90.29, 191.44] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    Wp := pose_add(WpCamHeightUp,p[0,0,MeasHeight/1000,0,0,0])
+                    //SUPPRESSED Wp := WpCamHeightDown
+                    WP Variable type=Variable
+                  call CamAcquire
+                  script: CamData[1]=CamData[1]-MeasHeight/1000
+                  call CamCalculateCorectnPlane
+            Folder "Height down"
+              if Progress_run()
+                if In(ProgExe,[34])
+                  timer Reset T_Timeout
+                  timer Start T_Timeout
+                  script: Report(16)
+                  wait until Flags[6] or T_Timeout>60 or DEBUG or Abort
+                  if Flags[6] or DEBUG
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t4_Finger feat=Joint_0_name
+                      Folder "Press height down"
+                        if False
+                          WP WpHeiDown type=Fixed q=[92.96, -104.25, -97.00, -68.80, 90.31, 189.47] tcp=[0.16, -0.06, 0.07, 0.00, 0.00, 0.00]
+                        Wp := pose_add(WpHeiDown,?)
+                        script: Wp[0]=ButtonPos[0]+0.008
+                        Wp0 := pose_add(Wp,p[0.04,0,0,0,0,0])
+                        //SUPPRESSED Wp := pose_trans(Wp, p[-0.02,0,-0.003,0,0,0])
+                        //SUPPRESSED Wp := pose_trans(WpHeiDown, CamCorrection)
+                        //SUPPRESSED Wp := pose_trans(Wp, p[-0.02,-0.005,0,0,0,0])
+                        //SUPPRESSED Wp := pose_trans(Wp, p[0,0,-0.05,0,0,0])
+                        //SUPPRESSED WP Variable type=Variable
+                        //SUPPRESSED Wp := pose_trans(Wp0, p[0,0,-0.025,0,0,0])
+                        WP Variable type=Variable blendRadius=0.03
+                        WP Variable type=Variable
+                        set NoAction  =  tcp=t4_Finger
+                        //SUPPRESSED Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=10.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.1, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        //SUPPRESSED   wait 0.5s
+                        //SUPPRESSED Force Frame feat=Joint_6_name sel=1, 0, 0, 0, 0, 0 wrench=15.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.015, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        //SUPPRESSED   wait 0.5s
+                        //SUPPRESSED Wp := pose_trans(P_act, p[-0.004,0,0,0,0,0])
+                        //SUPPRESSED WP Variable type=Variable
+                        timer Reset T_Timeout
+                        timer Start T_Timeout
+                        Force Frame feat=Joint_0_name sel=0, 1, 1, 0, 0, 0 wrench=0.0, 0.0, -10.0, 0.0, 0.0, 0.0 limF=0.02, 0.01, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                          wait until Flags[10] or T_Timeout>10
+                        Wp := pose_trans(Wp, p[-0.02,0,-0.02,0,0,0])
+                        WP Variable type=Variable
+                    script: Report(7)
+                  else
+                    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                      WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                      WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                    script: Report(95)
+            if Progress_run()
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(50)
+        Folder "PushByHandle"
+          if In(ProgExe,[40])
+            script: Report(1)
+            Folder "AtHome?"
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until AtHomePos or T_Timeout>5
+              if not AtHomePos
+                script: Report(90)
+            //SUPPRESSED if Progress_run()
+            //SUPPRESSED   SetCameraProg := 27
+            //SUPPRESSED   Move motionType=MoveL speed=0.25 acceleration=1.2 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+            //SUPPRESSED     WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpCamLMB type=Fixed q=[89.52, -91.48, -115.04, -64.37, 86.33, 191.97] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED   call CamAcquire
+            //SUPPRESSED   CamCorrection := p[0,CamData[0],CamData[1],0,0,0]
+            //SUPPRESSED if Progress_run() and CamCorrectnOK≠ProgExe
+            //SUPPRESSED   Move motionType=MoveL speed=0.25 acceleration=1.2 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+            //SUPPRESSED     WP WpBttnMidp3 type=Fixed blendRadius=0.1 q=[94.76, -90.51, -92.90, -86.64, 90.38, 184.95] tcp=[-0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpBttnMidp2 type=Fixed blendRadius=0.1 q=[132.28, -84.54, -100.55, -84.96, 90.38, 175.20] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpBttnMidp1 type=Fixed blendRadius=0.1 q=[167.19, -73.41, -108.26, -88.39, 90.40, 167.36] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED     WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+            //SUPPRESSED   script: Report(91)
+            if Progress_run() and not AdapterDocked
+              script: Report(94)
+            if Progress_run()
+              PusherReturn := False
+              set DigitalOutput Do_PusherReturn = 0
+              set DigitalOutput Do_PusherWork = 1
+              wait until PusherPosStable and PusherPosDev>-20
+              set DigitalOutput Do_PusherWork = 0
+              call GripperOpen
+              set NoAction  =  tcp=t2_Gripper
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                WP WpHandle0 type=Fixed blendRadius=0.05 q=[170.79, -84.18, -136.86, -49.01, 90.24, 81.17] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                WP WpHandle type=Fixed q=[147.78, -84.36, -135.58, -50.10, 90.25, 58.16] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -10.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.05, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 1.0s
+                Force Frame feat=Joint_6_name sel=0, 1, 1, 0, 0, 0 wrench=0.0, -10.0, -80.0, 0.0, 0.0, 0.0 limF=0.15, 0.05, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 1.0s
+                Force Frame feat=Joint_6_name sel=0, 1, 1, 0, 0, 0 wrench=0.0, -30.0, -80.0, 0.0, 0.0, 0.0 limF=0.15, 0.5, 0.05, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                  wait 0.2s
+                  set DigitalOutput Do_PusherReturn = 0
+                  set DigitalOutput Do_PusherWork = 1
+                  wait AnalogInput Ai_Pusher=8.9
+                  wait 2.0s
+                  set DigitalOutput Do_PusherWork = 0
+                PusherReturn := True
+                WP WpOffHandle type=Relative q=[141.47, -93.68, -127.77, -49.00, 90.24, 51.87] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                WP WpHandle0 type=Fixed q=[170.79, -84.18, -136.86, -49.01, 90.24, 81.17] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+              Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              script: Report(50)
+        Folder "Tilt manual adjust"
+          if In(ProgExe,[42])
+            script: Report(1)
+            Folder "AtHome?"
+              timer Reset T_Timeout
+              timer Start T_Timeout
+              wait until AtHomePos or T_Timeout>5
+              if not AtHomePos
+                script: Report(90)
+            if Progress_run() and not AdapterDocked
+              script: Report(94)
+            if Progress_run()
+              set NoAction  =  tcp=t2_Gripper
+              #
+              if InRange(Tilt_PV-CMD_Tilt_SP,-60,60)
+                # Laser value in range
+                MaxTiltPumps := 10
+                if InRange(Tilt_PV-CMD_Tilt_SP,-60,-3)
+                  # Tilt too high
+                  call GripperClose
+                  Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                    WP WpTilt0 type=Fixed blendRadius=0.05 q=[156.71, -75.75, -120.58, -153.06, 211.08, -30.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt1 type=Fixed blendRadius=0.05 q=[153.94, -75.67, -122.27, -161.85, 244.19, 0.38] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTiltDown type=Fixed q=[135.68, -94.65, -108.17, -156.83, 225.96, -24.19] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    Force Frame feat=Joint_6_name sel=1, 1, 0, 0, 0, 0 wrench=-15.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.1, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                      wait 1.0s
+                    Wp := P_act
+                    loop While InRange(Tilt_PV-CMD_Tilt_SP,-60,-5) and MaxTiltPumps>0
+                      Force Frame feat=Joint_6_name sel=1, 1, 0, 0, 0, 0 wrench=-10.0, -100.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.1, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        wait 1.5s
+                      WP Variable type=Variable
+                      MaxTiltPumps := MaxTiltPumps-1
+                    WP WpTiltDown type=Fixed blendRadius=0.05 q=[135.68, -94.65, -108.17, -156.83, 225.96, -24.19] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt1 type=Fixed blendRadius=0.05 q=[153.94, -75.67, -122.27, -161.85, 244.19, 0.38] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt0 type=Fixed q=[156.71, -75.75, -120.58, -153.06, 211.08, -30.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                  Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+                    WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                elif InRange(Tilt_PV-CMD_Tilt_SP,3,60)
+                  # Tilt too low
+                  call GripperClose
+                  Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+                    WP WpTilt0 type=Fixed blendRadius=0.05 q=[156.71, -75.75, -120.58, -153.06, 211.08, -30.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt1 type=Fixed blendRadius=0.05 q=[153.94, -75.67, -122.27, -161.85, 244.19, 0.38] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTiltUp type=Fixed q=[133.40, -96.67, -102.22, -160.73, 223.66, -10.22] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    Force Frame feat=Joint_6_name sel=1, 1, 0, 0, 0, 0 wrench=-15.0, 0.0, 0.0, 0.0, 0.0, 0.0 limF=0.1, 0.15, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                      wait 1.0s
+                    Wp := P_act
+                    loop While InRange(Tilt_PV-CMD_Tilt_SP,5,60) and MaxTiltPumps>0
+                      Force Frame feat=Joint_6_name sel=1, 1, 0, 0, 0, 0 wrench=-10.0, 100.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.1, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+                        wait 1.5s
+                      WP Variable type=Variable
+                      MaxTiltPumps := MaxTiltPumps-1
+                    WP WpTiltUp type=Fixed blendRadius=0.05 q=[133.40, -96.67, -102.22, -160.73, 223.66, -10.22] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt1 type=Fixed blendRadius=0.05 q=[153.94, -75.67, -122.27, -161.85, 244.19, 0.38] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpTilt0 type=Fixed blendRadius=0.05 q=[156.71, -75.75, -120.58, -153.06, 211.08, -30.97] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              else
+                script: Report(93)
+              script: Report(50)
+        Folder "Program finished"
+          ProgDn := ProgExe
+          ProgExe := 0
+      Folder "Parking"
+        if Parking≟10 or ProgExe≟1011
+          wait until EvtDock≤0
+          if AtHomePos
+            Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=true positionType=JointAngles optimoveEnabled=false feat=Joint_0_name
+              WP WpPark type=Fixed q=[92.42, -70.93, -90.97, -108.15, 90.41, 181.16] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              STS_Reservation := 0
+          Parking := 0
+          if DEBUG
+            ProgExe := 0
+        if Parking≟1 or ProgExe≟1001
+          if AtParkPos
+            Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=true positionType=JointAngles optimoveEnabled=false feat=Joint_0_name
+              WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+              STS_Reservation := 1
+            Parking := 0
+            if DEBUG
+              ProgExe := 0
+  script: sync()
+Thread name=Thread_1 runOnlyOnce=false
+  Folder "Continuous calculations"
+    Folder "get live force and tcp pos"
+      P_act := get_actual_tcp_pose()
+      V_act := get_actual_tcp_speed()
+      V_act_norm := norm(V_act)
+      ToolForce := norm(get_tcp_force())
+      P_Flange := get_actual_tool_flange_pose()
+      D_rel := pose_sub(P_act, P_ini)
+      AtHomePos := pose_dist(P_Flange, WpHome)<0.005
+      AtParkPos := pose_dist(P_Flange, WpPark)<0.005
+      AdapterDocked := Di_Docked
+      Tilt_PV := (Ai_LaserTilt*100+505)*0.1+Tilt_PV*0.9
+      Folder "Calculate actual offset in tool frame"
+        if ProgExe≟15
+          TempWp := pose_sub(WpBuckleSpa1,?)
+          BklToolDist := pose_trans(pose_inv(TempWp), P_act)
+        if ProgExe≟16
+          TempWp := pose_sub(WpBuckleSpa3,?)
+          BklToolDist := pose_trans(pose_inv(TempWp), P_act)
+      Folder "InterlockOutput"
+        if P_Flange[1]>-0.45
+          set DigitalOutput Do_SafePosition = 1
+        elif P_Flange[0]>0
+          set DigitalOutput Do_SafePosition = 1
+        else
+          set DigitalOutput Do_SafePosition = 0
+    Folder "Modbus mapping"
+      Folder "Heartbeat"
+        timer Start T_Heartbeat
+        if T_Heartbeat≥1
+          timer Reset T_Heartbeat
+          if STS_Heartbeat
+            STS_Heartbeat := False
+          else
+            STS_Heartbeat := True
+      Folder "Safe position"
+        STS_Safe := True
+        if pose_dist(P_act,WpBuckleSpa1)<0.2
+          STS_Safe := False
+        if pose_dist(P_act,WpConnSpa1EL)<0.08
+          STS_Safe := False
+        if pose_dist(P_act,WpHandle)<0.08
+          STS_Safe := False
+        if pose_dist(P_act,WpHeiUp)<0.08
+          STS_Safe := False
+        if pose_dist(P_act,WpLmbFwEL)<0.08
+          STS_Safe := False
+        if pose_dist(P_act,WpUnplug1_3)<0.08
+          STS_Safe := False
+        if pose_dist(P_act,WpUnplg1_3M)<0.08
+          STS_Safe := False
+      Folder "Outputs"
+        script: write_port_register(129,STS_Progress)
+        script: write_port_register(131,STS_Reservation)
+        script: write_port_register(134,binary_list_to_integer([digital_in[0], False ,config_in[0],STS_Heartbeat,STS_Safe, False ]))
+      Folder "Inputs"
+        CMD_Reserve_i1 := read_port_register(160)
+        CMD_Timeout_i1 := read_port_register(162)
+        CMD_Program_i1 := read_port_register(164)
+        CMD_Tilt_SP := read_port_register(166)
+        CMD_Flags_i1 := read_port_register(170)
+        CMD_Heartbt_i1 := read_port_register(180)
+      Folder "Generate flags"
+        Flags := integer_to_binary_list(CMD_Flags_i1)
+    Folder "Speed"
+      timer Start T_SpeedSet
+      if T_SpeedSet>2
+        script: socket_send_string("set speed")
+        script: socket_send_string(1.0)
+        script: socket_send_byte(10)
+        timer Reset T_SpeedSet
+    wait 0.01s
+  Folder "ReservationControl"
+    if STS_Reservation≟0 and ProgExe≟0
+      if CMD_Reserve_i1≟1
+        # request reservation
+        if AtHomePos or AdapterReady
+          STS_Reservation := 1
+        else
+          Parking := 1
+    # Timeout reservation - station keeps reservation for a while to prevent other app stealing the process
+    # Timeout is configurable, so application can control how long to keep robot before letting other app
+    if STS_Progress≟0 and STS_Reservation≠0
+      if STS_Reservation≟1 and CMD_Reserve_i1≟1
+        # nop
+      else
+        T_KeepReservtn := CMD_Timeout_i1
+        timer Start tim_Unreserve
+        if tim_Unreserve>T_KeepReservtn
+          STS_Reservation := 0
+          timer Stop tim_Unreserve
+    else
+      timer Stop tim_Unreserve
+      timer Reset tim_Unreserve
+    # Force release reservation from app - in case of intervetion
+    if STS_Progress≟0 and In(STS_Reservation,[0,1]) and In(CMD_Reserve_i1,[98,99]) and not DEBUG
+      if AtHomePos
+        Parking := 10
+      if AtParkPos
+        STS_Reservation := 0
+      if CMD_Reserve_i1≟99 and not Mute
+        set DigitalOutput Do_Blue = 1
+        set DigitalOutput Do_Horn = 1
+    wait 0.01s
+  Folder "Program control"
+    # Start new Prog / Confirm Prog Running
+    if STS_Progress≟0 and ProgExe≟0 and not Abort and not DEBUG
+      if InRange(CMD_Program_i1,10,49) and STS_Reservation≟1
+        ProgExe := CMD_Program_i1
+        T_KeepReservtn := CMD_Timeout_i1
+        script: Report(0)
+    # Ack results - get ready for new prg
+    if ProgExe≟0 and Progress_finished()
+      if CMD_Program_i1≠ProgDn
+        STS_Progress := 0
+  Folder "Pusher Control"
+    if PusherReturn and NormalMode
+      set DigitalOutput Do_PusherReturn = 1
+      set DigitalOutput Do_PusherWork = 0
+      timer Start T_Pusher
+      if T_Pusher>20 or Di_Pusher_Bp
+        set DigitalOutput Do_PusherReturn = 0
+        PusherReturn := False
+    else
+      timer Stop T_Pusher
+      timer Reset T_Pusher
+    if not NormalMode
+      set DigitalOutput Do_PusherReturn = 0
+      set DigitalOutput Do_PusherWork = 0
+    if Flags[11] and NormalMode
+      # Activate pusher in advance
+      set DigitalOutput Do_PusherReturn = 0
+      set DigitalOutput Do_PusherWork = 1
+    PusherPos := Calibrate(Ai_Pusher,1,8,260,385)
+    PusherPosFt := PusherPos*0.2+PusherPosFt*0.8
+    PusherPosStable := InRange(PusherPosFt-PusherPos,-1,1) and PusherPosFt>265
+  Folder "Operator call deactivation"
+    if Do_Blue or Do_Horn
+      timer Start T_Call
+      if not NormalMode and T_Call>4
+        set DigitalOutput Do_Blue = 0
+        set DigitalOutput Do_Horn = 0
+        Mute := True
+    else
+      timer Stop T_Call
+      timer Reset T_Call
+  Folder "Abort"
+    if Flags[14]
+      Abort := True
+    if AtHomePos or AtParkPos
+      Abort := False
+    if Abort
+      if AdapterReady
+        EvtDock := 1
+  wait 0.01s
+SubProgram name=WaitForNormalMode keepHidden=false keepSynchronizedWithDisk=false
+  Folder "Wait until full speed possible"
+    if not NormalMode and not DEBUG and not Abort [continuous]
+      EvtBeep := True
+    wait until NormalMode or DEBUG or Abort
+    EvtBeep := False
+SubProgram name=GripperOpen keepHidden=true keepSynchronizedWithDisk=true
+  Folder "GripperOpen"
+    set DigitalOutput Do_Gripper = 0
+    timer Reset timer_Gripper
+    timer Start timer_Gripper
+    wait until timer_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
+    if timer_Gripper>5
+      popup type=Error haltProgram=false message=Gripper open fault inputType=Text
+      halt
+SubProgram name=GripperClose keepHidden=true keepSynchronizedWithDisk=true
+  Folder "GripperClose"
+    set DigitalOutput Do_Gripper = 1
+    timer Reset timer_Gripper
+    timer Start timer_Gripper
+    wait until timer_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if timer_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
+event on SetCameraProg>0
+  Folder "Set program to camera in advance"
+    set DigitalOutput CnxDO_Trig = 0
+    set DigitalOutput CnxDO_TrigEn = 1
+    script: modbus_delete_signal("CnxAO_Program")
+    script: modbus_add_signal("192.168.1.101", 255, 2001, 16, "CnxAO_Program", True ,1)
+    script: modbus_set_output_register("CnxAO_Program",SetCameraProg, False )
+    wait 0.2s
+    set DigitalOutput CnxDO_SetUsrDta = 1
+    wait DigitalInput CnxDi_UsrDtaAck=1
+    set DigitalOutput CnxDO_SetUsrDta = 0
+    set DigitalOutput CnxDO_SoftEvt0 = 1
+    wait DigitalInput CnxDI_Evt0Ack=1
+    set DigitalOutput CnxDO_SoftEvt0 = 0
+    timer Reset CamTimeout
+    timer Start CamTimeout
+    wait until CnxAI_Program≟SetCameraProg or CamTimeout>3
+    if CnxAI_Program≠SetCameraProg
+      Folder "For the first time it needs trigger when going online"
+        set DigitalOutput CnxDO_Trig = 1
+        wait 1.0s
+        set DigitalOutput CnxDO_Trig = 0
+        script: textmsg("extra cam trigger on program set")
+      if CnxAI_Program≠SetCameraProg
+        //SUPPRESSED popup type=Error haltProgram=false message=Error: camera program not set inputType=Text
+      else
+        wait 0.5s
+        SetCameraProg := 0
+    else
+      wait 0.5s
+      SetCameraProg := 0
+  if SetCameraProg>0
+    # repeat on fail
+    wait 3.0s
+    Folder "Set program to camera in advance"
+      set DigitalOutput CnxDO_Trig = 0
+      set DigitalOutput CnxDO_TrigEn = 1
+      script: modbus_delete_signal("CnxAO_Program")
+      script: modbus_add_signal("192.168.1.101", 255, 2001, 16, "CnxAO_Program", True ,1)
+      script: modbus_set_output_register("CnxAO_Program",SetCameraProg, False )
+      wait 0.2s
+      set DigitalOutput CnxDO_SetUsrDta = 1
+      wait DigitalInput CnxDi_UsrDtaAck=1
+      set DigitalOutput CnxDO_SetUsrDta = 0
+      set DigitalOutput CnxDO_SoftEvt0 = 1
+      wait DigitalInput CnxDI_Evt0Ack=1
+      set DigitalOutput CnxDO_SoftEvt0 = 0
+      timer Reset CamTimeout
+      timer Start CamTimeout
+      wait until CnxAI_Program≟SetCameraProg or CamTimeout>3
+      if CnxAI_Program≠SetCameraProg
+        Folder "For the first time it needs trigger when going online"
+          set DigitalOutput CnxDO_Trig = 1
+          wait 1.0s
+          set DigitalOutput CnxDO_Trig = 0
+          script: textmsg("extra cam trigger on program set")
+        if CnxAI_Program≠SetCameraProg
+          //SUPPRESSED popup type=Error haltProgram=false message=Error: camera program not set inputType=Text
+        else
+          wait 0.5s
+          SetCameraProg := 0
+      else
+        wait 0.5s
+        SetCameraProg := 0
+  if SetCameraProg>0
+    # repeat on fail
+    wait 3.0s
+    Folder "Set program to camera in advance"
+      set DigitalOutput CnxDO_Trig = 0
+      set DigitalOutput CnxDO_TrigEn = 1
+      script: modbus_delete_signal("CnxAO_Program")
+      script: modbus_add_signal("192.168.1.101", 255, 2001, 16, "CnxAO_Program", True ,1)
+      script: modbus_set_output_register("CnxAO_Program",SetCameraProg, False )
+      wait 0.2s
+      set DigitalOutput CnxDO_SetUsrDta = 1
+      wait DigitalInput CnxDi_UsrDtaAck=1
+      set DigitalOutput CnxDO_SetUsrDta = 0
+      set DigitalOutput CnxDO_SoftEvt0 = 1
+      wait DigitalInput CnxDI_Evt0Ack=1
+      set DigitalOutput CnxDO_SoftEvt0 = 0
+      timer Reset CamTimeout
+      timer Start CamTimeout
+      wait until CnxAI_Program≟SetCameraProg or CamTimeout>3
+      if CnxAI_Program≠SetCameraProg
+        Folder "For the first time it needs trigger when going online"
+          set DigitalOutput CnxDO_Trig = 1
+          wait 1.0s
+          set DigitalOutput CnxDO_Trig = 0
+          script: textmsg("extra cam trigger on program set")
+        if CnxAI_Program≠SetCameraProg
+          //SUPPRESSED popup type=Error haltProgram=false message=Error: camera program not set inputType=Text
+        else
+          wait 0.5s
+          SetCameraProg := 0
+      else
+        wait 0.5s
+        SetCameraProg := 0
+  if SetCameraProg>0
+    popup type=Error haltProgram=false message=Error: camera program not set inputType=Text
+SubProgram name=CamAcquire keepHidden=false keepSynchronizedWithDisk=false
+  Folder "Trig camera and process data"
+    Folder "Init"
+      CamCorrectnOK := 0
+      CamRetry := 0
+    wait until SetCameraProg≟0
+    loop While CamRetry<3
+      Folder "Trig"
+        CnxCounter := CnxAI_Counter
+        set DigitalOutput CnxDO_Trig = 1
+        timer Reset CamTimeout
+        timer Start CamTimeout
+        wait until CamTimeout>1 or CnxAI_Counter≠CnxCounter
+        set DigitalOutput CnxDO_Trig = 0
+        wait 0.2s
+        if CnxAI_Result≥100 and CnxAI_Counter≠CnxCounter
+          CamRetry := 100
+        else
+          wait 1.0s
+          CamRetry := CamRetry+1
+    Folder "New data validation"
+      if CamRetry≟100
+        CamCorrectnOK := ProgExe
+      else
+        CamCorrectnOK := 0
+      CamData := [(CnxAI_ResultX-30000)/10000,(CnxAI_ResultY-30000)/10000,d2r((CnxAI_ResultR-30000)/10)]
+      //SUPPRESSED if CamData[1]>0.03
+      //SUPPRESSED   Err_state := 103
+      //SUPPRESSED if CamData[1]<-0.03
+      //SUPPRESSED   Err_state := 104
+      //SUPPRESSED if CamData[2]>15
+      //SUPPRESSED   Err_state := 105
+      //SUPPRESSED if CamData[2]<-15
+      //SUPPRESSED   Err_state := 106
+SubProgram name=CamCalculateCorectnPlane keepHidden=false keepSynchronizedWithDisk=false
+  Folder "Folder"
+    set NoAction  =  tcp=t0_Flange
+    script: sync()
+    P_act := get_actual_tcp_pose()
+    CamCorrection := p[0,CamData[0],CamData[1],0,0,0]
+    CamOffset := pose_trans(P_act,CamCorrection)
+    ? := pose_sub(CamOffset, P_act)
+event on EvtDock>0
+  Folder "Dock"
+    Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
+      if EvtDock≟2
+        Folder "Force mvts"
+          set NoAction  =  tcp=t2_Gripper
+          Wp0 := P_act
+          Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -20.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.1, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+            wait 1.0s
+          Force Frame feat=Joint_6_name sel=1, 0, 1, 0, 0, 0 wrench=0.0, -10.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.05, 0.1, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+            wait 0.2s
+            call GripperClose
+            wait 0.2s
+          if timer_Gripper>3
+            call GripperOpen
+            Move motionType=MoveL speed=0.5 acceleration=1.2 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+              WP Variable type=Variable
+            Force Frame feat=Joint_6_name sel=0, 1, 0, 0, 0, 0 wrench=0.0, -20.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.1, 0.15, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+              wait 1.0s
+            Force Frame feat=Joint_6_name sel=1, 0, 1, 0, 0, 0 wrench=0.0, -10.0, 0.0, 0.0, 0.0, 0.0 limF=0.15, 0.05, 0.1, 1.0471975511965976, 1.0471975511965976, 1.0471975511965976 limM=0.1, 0.1, 0.1, 0.3490658503988659, 0.3490658503988659, 0.3490658503988659
+              wait 0.2s
+              call GripperClose
+              wait 0.2s
+          if timer_Gripper>3
+            call GripperOpen
+            Move motionType=MoveL speed=0.5 acceleration=1.2 useActiveTCP=true positionType=CartesianPose optimoveEnabled=false feat=Joint_0_name
+              WP Variable type=Variable
+              EvtDock := -97
+          if EvtDock≟2
+            MoveDirectionNode selectedDirection=YPlus feature=Joint_6_name
+              until type=DISTANCE allowActions=false deceleration=3.0 distanceNodeType=BLEND 0.05
+      if EvtDock>0
+        Wp := pose_trans(WpDock, p[0,0.25,0.1,0,0,0])
+        script: Report(40)
+        WP Variable type=Variable blendRadius=0.05
+        Wp := pose_trans(WpDock, p[0,0.25,0,0,0,0])
+        WP Variable type=Variable blendRadius=0.05
+        WP WpDock type=Fixed q=[172.39, -110.84, -101.12, -92.86, 86.05, -6.10] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+        call GripperOpen
+        WP Variable type=Variable
+        Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+          WP WpHome type=Fixed q=[177.91, -76.40, -107.63, -86.02, 90.39, 88.11] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+        EvtDock := 0
+    AdapterReady := False
+event on EvtBeep
+  loop While EvtBeep
+    set DigitalOutput Do_Horn = 1
+    set DigitalOutput Do_Blue = 1
+    wait 0.5s
+    set DigitalOutput Do_Horn = 0
+    set DigitalOutput Do_Blue = 0
+    wait 5.0s
+def CamAcquire:
+  Folder "Trig camera and process data"
+    Folder "Init"
+      CamCorrectnOK := 0
+      CamRetry := 0
+    wait until SetCameraProg≟0
+    loop While CamRetry<3
+      Folder "Trig"
+        CnxCounter := CnxAI_Counter
+        set DigitalOutput CnxDO_Trig = 1
+        timer Reset CamTimeout
+        timer Start CamTimeout
+        wait until CamTimeout>1 or CnxAI_Counter≠CnxCounter
+        set DigitalOutput CnxDO_Trig = 0
+        wait 0.2s
+        if CnxAI_Result≥100 and CnxAI_Counter≠CnxCounter
+          CamRetry := 100
+        else
+          wait 1.0s
+          CamRetry := CamRetry+1
+    Folder "New data validation"
+      if CamRetry≟100
+        CamCorrectnOK := ProgExe
+      else
+        CamCorrectnOK := 0
+      CamData := [(CnxAI_ResultX-30000)/10000,(CnxAI_ResultY-30000)/10000,d2r((CnxAI_ResultR-30000)/10)]
+      //SUPPRESSED if CamData[1]>0.03
+      //SUPPRESSED   Err_state := 103
+      //SUPPRESSED if CamData[1]<-0.03
+      //SUPPRESSED   Err_state := 104
+      //SUPPRESSED if CamData[2]>15
+      //SUPPRESSED   Err_state := 105
+      //SUPPRESSED if CamData[2]<-15
+      //SUPPRESSED   Err_state := 106
+def CamCalculateCorectnPlane:
+  Folder "Folder"
+    set NoAction  =  tcp=t0_Flange
+    script: sync()
+    P_act := get_actual_tcp_pose()
+    CamCorrection := p[0,CamData[0],CamData[1],0,0,0]
+    CamOffset := pose_trans(P_act,CamCorrection)
+    ? := pose_sub(CamOffset, P_act)
+def GripperClose:
+  Folder "GripperClose"
+    set DigitalOutput Do_Gripper = 1
+    timer Reset timer_Gripper
+    timer Start timer_Gripper
+    wait until timer_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if timer_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
+def GripperOpen:
+  Folder "GripperOpen"
+    set DigitalOutput Do_Gripper = 0
+    timer Reset timer_Gripper
+    timer Start timer_Gripper
+    wait until timer_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
+    if timer_Gripper>5
+      popup type=Error haltProgram=false message=Gripper open fault inputType=Text
+      halt
