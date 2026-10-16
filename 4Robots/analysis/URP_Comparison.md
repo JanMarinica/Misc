@@ -8,9 +8,99 @@ variable has not been bumped, so it cannot be used to tell which robot is newer.
 The `.urp` files were converted to readable pseudocode (`readable/*.txt`, made by
 `tools/urp2txt.py`).
 
-## Re-check 2 after commit 25d4835 "updated urps"
+## Re-check 5 after commit 9fae33d "new urps"
 
 Line numbers refer to the regenerated `readable/*.txt`.
+
+### Fixed / accepted in this update
+
+| # | Status |
+|---|---|
+| B3 | **Accepted (geometry).** 21 closes the gripper at the start of Buttons. |
+| C2 | **Fixed.** `if T_SpeedSet>2 and not DEBUG` on all 4 robots. |
+| D1 | **Fixed.** `WaitForNormalMode` no longer has `checkContinuously` on 20/21, so all 4 are identical. |
+
+Also changed on all 4: the suppressed `call WaitForNormalMode` in Init was deleted. The
+`WaitForNormalMode` subprogram is still defined but now is not called anywhere (unused, the same on all 4).
+
+### Still open
+
+| # | Robots | Finding |
+|---|---|---|
+| C3 | L vs R line | Button approach/retreat: MoveL on the L line (1L, 20), MoveJ via one mid‑point on the R line (1R, 21). |
+| D2 | singles vs doubles | EvtDock first force frame: singles `sel=1,0,1,1,0,0` (also compliant about X), doubles `1,0,1,0,0,0`. |
+
+Everything else is either fixed or accepted. The singles and doubles still differ where the two cell types are designed differently.
+
+## Re-check 4 after commit de68b25 "new urps"
+
+Line numbers refer to the readable files of that version (commit 1cefd39).
+
+### Fixed in this update
+
+| # | Status |
+|---|---|
+| N5 | **Fixed.** 20 PushByHandle uses the blocking `GripperOpen` again, the same as 21. |
+| B6 | **Fixed.** 1R EvtDock pull‑out blend is 0.05 and the final MoveL acceleration is 3.0, the same as 1L. |
+| C1 | **Fixed.** The buckle approach offset is `p[0,0,-0.02,...]` on all 4 robots. |
+| D (gripper) | **Fixed.** Singles now use the double‑cell gripper behaviour: 5 s timeout on open and close, "Gripper close fault" popup + halt, and `stopj` removed. Only the timer name differs (`T_Gripper` vs `timer_Gripper`), which is cosmetic. |
+| D (WaitForNormalMode) | **Mostly fixed.** Singles no longer reset Do_Horn/Do_Blue after the wait, the same as doubles. |
+
+Also changed: 21 EvtDock pull‑out blend 0.04 → 0.05 (B7, accepted as geometry).
+
+### Still open
+
+| # | Robots | Finding |
+|---|---|---|
+| B3 | 21 | Only 21 closes the gripper at the start of Buttons (`GripperCloseQuick` + `GripperClose`). |
+| C2 | R line (1R, 21) | `if T_SpeedSet>2 and not DEBUG`. The L line (1L, 20) has no `and not DEBUG`. |
+| C3 | L vs R line | Button approach/retreat: MoveL on the L line, MoveJ (via one mid‑point) on the R line. |
+| D1 | singles vs doubles | `WaitForNormalMode`: the `if` is `checkContinuously` on doubles only. |
+| D2 | singles vs doubles | EvtDock force selection: singles `1,0,1,1,0,0` (compliant about X), doubles `1,0,1,0,0,0`. |
+
+Differences between singles and doubles that are by design or cosmetic: dual vs single adapter logic,
+the `PosDist`/`Calibrate` helper scripts, `reg2bool` style, the camera debug `textmsg` texts, and the
+camera IP addresses.
+
+## Re-check 3 after commit 548a751 "new urps"
+
+Line numbers refer to the readable files of that version (commit 6c313a3).
+
+### What changed on all 4 robots
+
+New subprograms `GripperOpenQuick` and `GripperCloseQuick` set `Do_Gripper` without waiting
+for the sensor. The blocking `GripperOpen` / `GripperClose` now runs later, as a confirmation:
+- **Undock / Connect‑undock:** quick open at the start of the move, then confirm after the first approach point and before the final approach.
+- **Buckle:** quick close before the camera move, then confirm after reaching the camera position.
+- **Disconnect:** quick open, then confirm after the first unplug approach point in every branch.
+
+The placement is the same on all 4 robots (mirrored on singles). The confirmation always comes
+before the gripper state is needed.
+
+### Fixed / accepted in this update
+
+| # | Status |
+|---|---|
+| B2 | **Fixed.** 21 heartbeat is a free toggle again, the same as the others. |
+| B6 (speed) | **Fixed.** 1R EvtDock dock move is now 1.0 / 3.0. |
+| B7 | **Accepted (geometry).** 21's suppressed pre‑approach nodes were removed. |
+| B8 | **Accepted (geometry).** Height‑button X offset +8 mm / −3 mm. |
+| B9 | **Accepted.** The identical `WpUnplug_1` joint values on 20 and 21 are a coincidence. |
+| Buckle retreat | **Confirmed correct.** The retreat MoveL to the uncorrected `Wp` after the insert is intended. |
+
+### Still open / new
+
+| # | Robots | Where | Finding |
+|---|---|---|---|
+| N5 | **20 vs 21** | PushByHandle, `Eol20.txt:848`, `Eol21.txt:805` | **New.** 20 now uses `GripperOpenQuick` here, with no confirming `GripperOpen` afterwards. The robot goes straight to `WpHandle` and pushes with force while the gripper may still be opening. 21 still uses the blocking `GripperOpen`. Everywhere else, every quick call is followed by a confirmation. Either add a `GripperOpen` before `WpHandle` on 20, or use `GripperOpen` as 21 does. |
+| B3 | 21 | Buttons, `Eol21.txt:527/545` | Still 21 only: the gripper closes at the start of Buttons (now quick + confirm). 1L/1R/20 don't close it there. |
+| B6 (rest) | 1R | EvtDock | Pull-out blend 0.1 (1L 0.05) and final MoveL acceleration 2.0 (others 3.0). Accept if geometric, like B7. |
+| C1‑C3 | L vs R line | – | Unchanged: buckle Z offset −0.02/−0.04, `and not DEBUG` on speed, button moves MoveL vs MoveJ. |
+| D | single vs double | – | Unchanged: `GripperOpen`/`GripperClose` bodies (stopj vs popup + halt, 3 s vs 5 s), `WaitForNormalMode`, BeforeStart scripts. The new Quick subprograms are identical on all 4. |
+
+## Re-check 2 after commit 25d4835 "updated urps"
+
+Line numbers refer to the readable files of that version (commit 347f55a).
 
 ### Fixed in this update
 

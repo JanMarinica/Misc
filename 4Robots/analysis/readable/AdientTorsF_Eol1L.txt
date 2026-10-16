@@ -164,7 +164,6 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
         Folder "Init"
           Mute := False
           wait until not GoToHome
-          //SUPPRESSED call WaitForNormalMode
           if In(ProgExe,[11,12,14])
             AdapterReady_R := False
           elif In(ProgExe,[51,52,54])
@@ -188,7 +187,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
             if Progress_run()
               Folder "Undock"
                 Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
-                  call GripperOpen
+                  call GripperOpenQuick
                   if False
                     WP WLDock type=Fixed q=[179.89, -126.84, -85.91, -93.38, 90.43, -0.03] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WRDock type=Fixed q=[64.53, -92.30, -158.79, -2.40, 58.99, 241.47] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
@@ -200,6 +199,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                     WpHome := WRHome
                   Wp := pose_trans(WpDock, p[0,0.175,-0.1,0,0,0])
                   WP Variable(Wp) blendRadius=0.05
+                  call GripperOpen
                   Wp := pose_trans(WpDock, p[0,0.075,0.01,0,0,0])
                   WP Variable(Wp) blendRadius=0.01
                   Wp := pose_trans(WpDock, p[0,0.055,0,0,0,0])
@@ -235,7 +235,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
               Folder "Undock"
                 if Undock
                   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
-                    call GripperOpen
+                    call GripperOpenQuick
                     if False
                       WP WLDock type=Fixed q=[179.89, -126.84, -85.91, -93.38, 90.43, -0.03] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                       WP WRDock type=Fixed q=[64.53, -92.30, -158.79, -2.40, 58.99, 241.47] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
@@ -247,6 +247,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                       WpHome := WRHome
                     Wp := pose_trans(WpDock, p[0,0.175,-0.1,0,0,0])
                     WP Variable(Wp) blendRadius=0.05
+                    call GripperOpen
                     Wp := pose_trans(WpDock, p[0,0.075,0.01,0,0,0])
                     WP Variable(Wp) blendRadius=0.01
                     Wp := pose_trans(WpDock, p[0,0.055,0,0,0,0])
@@ -368,7 +369,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
             if Progress_run() and not ((digital_in[2] and ProgExe<50) or (digital_in[6] and ProgExe>50))
               script: Report(92)
             if Progress_run()
-              call GripperClose
+              call GripperCloseQuick
               Folder "Camera"
                 SetCameraProg := ProgExe
                 Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
@@ -378,6 +379,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                     Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
                       WP WpCenter type=Fixed blendRadius=0.1 q=[106.83, -57.18, -119.28, -93.60, 90.53, 15.58]
                       WP WRBklCam type=Fixed cartesianAcceleration=1.2 cartesianSpeed=0.25 jointAcceleration=17.453292519943293 jointSpeed=3.141592653589793 q=[92.20, -78.99, -94.97, -140.23, 4.15, 80.10]
+                call GripperClose
                 call CamAcquire
                 call CamCalculateCorectnPlane
               if CamCorrectnOK≟ProgExe and InRange(CamCorrection[1],-0.05,0.05) and InRange(CamCorrection[2],-0.03,0.03)
@@ -497,23 +499,26 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   WP WRHome type=Fixed q=[19.14, -89.51, -90.55, -90.00, 90.50, 19.23] tcp=[-0.00, -0.00, -0.00, -0.00, -0.00, 3.14]
               script: Report(91)
             if Progress_run()
-              call GripperOpen
+              call GripperOpenQuick
               Folder "Disconnect"
                 if In(ProgExe,[21,22])
                   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
                     WP WLUnlplug_0 type=Fixed blendRadius=0.05 q=[181.78, -93.99, -116.06, -60.01, 90.40, 2.11] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperOpen
                     WP WLUnplug1_1 type=Fixed blendRadius=0.03 q=[161.33, -87.94, -119.93, -71.21, 115.59, -110.46] tcp=[0.00, 0.26, 0.07, -0.00, -0.00, 3.14]
                     WP WLUnplug1_2 type=Fixed blendRadius=0.015 q=[160.64, -90.95, -122.09, -66.34, 115.46, 68.82] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WLUnplug1_3 type=Fixed q=[161.55, -96.62, -127.22, -47.69, 94.79, 71.91] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                 if In(ProgExe,[23])
                   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
                     WP WLUnlplug_0 type=Fixed blendRadius=0.05 q=[181.78, -93.99, -116.06, -60.01, 90.40, 2.11] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperOpen
                     WP WLUnplg3_1 type=Fixed blendRadius=0.05 q=[165.01, -89.56, -117.43, -70.36, 116.11, 73.57] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WLUnplg3_2 type=Fixed blendRadius=0.005 q=[164.97, -92.60, -120.93, -63.80, 116.08, 73.58] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WLUnplg3_3 type=Fixed q=[163.24, -95.85, -121.96, -55.36, 100.81, -106.70] tcp=[-0.00, 0.26, 0.07, -0.00, -0.00, 3.14]
                 if In(ProgExe,[61,62])
                   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
                     WP WRUnpgSpa1_0 type=Fixed blendRadius=0.05 q=[43.86, -83.90, -126.10, -64.51, 85.84, 224.34] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperOpen
                     WP WRUnpgSpa1_1 type=Fixed blendRadius=0.05 q=[40.56, -86.58, -121.12, -41.84, 38.22, 64.71] tcp=[0.00, 0.26, 0.07, 0.00, 0.00, 3.14]
                     WP WRUnpgSpa1_2 type=Fixed blendRadius=0.03 q=[48.64, -86.96, -118.22, -85.55, 73.29, 321.95] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WRUnpgSpa1_3 type=Fixed blendRadius=0.02 q=[50.63, -90.73, -119.49, -81.09, 73.98, 323.92] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
@@ -521,6 +526,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                 if In(ProgExe,[63])
                   Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Base_w_correctn
                     WP WRUnpg3_0 type=Fixed blendRadius=0.05 q=[48.04, -78.71, -130.25, -65.87, 86.19, 228.51] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
+                    call GripperOpen
                     WP WRUnpg3_1 type=Fixed blendRadius=0.05 q=[46.40, -77.68, -126.93, -52.30, 36.55, 255.92] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WRUnpg3_2 type=Fixed q=[50.03, -83.25, -125.54, -82.35, 73.78, 323.32] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
                     WP WRUnpg3_4 type=Fixed q=[51.54, -87.89, -128.86, -61.34, 84.12, 322.30] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
@@ -924,7 +930,7 @@ Thread name=Thread_1 runOnlyOnce=false
           EvtDock := 1
     Folder "Speed"
       timer Start T_SpeedSet
-      if T_SpeedSet>2
+      if T_SpeedSet>2 and not DEBUG
         script: socket_send_string("set speed")
         script: socket_send_string(1.0)
         script: socket_send_byte(10)
@@ -1030,30 +1036,36 @@ Thread name=Thread_1 runOnlyOnce=false
         if In(CMD_Program_i1,[21,22,23]) or In(CMD_Program_i2,[61,62,63])
           # unplug preference - unreserve immediatelly
           STS_Reservation := 0
-SubProgram name=WaitForNormalMode keepHidden=false keepSynchronizedWithDisk=false
+SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
     if not config_in[0] and not DEBUG and not Abort
       EvtBeep := True
     wait until config_in[0] or DEBUG or Abort
     EvtBeep := False
-    set DigitalOutput digital_out[2] = 0
-    set DigitalOutput digital_out[1] = 0
-SubProgram name=GripperOpen keepHidden=false keepSynchronizedWithDisk=true
+SubProgram name=GripperOpen keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperOpen"
     set DigitalOutput Do_Gripper = 0
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
-SubProgram name=GripperClose keepHidden=false keepSynchronizedWithDisk=true
+SubProgram name=GripperOpenQuick keepHidden=true keepSynchronizedWithDisk=true
+  Folder "GripperOpen"
+    set DigitalOutput Do_Gripper = 0
+SubProgram name=GripperClose keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperClose"
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
+SubProgram name=GripperCloseQuick keepHidden=true keepSynchronizedWithDisk=true
+  Folder "GripperClose"
+    set DigitalOutput Do_Gripper = 1
 event on SetCameraProg>0
   Folder "Set program to camera in advance"
     set DigitalOutput CnxDO_Trig = 0
@@ -1297,14 +1309,22 @@ def GripperClose:
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
+def GripperCloseQuick:
+  Folder "GripperClose"
+    set DigitalOutput Do_Gripper = 1
 def GripperOpen:
   Folder "GripperOpen"
     set DigitalOutput Do_Gripper = 0
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
+def GripperOpenQuick:
+  Folder "GripperOpen"
+    set DigitalOutput Do_Gripper = 0
