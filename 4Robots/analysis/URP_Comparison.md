@@ -6,7 +6,56 @@ All four are saved in PolyScope 5.26.0 and all still report `SW_Ver := 1.0`. The
 variable has not been bumped, so it cannot be used to tell which robot is newer.
 
 The `.urp` files were converted to readable pseudocode (`readable/*.txt`, made by
-`tools/urp2txt.py`). Line numbers below refer to those files.
+`tools/urp2txt.py`).
+
+## Re-check after commit 09038bc "updated urps" (2026-10-16)
+
+Line numbers in this section refer to the regenerated `readable/*.txt`. Line numbers in the
+original report further down refer to the previous version of the files.
+
+**What changed on all 4 robots:** the buckle section was restructured the same way on each.
+- A new helper `Progress_check()` was added.
+- When the camera check fails, the robot now goes home immediately and reports 91.
+- `Report(6)` is sent when Flags[8] arrives.
+- The `elif T_Timeout` branch was removed. After the insert, every case now does the same
+  retreat: MoveL to `Wp`, then MoveDirection Z− 20 mm, then home.
+- The final report is 50 if step 6 was reached, otherwise a fault code.
+
+The structure matches across the 4 robots, and the mirror (near/far side swap) is correct.
+
+### Fixed
+
+| Old # | Status |
+|---|---|
+| A1 | **Fixed.** 1R `Eol1R.txt:936` now uses `In(CMD_Program_i1,[21,22,23])`. |
+| A3 | **Fixed.** 1R `Eol1R.txt:998` now uses `AtLHomePos`. |
+| B1 | **Fixed.** The buckle retreat is now the same for every program on all 4 robots. |
+| A4 (1R part) | **Fixed.** The `elif T_Timeout>10` is gone. |
+
+### Still open / new
+
+| # | Robot | Where | Finding |
+|---|---|---|---|
+| N1 | **1R** | `Eol1R.txt:942` | **A2 only half fixed.** The `or` is now `and`, but the list is `In(CMD_Program_i2,[21,22,23])`. Side 2 programs are 50‑89, so this can never match and the side‑R disconnect preference is dead. 1L has `[61,62,63]`. |
+| N2 | 1L/1R/20/21 | Buckle, final `else` (`Eol1L.txt:458`, `Eol1R.txt:458`, `Eol20.txt:437`, `Eol21.txt:436`) | **New mismatch.** When Flags[8] times out or Abort fires: **1L and 21 report 95**, **1R and 20 report 91**. Before this change all four reported 91. Pick one code. |
+| N3 | **1L** | `Eol1L.txt:422` | A4 still open. The buckle confirmation wait is still `T_Timeout>10`. The other three use 25. |
+| N4 | **21** | PushByHandle, `Eol21.txt:810` | **New, 21 only.** `wait AnalogInput Ai_Pusher=8.9` became `analog_in[0]=8.5`. The threshold changed, and the pin is now referenced by raw name. 20 still uses `Ai_Pusher` 8.9. Check that `Ai_Pusher` really is `analog_in[0]` in the 21 installation, and propagate the value to 20 if 8.5 is right. |
+| A5 | 20 + 21 | `Eol20.txt:344`, `Eol21.txt:343` | Still open: `timer Reset T_Timeout` twice, no Start. |
+| A6 | 20 / 21 | `Eol20.txt:371`, `Eol21.txt:527` | Still open: 20 checks SBR only in Buckle; 21 only in Buttons. |
+| A7 | 1R | `Eol1R.txt:385` | Still open: `CamCorrection[1]` upper bound 0.052. |
+| B2‑B9, C1‑C3, D | – | – | Unchanged. In particular, 21 still has no `Report(6)` in Connect (B4) and 20 still has the stray gripper wait (`Eol20.txt:136`). |
+
+Note: the new retreat first moves MoveL back to `Wp`, which is the **uncorrected** taught buckle
+point (`WLBuckleSpa1`, etc.). Before, 1R and the 15 case on 1L used `Wp0`, the
+camera‑corrected approach point. With a camera correction of up to ±5 cm, the blade can move
+sideways while it is still in the slot. The force pushes before it already target `Wp`, so
+this may be intended. Please confirm.
+
+---
+
+## Original report (previous URP versions)
+
+Line numbers below refer to the readable files of the previous version (commit 1283069).
 
 ## How the comparison was done
 

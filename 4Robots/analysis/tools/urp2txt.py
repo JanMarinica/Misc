@@ -19,6 +19,8 @@ def resolve(el):
                 tag, idx = m.group(1), int(m.group(2) or 1)
                 kids = [c for c in cur if c.tag == tag]
                 cur = kids[idx - 1]
+                if cur.get('reference') is not None:
+                    cur = resolve(cur)
         el = cur
         seen += 1
     return el
@@ -26,7 +28,7 @@ def resolve(el):
 def name_of(el):
     el = resolve(el)
     if el is None: return '?'
-    return el.get('name') or el.get('referencedName') or el.get('referenceName') or '?'
+    return el.get('name') or el.get('referencedName') or el.get('referenceName') or el.get('featureName') or '?'
 
 def expr(e):
     if e is None: return ''
@@ -50,6 +52,8 @@ def fmt_vec(v, deg=False):
 def waypoint(w):
     w = resolve(w)
     s = 'WP %s type=%s' % (w.get('name'), w.get('type'))
+    if w.get('type') == 'Variable' and w.find('variable') is not None:
+        s = 'WP Variable(%s)' % name_of(w.find('variable'))
     mp = w.find('motionParameters')
     if mp is not None and len(mp.attrib):
         s += ' ' + ' '.join('%s=%s' % kv for kv in sorted(mp.attrib.items()))
