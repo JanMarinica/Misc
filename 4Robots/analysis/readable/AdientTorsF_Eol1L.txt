@@ -164,7 +164,6 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
         Folder "Init"
           Mute := False
           wait until not GoToHome
-          //SUPPRESSED call WaitForNormalMode
           if In(ProgExe,[11,12,14])
             AdapterReady_R := False
           elif In(ProgExe,[51,52,54])
@@ -931,7 +930,7 @@ Thread name=Thread_1 runOnlyOnce=false
           EvtDock := 1
     Folder "Speed"
       timer Start T_SpeedSet
-      if T_SpeedSet>2
+      if T_SpeedSet>2 and not DEBUG
         script: socket_send_string("set speed")
         script: socket_send_string(1.0)
         script: socket_send_byte(10)

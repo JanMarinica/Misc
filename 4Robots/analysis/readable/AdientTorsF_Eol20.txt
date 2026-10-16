@@ -147,7 +147,6 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
         Folder "Init"
           Mute := False
           wait until not GoToHome
-          //SUPPRESSED call WaitForNormalMode
           if not In(ProgExe,[11,12,13,14])
             AdapterReady := False
     Folder "Programs"
@@ -1015,7 +1014,7 @@ Thread name=Thread_1 runOnlyOnce=false
         Flags := integer_to_binary_list(CMD_Flags_i1)
     Folder "Speed"
       timer Start T_SpeedSet
-      if T_SpeedSet>2
+      if T_SpeedSet>2 and not DEBUG
         script: socket_send_string("set speed")
         script: socket_send_string(1.0)
         script: socket_send_byte(10)
@@ -1106,7 +1105,7 @@ Thread name=Thread_1 runOnlyOnce=false
   wait 0.01s
 SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
-    if not NormalMode and not DEBUG and not Abort [continuous]
+    if not NormalMode and not DEBUG and not Abort
       EvtBeep := True
     wait until NormalMode or DEBUG or Abort
     EvtBeep := False

@@ -8,9 +8,33 @@ variable has not been bumped, so it cannot be used to tell which robot is newer.
 The `.urp` files were converted to readable pseudocode (`readable/*.txt`, made by
 `tools/urp2txt.py`).
 
-## Re-check 4 after commit de68b25 "new urps"
+## Re-check 5 after commit 9fae33d "new urps"
 
 Line numbers refer to the regenerated `readable/*.txt`.
+
+### Fixed / accepted in this update
+
+| # | Status |
+|---|---|
+| B3 | **Accepted (geometry).** 21 closes the gripper at the start of Buttons. |
+| C2 | **Fixed.** `if T_SpeedSet>2 and not DEBUG` on all 4 robots. |
+| D1 | **Fixed.** `WaitForNormalMode` no longer has `checkContinuously` on 20/21, so all 4 are identical. |
+
+Also changed on all 4: the suppressed `call WaitForNormalMode` in Init was deleted. The
+`WaitForNormalMode` subprogram is still defined but now is not called anywhere (unused, the same on all 4).
+
+### Still open
+
+| # | Robots | Finding |
+|---|---|---|
+| C3 | L vs R line | Button approach/retreat: MoveL on the L line (1L, 20), MoveJ via one mid‑point on the R line (1R, 21). |
+| D2 | singles vs doubles | EvtDock first force frame: singles `sel=1,0,1,1,0,0` (also compliant about X), doubles `1,0,1,0,0,0`. |
+
+Everything else is either fixed or accepted. The singles and doubles still differ where the two cell types are designed differently.
+
+## Re-check 4 after commit de68b25 "new urps"
+
+Line numbers refer to the readable files of that version (commit 1cefd39).
 
 ### Fixed in this update
 

@@ -147,7 +147,6 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
         Folder "Init"
           Mute := False
           wait until not GoToHome
-          //SUPPRESSED call WaitForNormalMode
           if not In(ProgExe,[11,12,13,14])
             AdapterReady := False
     Folder "Programs"
@@ -1063,7 +1062,7 @@ Thread name=Thread_1 runOnlyOnce=false
   wait 0.01s
 SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
-    if not NormalMode and not DEBUG and not Abort [continuous]
+    if not NormalMode and not DEBUG and not Abort
       EvtBeep := True
     wait until NormalMode or DEBUG or Abort
     EvtBeep := False
