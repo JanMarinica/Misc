@@ -133,7 +133,6 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
             else
               popup type=Error haltProgram=false message=Adapter must be docked inputType=Text
               halt
-            wait until timer_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
           elif AtParkPos
             Move motionType=MoveJ speed=2.0943951023931953 acceleration=8.726646259971647 useActiveTCP=false positionType=JointAngles optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
               WP WpPark type=Fixed q=[92.42, -70.93, -90.97, -108.15, 90.41, 181.16] tcp=[0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
@@ -342,7 +341,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   wait 0.5s
                 script: Report(6)
                 timer Reset T_Timeout
-                timer Reset T_Timeout
+                timer Start T_Timeout
                 Folder "Test switch pin, retreat on fail"
                   wait until Flags[0] or T_Timeout>10 or DEBUG
                   if not Flags[0] and not DEBUG
@@ -434,7 +433,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   if Progress_check()≥6
                     script: Report(50)
                   else
-                    script: Report(91)
+                    script: Report(95)
         Folder "Disconnect"
           if In(ProgExe,[21,22,23])
             script: Report(1)
@@ -853,7 +852,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   wait 0.2s
                   set DigitalOutput Do_PusherReturn = 0
                   set DigitalOutput Do_PusherWork = 1
-                  wait AnalogInput Ai_Pusher=8.9
+                  wait AnalogInput analog_in[0]=8.9
                   wait 2.0s
                   set DigitalOutput Do_PusherWork = 0
                 PusherReturn := True

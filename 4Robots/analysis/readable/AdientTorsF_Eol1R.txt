@@ -455,7 +455,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   if Progress_check()≥6
                     script: Report(50)
                   else
-                    script: Report(91)
+                    script: Report(95)
         Folder "Disconnect"
           if In(ProgExe,[21,22,23,61,62,63])
             script: Report(1)
@@ -939,7 +939,7 @@ Thread name=Thread_1 runOnlyOnce=false
           STS_Reservation := 1
         else
           Parking := 1
-      if CMD_Reserve_i2≟2 and In(CMD_Program_i2,[21,22,23])
+      if CMD_Reserve_i2≟2 and In(CMD_Program_i2,[61,62,63])
         # request reservation
         if AtRHomePos or AdapterReady_R
           STS_Reservation := 2

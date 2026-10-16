@@ -8,9 +8,48 @@ variable has not been bumped, so it cannot be used to tell which robot is newer.
 The `.urp` files were converted to readable pseudocode (`readable/*.txt`, made by
 `tools/urp2txt.py`).
 
-## Re-check after commit 09038bc "updated urps" (2026-10-16)
+## Re-check 2 after commit 25d4835 "updated urps"
 
-Line numbers in this section refer to the regenerated `readable/*.txt`. Line numbers in the
+Line numbers refer to the regenerated `readable/*.txt`.
+
+### Fixed in this update
+
+| # | Status |
+|---|---|
+| N1 / A2 | **Fixed.** 1R now uses `In(CMD_Program_i2,[61,62,63])`. |
+| N2 | **Fixed.** All 4 robots now report 95 on a buckle timeout or abort. |
+| N3 / A4 | **Fixed.** 1L buckle wait is now `T_Timeout>25`, the same as the others. |
+| A5 | **Fixed.** 20 and 21 now do Reset + Start before the switch‑pin wait. |
+| B4 | **Fixed.** 21 now sends `Report(6)` in Connect. |
+| B5 | **Fixed.** The stray gripper wait in auto‑home on 20 was removed. |
+
+### Accepted as intentional (moved to the tolerated list)
+
+| # | Reason |
+|---|---|
+| N4 | The pusher threshold (20: 8.9, 21: 8.5) reflects a geometric deviation between the stations. 20 now also references the pin as `analog_in[0]`, the same as 21. |
+| A6 | The SBR check placement reflects the station setup: the SBR parks on the other side. |
+| A7 | The 1R `CamCorrection[1]` upper bound of 0.052 is tolerated. |
+
+### Still open
+
+| # | Robots | Finding |
+|---|---|---|
+| B2 | 21 | The heartbeat handshake (`CMD_Heartbt_i1≟STS_Heartbeat`) exists only on 21. |
+| B3 | 21 | `call GripperClose` at the start of Buttons exists only on 21. |
+| B6 | 1R | EvtDock speeds and blends differ from the other robots (1.5/1.5, blend 0.1, accel 2.0). |
+| B7 | 20 vs 21 | EvtDock: 20 has the extra pre‑approach point (suppressed on 21) and a MoveDirection blend of 0.05 (0.1 elsewhere). |
+| B8 | 20 vs 21 | Height‑button X offset: +8 mm on 20 vs −3 mm on 21. Accept it if it is geometric, like N4. |
+| B9 | 21 | `WpUnplug_1` still has joint values bit‑identical to 20 (copied, not re‑taught). |
+| C1‑C3 | L vs R line | Buckle Z offset −0.02/−0.04, `and not DEBUG` on speed, button moves MoveL vs MoveJ. |
+| D | single vs double | Gripper subprograms, WaitForNormalMode, BeforeStart scripts (see below). |
+| Note | all | The buckle retreat MoveL goes to the uncorrected `Wp` while the blade is still in the slot (see the note in Re-check 1). |
+
+No new deviations were introduced: the only changes since the previous version are the fixes listed above.
+
+## Re-check 1 after commit 09038bc "updated urps" (2026-10-16)
+
+Line numbers in this section refer to the readable files of that version (commit 96e43b6). Line numbers in the
 original report further down refer to the previous version of the files.
 
 **What changed on all 4 robots:** the buckle section was restructured the same way on each.
