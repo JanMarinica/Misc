@@ -845,7 +845,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
               set DigitalOutput Do_PusherWork = 1
               wait until PusherPosStable and PusherPosDev>-20
               set DigitalOutput Do_PusherWork = 0
-              call GripperOpenQuick
+              call GripperOpen
               set NoAction  =  tcp=t2_Gripper
               Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t2_Gripper feat=Joint_0_name
                 WP WpHandle0 type=Fixed blendRadius=0.05 q=[170.79, -84.18, -136.86, -49.01, 90.24, 81.17] tcp=[0.00, -0.26, 0.07, 0.00, 0.00, 0.00]
@@ -1104,7 +1104,7 @@ Thread name=Thread_1 runOnlyOnce=false
       if AdapterReady
         EvtDock := 1
   wait 0.01s
-SubProgram name=WaitForNormalMode keepHidden=false keepSynchronizedWithDisk=false
+SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
     if not NormalMode and not DEBUG and not Abort [continuous]
       EvtBeep := True

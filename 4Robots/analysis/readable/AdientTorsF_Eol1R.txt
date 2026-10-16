@@ -416,7 +416,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                       Wp := WRBuckleSpa1
                     if ProgExe≟56
                       Wp := WRBuckleSpa3
-                    Wp0 := pose_trans(Wp,p[0,0,-0.04,0,0,0])
+                    Wp0 := pose_trans(Wp,p[0,0,-0.02,0,0,0])
                     Wp0 := pose_add(Wp0,Base_w_correctn)
                     WP Variable(Wp0)
                   script: Report(5)
@@ -1037,22 +1037,19 @@ Thread name=Thread_1 runOnlyOnce=false
         if In(CMD_Program_i1,[21,22,23]) or In(CMD_Program_i2,[61,62,63])
           # unplug preference - unreserve immediatelly
           STS_Reservation := 0
-SubProgram name=WaitForNormalMode keepHidden=false keepSynchronizedWithDisk=false
+SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
     if not NormalMode and not DEBUG and not Abort
       EvtBeep := True
     wait until NormalMode or DEBUG or Abort
     EvtBeep := False
-    set DigitalOutput Do_Horn = 0
-    set DigitalOutput Do_Blue = 0
 SubProgram name=GripperOpen keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperOpen"
     set DigitalOutput Do_Gripper = 0
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
 SubProgram name=GripperOpenQuick keepHidden=true keepSynchronizedWithDisk=true
@@ -1063,7 +1060,10 @@ SubProgram name=GripperClose keepHidden=true keepSynchronizedWithDisk=true
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
 SubProgram name=GripperCloseQuick keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperClose"
     set DigitalOutput Do_Gripper = 1
@@ -1248,11 +1248,11 @@ event on EvtDock>0
           WpHome := WRHome
         script: Report(40)
         Wp := pose_trans(WpDock, p[0,0.25,0,0,0,0])
-        WP Variable(Wp) blendRadius=0.1
+        WP Variable(Wp) blendRadius=0.05
         WP Variable(WpDock)
         call GripperOpen
         WP Variable(Wp)
-        Move motionType=MoveL speed=1.0 acceleration=2.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
+        Move motionType=MoveL speed=1.0 acceleration=3.0 useActiveTCP=false positionType=CartesianPose optimoveEnabled=false tcp=t0_Flange feat=Joint_0_name
           WP Variable(WpHome)
         EvtDock := 0
 event on EvtBeep
@@ -1310,7 +1310,10 @@ def GripperClose:
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
 def GripperCloseQuick:
   Folder "GripperClose"
     set DigitalOutput Do_Gripper = 1
@@ -1320,8 +1323,7 @@ def GripperOpen:
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
 def GripperOpenQuick:

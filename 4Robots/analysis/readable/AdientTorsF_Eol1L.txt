@@ -1037,22 +1037,19 @@ Thread name=Thread_1 runOnlyOnce=false
         if In(CMD_Program_i1,[21,22,23]) or In(CMD_Program_i2,[61,62,63])
           # unplug preference - unreserve immediatelly
           STS_Reservation := 0
-SubProgram name=WaitForNormalMode keepHidden=false keepSynchronizedWithDisk=false
+SubProgram name=WaitForNormalMode keepHidden=true keepSynchronizedWithDisk=false
   Folder "Wait until full speed possible"
     if not config_in[0] and not DEBUG and not Abort
       EvtBeep := True
     wait until config_in[0] or DEBUG or Abort
     EvtBeep := False
-    set DigitalOutput digital_out[2] = 0
-    set DigitalOutput digital_out[1] = 0
 SubProgram name=GripperOpen keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperOpen"
     set DigitalOutput Do_Gripper = 0
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
 SubProgram name=GripperOpenQuick keepHidden=true keepSynchronizedWithDisk=true
@@ -1063,7 +1060,10 @@ SubProgram name=GripperClose keepHidden=true keepSynchronizedWithDisk=true
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
 SubProgram name=GripperCloseQuick keepHidden=true keepSynchronizedWithDisk=true
   Folder "GripperClose"
     set DigitalOutput Do_Gripper = 1
@@ -1310,7 +1310,10 @@ def GripperClose:
     set DigitalOutput Do_Gripper = 1
     timer Reset T_Gripper
     timer Start T_Gripper
-    wait until T_Gripper>3 or AI_Gripper>(ivGripSnsClosed-0.3)
+    wait until T_Gripper>5 or AI_Gripper>(ivGripSnsClosed-0.3)
+    if T_Gripper>5
+      popup type=Error haltProgram=false message=Gripper close fault inputType=Text
+      halt
 def GripperCloseQuick:
   Folder "GripperClose"
     set DigitalOutput Do_Gripper = 1
@@ -1320,8 +1323,7 @@ def GripperOpen:
     timer Reset T_Gripper
     timer Start T_Gripper
     wait until T_Gripper>5 or AI_Gripper<(ivGripSensOpen+0.3)
-    if T_Gripper>3
-      script: stopj(10)
+    if T_Gripper>5
       popup type=Error haltProgram=false message=Gripper open fault inputType=Text
       halt
 def GripperOpenQuick:

@@ -8,9 +8,39 @@ variable has not been bumped, so it cannot be used to tell which robot is newer.
 The `.urp` files were converted to readable pseudocode (`readable/*.txt`, made by
 `tools/urp2txt.py`).
 
-## Re-check 3 after commit 548a751 "new urps"
+## Re-check 4 after commit de68b25 "new urps"
 
 Line numbers refer to the regenerated `readable/*.txt`.
+
+### Fixed in this update
+
+| # | Status |
+|---|---|
+| N5 | **Fixed.** 20 PushByHandle uses the blocking `GripperOpen` again, the same as 21. |
+| B6 | **Fixed.** 1R EvtDock pull‑out blend is 0.05 and the final MoveL acceleration is 3.0, the same as 1L. |
+| C1 | **Fixed.** The buckle approach offset is `p[0,0,-0.02,...]` on all 4 robots. |
+| D (gripper) | **Fixed.** Singles now use the double‑cell gripper behaviour: 5 s timeout on open and close, "Gripper close fault" popup + halt, and `stopj` removed. Only the timer name differs (`T_Gripper` vs `timer_Gripper`), which is cosmetic. |
+| D (WaitForNormalMode) | **Mostly fixed.** Singles no longer reset Do_Horn/Do_Blue after the wait, the same as doubles. |
+
+Also changed: 21 EvtDock pull‑out blend 0.04 → 0.05 (B7, accepted as geometry).
+
+### Still open
+
+| # | Robots | Finding |
+|---|---|---|
+| B3 | 21 | Only 21 closes the gripper at the start of Buttons (`GripperCloseQuick` + `GripperClose`). |
+| C2 | R line (1R, 21) | `if T_SpeedSet>2 and not DEBUG`. The L line (1L, 20) has no `and not DEBUG`. |
+| C3 | L vs R line | Button approach/retreat: MoveL on the L line, MoveJ (via one mid‑point) on the R line. |
+| D1 | singles vs doubles | `WaitForNormalMode`: the `if` is `checkContinuously` on doubles only. |
+| D2 | singles vs doubles | EvtDock force selection: singles `1,0,1,1,0,0` (compliant about X), doubles `1,0,1,0,0,0`. |
+
+Differences between singles and doubles that are by design or cosmetic: dual vs single adapter logic,
+the `PosDist`/`Calibrate` helper scripts, `reg2bool` style, the camera debug `textmsg` texts, and the
+camera IP addresses.
+
+## Re-check 3 after commit 548a751 "new urps"
+
+Line numbers refer to the readable files of that version (commit 6c313a3).
 
 ### What changed on all 4 robots
 
