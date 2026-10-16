@@ -7,7 +7,7 @@ from datetime import datetime
 
 STATIONS = ["EOL1L", "EOL1R", "EOL5L", "EOL5R", "EOL20", "EOL21"]
 RX_TEST = re.compile(r"Id: (\d+) TotId: (\d+) Hash:\d+ Name:(.*)$")
-RX_FIN = re.compile(r"Finish test \(result:(\w+), finishType:(\w+)\)")
+RX_FIN = re.compile(r"Finish test \(result:(\w+), finishType:(\w+)(?:, resultValue:[^)]*)?\)")
 
 
 def ts(s):
