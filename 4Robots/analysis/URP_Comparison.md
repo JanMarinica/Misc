@@ -39,8 +39,11 @@ The structure matches across the 4 robots, and the mirror (near/far side swap) i
 | N1 | **1R** | `Eol1R.txt:942` | **A2 only half fixed.** The `or` is now `and`, but the list is `In(CMD_Program_i2,[21,22,23])`. Side 2 programs are 50‑89, so this can never match and the side‑R disconnect preference is dead. 1L has `[61,62,63]`. |
 | N2 | 1L/1R/20/21 | Buckle, final `else` (`Eol1L.txt:458`, `Eol1R.txt:458`, `Eol20.txt:437`, `Eol21.txt:436`) | **New mismatch.** When Flags[8] times out or Abort fires: **1L and 21 report 95**, **1R and 20 report 91**. Before this change all four reported 91. Pick one code. |
 | N3 | **1L** | `Eol1L.txt:422` | A4 still open. The buckle confirmation wait is still `T_Timeout>10`. The other three use 25. |
+
 | N4 | **21** | PushByHandle, `Eol21.txt:810` | **New, 21 only.** `wait AnalogInput Ai_Pusher=8.9` became `analog_in[0]=8.5`. The threshold changed, and the pin is now referenced by raw name. 20 still uses `Ai_Pusher` 8.9. Check that `Ai_Pusher` really is `analog_in[0]` in the 21 installation, and propagate the value to 20 if 8.5 is right. |
+
 | A5 | 20 + 21 | `Eol20.txt:344`, `Eol21.txt:343` | Still open: `timer Reset T_Timeout` twice, no Start. |
+
 | A6 | 20 / 21 | `Eol20.txt:371`, `Eol21.txt:527` | Still open: 20 checks SBR only in Buckle; 21 only in Buttons. |
 | A7 | 1R | `Eol1R.txt:385` | Still open: `CamCorrection[1]` upper bound 0.052. |
 | B2‑B9, C1‑C3, D | – | – | Unchanged. In particular, 21 still has no `Report(6)` in Connect (B4) and 20 still has the stray gripper wait (`Eol20.txt:136`). |
