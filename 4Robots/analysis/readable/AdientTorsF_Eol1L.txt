@@ -419,7 +419,7 @@ MainProgram runOnlyOnce=false InitVariablesNode=true
                   script: Report(5)
                   timer Reset T_Timeout
                   timer Start T_Timeout
-                  wait until Flags[8] or Abort or DEBUG or T_Timeout>10
+                  wait until Flags[8] or Abort or DEBUG or T_Timeout>25
                   if Flags[8] or DEBUG
                     script: Report(6)
                     set NoAction  =  tcp=t3_Blade
